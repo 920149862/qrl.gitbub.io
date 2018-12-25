@@ -281,7 +281,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/23/blog-6/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/25/blog-8/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="邱仁亮">
@@ -300,7 +300,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/23/blog-6/" itemprop="url">http需要知道的状态码</a></h1>
+                <a class="post-title-link" href="/2018/12/25/blog-8/" itemprop="url">《代码大全》</a></h1>
         
 
         <div class="post-meta">
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-23T19:19:08+08:00">
-                2018-12-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-25T21:55:48+08:00">
+                2018-12-25
               </time>
             
 
@@ -335,8 +335,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/http/" itemprop="url" rel="index">
-                    <span itemprop="name">http</span>
+                  <a href="/categories/记录/" itemprop="url" rel="index">
+                    <span itemprop="name">记录</span>
                   </a>
                 </span>
 
@@ -366,7 +366,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  234
+                  638
                 </span>
               
 
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -405,10 +405,40 @@
       
         
           
-            <h3 id="记录常用的http状态码"><a href="#记录常用的http状态码" class="headerlink" title="记录常用的http状态码"></a>记录常用的http状态码</h3><p>200： 请求成功，返回响应内容；204： 请求成功，但是没有内容返回； 206（范围请求）： 请求成功，返回请求的部分内容。</p>
-<p>301： 资源永久性重定向；302： 资源临时性重定向；303；资源有两个访问url,应当使用get方法定向请求该资源；304： 客户端请求带条件，服务器资源已找到，但是没有满足条件；307：临时重定向，与302不同的是302可以禁止把post变为get,但是大家都不遵守，307是强制不能把post转为get.</p>
-<p>400: 请求报文中存在语法错误； 401： 发送的请求需要通过http认证； 403： 发送的请求被服务端拒绝了； 404（not found）：请求的资源服务端没有找到.</p>
-<p>500: 服务器内部发生错误； 503： 服务器忙或者正在维护，现在无法处理请求；</p>
+            <ol>
+<li><p>软件开发是一项复杂的工程，不能只理解成编码。确定需求-&gt;架构设计-&gt;实现需求-&gt;测试发布。</p>
+</li>
+<li><p>隐喻，也就是软件工程中的建模。</p>
+</li>
+<li><p>关注质量，前期准备的重要性。‘架构师吃掉需求，设计师吃掉架构，程序员消化设计。’我们程序员只是软件开发中的一环。如果需求不确定，后期再修改，重新设计，重新编码，花费的代价是前期的几十上百倍。所以我们前期应该确定好需求，设计好架构，再进行编码。当然，需求不可能是一成不变的。我们应该在开发中留有应对需求变更的方法，比如演进交付法：小块小块的开发交付，获得反馈，再构建。</p>
+</li>
+<li><p>确定编程语言和所用框架，了解其优缺点，约定语言规范。</p>
+</li>
+<li><p>管理复杂度，迭代设计试错，确定软件架构，分析模块，显示什么，隐藏什么。</p>
+</li>
+<li><p>类是管理复杂度的首选工具，类的接口要保持一致的抽象，隐藏其中的一些信息，只提供操作方法，包含比继承更好，继承增加了复杂度。</p>
+</li>
+<li><p>子程序提高程序的可管理性，可读性更高，易于修改，比较可靠。但是必须要有一个好的命名。</p>
+</li>
+<li><p>统一处理异常。</p>
+</li>
+<li><p>编写伪代码来确定业务逻辑，便于寻找最佳方案。伪代码可能成为程序注释。</p>
+</li>
+<li><p>数据初始化，变量名必须具体，便于阅读而不是便于编写，团队命名规则必须统一（驼峰？下划线。。。），确定变量的作用域，避免使用全局变量。</p>
+</li>
+<li><p>熟悉所用语言的基本类型，正确运用其特性。javascript: number、string、null、undefined、object、boolean、 symbol</p>
+</li>
+<li><p>控制语句if-else、switch注意把概率高的事件放前边。</p>
+</li>
+<li><p>软件质量、协同工作、测试、调试等工作,只要前期确定好开发规范，架构合理，后期的工作将不会很难。</p>
+</li>
+<li><p>修改代码百分百会遇到，重构代码的最好时机是开发阶段，要想重构比较轻松，就保证编写代码的质量。</p>
+</li>
+<li><p>注释应该说出代码无法说出的东西，注释多不等于代码好，好的代码根本不需要注释。</p>
+</li>
+<li><p>大项目拆分模块，小项目掌控全局，都要用心去对待，编写高质量的代码。</p>
+</li>
+</ol>
 
           
         
@@ -597,6 +627,182 @@
 <li>中间服务器Nginx或apache配置代理请求</li>
 <li>springboot 注解@CrossOrigin</li>
 </ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/23/blog-6/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="邱仁亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/mm.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/23/blog-6/" itemprop="url">http需要知道的状态码</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-23T19:19:08+08:00">
+                2018-12-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/http/" itemprop="url" rel="index">
+                    <span itemprop="name">http</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  234
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="记录常用的http状态码"><a href="#记录常用的http状态码" class="headerlink" title="记录常用的http状态码"></a>记录常用的http状态码</h3><p>200： 请求成功，返回响应内容；204： 请求成功，但是没有内容返回； 206（范围请求）： 请求成功，返回请求的部分内容。</p>
+<p>301： 资源永久性重定向；302： 资源临时性重定向；303；资源有两个访问url,应当使用get方法定向请求该资源；304： 客户端请求带条件，服务器资源已找到，但是没有满足条件；307：临时重定向，与302不同的是302可以禁止把post变为get,但是大家都不遵守，307是强制不能把post转为get.</p>
+<p>400: 请求报文中存在语法错误； 401： 发送的请求需要通过http认证； 403： 发送的请求被服务端拒绝了； 404（not found）：请求的资源服务端没有找到.</p>
+<p>500: 服务器内部发生错误； 503： 服务器忙或者正在维护，现在无法处理请求；</p>
 
           
         
@@ -1135,212 +1341,6 @@
 <p> 页面如下<br><img src="/2018/12/23/blog-3/img_1.png" alt="a"><br>当我们点击’儿子’时，监听的事件会由内到外依次触发,因为儿子包含在爸爸，爷爷身上，这就是js默认事件冒泡。就近原则，依次触发。<br><img src="/2018/12/23/blog-3/img_2.png" alt="b"><br>利用api把添加监听事件的第三个参数改为true时<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&apos;grandpa&apos;).addEventListener(&apos;click&apos;, function () &#123;</span><br><span class="line">    console.log(&apos;点击了爷爷&apos;)</span><br><span class="line">&#125;,true)</span><br></pre></td></tr></table></figure></p>
 <p>会出现‘爷爷’先打印，这就是事件捕获，阻止冒泡，当然打印‘儿子’‘爸爸’顺序没变，因为还是默认的冒泡<br><img src="/2018/12/23/blog-3/img_3.png" alt="b"></p>
 <p>还有些SB会写出一个div里同时存在冒泡和捕获事件，这种情况就是先写的事件先执行，先来后到。<br>写遮罩弹窗时应用到了，在此记录一下。别个说和事件委托联系很深，下次再研究。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/23/blog-8/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="邱仁亮">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/mm.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/23/blog-8/" itemprop="url">《代码大全》</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-23T16:04:17+08:00">
-                2018-12-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/记录/" itemprop="url" rel="index">
-                    <span itemprop="name">记录</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  638
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p>软件开发是一项复杂的工程，不能只理解成编码。确定需求-&gt;架构设计-&gt;实现需求-&gt;测试发布。</p>
-</li>
-<li><p>隐喻，也就是软件工程中的建模。</p>
-</li>
-<li><p>关注质量，前期准备的重要性。‘架构师吃掉需求，设计师吃掉架构，程序员消化设计。’我们程序员只是软件开发中的一环。如果需求不确定，后期再修改，重新设计，重新编码，花费的代价是前期的几十上百倍。所以我们前期应该确定好需求，设计好架构，再进行编码。当然，需求不可能是一成不变的。我们应该在开发中留有应对需求变更的方法，比如演进交付法：小块小块的开发交付，获得反馈，再构建。</p>
-</li>
-<li><p>确定编程语言和所用框架，了解其优缺点，约定语言规范。</p>
-</li>
-<li><p>管理复杂度，迭代设计试错，确定软件架构，分析模块，显示什么，隐藏什么。</p>
-</li>
-<li><p>类是管理复杂度的首选工具，类的接口要保持一致的抽象，隐藏其中的一些信息，只提供操作方法，包含比继承更好，继承增加了复杂度。</p>
-</li>
-<li><p>子程序提高程序的可管理性，可读性更高，易于修改，比较可靠。但是必须要有一个好的命名。</p>
-</li>
-<li><p>统一处理异常。</p>
-</li>
-<li><p>编写伪代码来确定业务逻辑，便于寻找最佳方案。伪代码可能成为程序注释。</p>
-</li>
-<li><p>数据初始化，变量名必须具体，便于阅读而不是便于编写，团队命名规则必须统一（驼峰？下划线。。。），确定变量的作用域，避免使用全局变量。</p>
-</li>
-<li><p>熟悉所用语言的基本类型，正确运用其特性。javascript: number、string、null、undefined、object、boolean、 symbol</p>
-</li>
-<li><p>控制语句if-else、switch注意把概率高的事件放前边。</p>
-</li>
-<li><p>软件质量、协同工作、测试、调试等工作,只要前期确定好开发规范，架构合理，后期的工作将不会很难。</p>
-</li>
-<li><p>修改代码百分百会遇到，重构代码的最好时机是开发阶段，要想重构比较轻松，就保证编写代码的质量。</p>
-</li>
-<li><p>注释应该说出代码无法说出的东西，注释多不等于代码好，好的代码根本不需要注释。</p>
-</li>
-<li><p>大项目拆分模块，小项目掌控全局，都要用心去对待，编写高质量的代码。</p>
-</li>
-</ol>
 
           
         
