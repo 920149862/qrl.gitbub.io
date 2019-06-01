@@ -94,7 +94,7 @@
 
 
 
-  <meta name="keywords" content="Vue.js,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -107,26 +107,18 @@
 
 
 
-<meta name="description" content="公司基于Vue.js做的网站上线后，发现爬虫根本爬取不了网站的信息，导致网站排名很低并且提升不了，让我找找有什么方法可以解决。查询相关资料后，发现网站是vue单页面架构，客户端渲染，首屏加载慢，对seo特别不友好（爬虫只能爬到js信息）。要解决这个问题，目前知道两种方案：  SSR(服务端渲染)–通过node.js做中间层，取服务端的数据渲染好页面之后再发送给浏览器，这样网络爬虫就能获取到网页">
-<meta name="keywords" content="Vue.js">
+<meta name="description" content="现在我们的生活离不开计算机，但是计算机是怎么识别用户的指令从而完成一系列的操作？通过这本书，可以大致理解计算机工作的基本原理，扩充自己的知识点。 基础知识 汇编指令（mov ax,bx）是机器指令(1000100111011000)的助记符，同机器指令一一对应,两者转换需要编译器。用高级语言描述（ax = bx）。 每一种CPU都有自己的汇编指令集。 CPU可以直接使用的信息在存储器中存放。 在存">
+<meta name="keywords" content="喔喔屋，博客">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue.js项目seo解决方案--预渲染">
-<meta property="og:url" content="http://yoursite.com/2019/03/24/blog-13/index.html">
+<meta property="og:title" content="《汇编语言》">
+<meta property="og:url" content="http://yoursite.com/2019/06/01/blog-16/index.html">
 <meta property="og:site_name" content="喔喔屋">
-<meta property="og:description" content="公司基于Vue.js做的网站上线后，发现爬虫根本爬取不了网站的信息，导致网站排名很低并且提升不了，让我找找有什么方法可以解决。查询相关资料后，发现网站是vue单页面架构，客户端渲染，首屏加载慢，对seo特别不友好（爬虫只能爬到js信息）。要解决这个问题，目前知道两种方案：  SSR(服务端渲染)–通过node.js做中间层，取服务端的数据渲染好页面之后再发送给浏览器，这样网络爬虫就能获取到网页">
+<meta property="og:description" content="现在我们的生活离不开计算机，但是计算机是怎么识别用户的指令从而完成一系列的操作？通过这本书，可以大致理解计算机工作的基本原理，扩充自己的知识点。 基础知识 汇编指令（mov ax,bx）是机器指令(1000100111011000)的助记符，同机器指令一一对应,两者转换需要编译器。用高级语言描述（ax = bx）。 每一种CPU都有自己的汇编指令集。 CPU可以直接使用的信息在存储器中存放。 在存">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/03/24/blog-13/img_2.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/24/blog-13/img_1.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/24/blog-13/img_3.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/24/blog-13/img_4.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/24/blog-13/img_5.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/24/blog-13/img_6.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/24/blog-13/img_7.png">
-<meta property="og:updated_time" content="2019-03-24T13:20:20.555Z">
+<meta property="og:updated_time" content="2019-06-01T10:49:02.843Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vue.js项目seo解决方案--预渲染">
-<meta name="twitter:description" content="公司基于Vue.js做的网站上线后，发现爬虫根本爬取不了网站的信息，导致网站排名很低并且提升不了，让我找找有什么方法可以解决。查询相关资料后，发现网站是vue单页面架构，客户端渲染，首屏加载慢，对seo特别不友好（爬虫只能爬到js信息）。要解决这个问题，目前知道两种方案：  SSR(服务端渲染)–通过node.js做中间层，取服务端的数据渲染好页面之后再发送给浏览器，这样网络爬虫就能获取到网页">
-<meta name="twitter:image" content="http://yoursite.com/2019/03/24/blog-13/img_2.png">
+<meta name="twitter:title" content="《汇编语言》">
+<meta name="twitter:description" content="现在我们的生活离不开计算机，但是计算机是怎么识别用户的指令从而完成一系列的操作？通过这本书，可以大致理解计算机工作的基本原理，扩充自己的知识点。 基础知识 汇编指令（mov ax,bx）是机器指令(1000100111011000)的助记符，同机器指令一一对应,两者转换需要编译器。用高级语言描述（ax = bx）。 每一种CPU都有自己的汇编指令集。 CPU可以直接使用的信息在存储器中存放。 在存">
 
 
 
@@ -156,13 +148,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/24/blog-13/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/01/blog-16/">
 
 
 
 
 
-  <title>Vue.js项目seo解决方案--预渲染 | 喔喔屋</title>
+  <title>《汇编语言》 | 喔喔屋</title>
   
 
 
@@ -289,7 +281,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/24/blog-13/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/01/blog-16/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="邱仁亮">
@@ -306,7 +298,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Vue.js项目seo解决方案--预渲染</h1>
+          <h1 class="post-title" itemprop="name headline">《汇编语言》</h1>
         
 
         <div class="post-meta">
@@ -318,8 +310,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-24T20:00:13+08:00">
-                2019-03-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-01T16:12:01+08:00">
+                2019-06-01
               </time>
             
 
@@ -341,8 +333,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue-js/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue.js</span>
+                  <a href="/categories/知识点/" itemprop="url" rel="index">
+                    <span itemprop="name">知识点</span>
                   </a>
                 </span>
 
@@ -372,7 +364,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1k
+                  2.3k
                 </span>
               
 
@@ -388,7 +380,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  8
                 </span>
               
             </div>
@@ -409,22 +401,49 @@
       
 
       
-        <p>  公司基于Vue.js做的网站上线后，发现爬虫根本爬取不了网站的信息，导致网站排名很低并且提升不了，让我找找有什么方法可以解决。查询相关资料后，发现网站是vue单页面架构，客户端渲染，首屏加载慢，对seo特别不友好（爬虫只能爬到js信息）。要解决这个问题，目前知道两种方案：</p>
-<ol>
-<li>SSR(服务端渲染)–通过node.js做中间层，取服务端的数据渲染好页面之后再发送给浏览器，这样网络爬虫就能获取到网页信息。相关插件有Nuxt.js,但是这种方案项目必须重新架构，页面上一些钩子函数也需重新编写，花费时间人力比较长，被我pass掉。</li>
-<li>预渲染–通过插件把vue单页面静态打包成html页面，这样浏览器访问的就是一个静态的html文件，开发成本低。只需要在项目webpack打包部署时配置相关信息，就能解决seo的问题。</li>
+        <p>现在我们的生活离不开计算机，但是计算机是怎么识别用户的指令从而完成一系列的操作？通过这本书，可以大致理解计算机工作的基本原理，扩充自己的知识点。</p>
+<h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><ol>
+<li>汇编指令（mov ax,bx）是机器指令(1000100111011000)的助记符，同机器指令一一对应,两者转换需要编译器。用高级语言描述（ax = bx）。</li>
+<li>每一种CPU都有自己的汇编指令集。</li>
+<li>CPU可以直接使用的信息在存储器中存放。</li>
+<li>在存储器中的指令和数据没有任何区别，都是二进制信息。</li>
+<li>存储单元从零开始顺序编号。</li>
+<li>一个存储单元可以存储8个bit，即8位二进制数。</li>
+<li>1 Byte = 8 bit; 1 KB = 1024 Byte; 1 MB = 1024 KB; 1 GB = 1024 MB</li>
+<li><p>每一个CPU芯片都有许多管脚，这些管脚和总线相连。也可以说，这些管脚引出总线。一个CPU可以引出3种总线的宽度标志了这个CPU的不同方面的性能：<br>（1）地址总线的宽度决定的CPU的寻址能力<br>（2）数据总线的宽度决定了CPU与其他器件进行数据传送时的一次数据传送量<br>（3）控制总线的宽度决定了CPU对系统中其他器件的控制能力</p>
+<p>最终运行程序的是CPU,我们用汇编语言编程时，必须要从CPU的角度考虑问题。对CPU来讲，系统中的所有存储器中的存储单元都处于一个统一的逻辑存储器中，他的容量受CPU寻址能力的限制。这个逻辑存储器即是我们所说的内存地址空间。 </p>
+</li>
 </ol>
-<p>这里讲解第二种方案：<br>  单页面应用每个页面都是通过js渲染，爬虫爬到的信息就是这样,没有具体的信息：<br>  <img src="/2019/03/24/blog-13/img_2.png" alt="b"><br>  vue单页面应用可以通过prerender-spa-plugin插件进行静态打包成html，通过vue-cli脚手架搭建的项目，相关配置如下(具体信息可以阅读插件相关文档)：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">// webpack.prop.conf.js</span><br><span class="line">var path = require(&apos;path&apos;)</span><br><span class="line">var PrerenderSpaPlugin = require(&apos;prerender-spa-plugin&apos;)</span><br><span class="line"></span><br><span class="line">plugins: [</span><br><span class="line">  new PrerenderSPAPlugin(&#123;</span><br><span class="line">    // 生成文件的路径，也可以与webpakc打包的一致。</span><br><span class="line">    // 下面这句话非常重要！！！</span><br><span class="line">    // 这个目录只能有一级，如果目录层次大于一级，在生成的时候不会有任何错误提示，在预渲染的时候只会卡着不动。</span><br><span class="line">    staticDir: path.join(__dirname,&apos;../dist&apos;),</span><br><span class="line">    // 对应自己的路由文件，比如a有参数，就需要写成 /a/param1。</span><br><span class="line">    routes: [&apos;/Pecs&apos;],</span><br><span class="line">    // 这个很重要，如果没有配置这段，也不会进行预编译</span><br><span class="line">    renderer: new Renderer(&#123;</span><br><span class="line">      inject: &#123;</span><br><span class="line">        foo: &apos;bar&apos;</span><br><span class="line">      &#125;,</span><br><span class="line">      headless: false,</span><br><span class="line">      // 在 main.js 中 document.dispatchEvent(new Event(&apos;render-event&apos;))，两者的事件名称要对应上。</span><br><span class="line">      renderAfterDocumentEvent: &apos;render-event&apos;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">// main.js</span><br><span class="line">var vm = new Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  store,</span><br><span class="line">  render: h =&gt; h(Main),</span><br><span class="line">  // 与webpack.prop.conf.js里的事件名相对应</span><br><span class="line">  mounted () &#123;</span><br><span class="line">    document.dispatchEvent(new Event(&apos;render-event&apos;))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>这个配置好后就可以打包出相关的html静态页面。<br><img src="/2019/03/24/blog-13/img_1.png" alt="b"><br>到这里已经算成功了，不过为了提升网站seo排名，可以配合vue-meta-info插件对页面的tkd进行配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  ...</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    metaInfo: &#123;</span><br><span class="line">      title: &apos;My Example App&apos;, // set a title</span><br><span class="line">      meta: [&#123;                 // set meta</span><br><span class="line">        name: &apos;keyWords&apos;,</span><br><span class="line">        content: &apos;My Example App&apos;</span><br><span class="line">      &#125;]</span><br><span class="line">      link: [&#123;                 // set link</span><br><span class="line">        rel: &apos;asstes&apos;,</span><br><span class="line">        href: &apos;https://assets-cdn.github.com/&apos;</span><br><span class="line">      &#125;]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
-<p>这样我们的网站信息就变成了<br><img src="/2019/03/24/blog-13/img_3.png" alt="b"><br>相比之前的只有js,页面内容丰富了很多，也利于爬虫的爬取。</p>
-<p>下面记录这次调整遇到的问题：</p>
+<h1 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h1><p>任何数据，到了计算机中都是以二进制的形式存放的。为了描述不同的问题，又经常将它们用其他的进制来表示。比如寄存器AX中的数据是0100111000100000，这就是AX中的信息本身，可以用不同的逻辑意义来看待它。可以将它看<br>作一个数值，大小是20000。<br>当然，二进制数0100111000100000本身也可以表示一个数值的大小，但人类习惯的是十进制，用十进制20000表示可以使我们直观地感受到这个数值的大小。<br>十六进制数的一位相当于二进制数的四位，如0100111000100000可以表示成4(0100)、E(1110)、2(0010)、0(0000)四位十六进制数。<br>由于一个内存单元可以存放8位数据，CPU中的寄存器又可存放n个8位的数据。也就是说，计算机中的数据大多是由1~N个8位数据构成的。很多时候，需要直观地看出组成数据的各个字节数据的值，用十六进制来表示数据可以直观地看出这个数据是由哪些8位数据构成的。比如20000写成4E20就可以直观地看出，这个数据是由4E和20两个8位数据构成的，如果AX中存放4E20,则AH里是4E,AL里是20。这种表示方法便于许多问题的直观分析。<br>计算机中所有信息都是以二进制的形式存储的，机器只能处理二进制信息，“左移4位”中的位，值的是二进制位。<br>例子，一个数据为2H,二进制形式为10B,对其进行左移运算：</p>
+<p>左移位数        二进制        十六进制        十进制<br>  0             10B            2H              2<br>  1             100B           4H              4<br>  2             1000B          8H              8<br>  3             10000B        10H              16<br>  4             100000B       20H              32</p>
+<p>观察上面移位次数和各种形式数据的关系，我们可以发现：</p>
+<p> （1）一个数据的二进制形式左移1位，相当于该数据乘以2；<br> （2）一个数据的二进制形式左移N位，相当于该数据乘以2的N次方；<br> （3）地址加法器如何完成段地址*16的运算？就是将以二进制形式存放的段地址左移4位。</p>
+<p> 一个数据的十六进制左移1位，相当于乘以16；一个数据的十进制形式左移1位，相当于乘以10；一个X进制的数据左移1位，相当于乘以X。</p>
+<p> CPU访问内存单元时，必须向CPU提供内存单元的物理地址。8086CPU在内部用段地址和偏移地址移位相加的方法形成最终的物理地址。</p>
+<p> （1）CPU可以用不同的段地址和偏移地址形成同一物理地址。<br>  比如CPU要访问21F60H单元，则它给出的段地址SA和偏移地址EA满足SA*16 + EA = 21F60H 即可。<br> （2）偏移地址16位，变化范围 0~FFFFH,仅用偏移地址来寻址最多可寻 64KB 个内存单元。<br>  比如给定段地址 1000H,用偏移地址来寻址，CPU的寻址范围为：10000H ~ 1FFFFH。</p>
+<p>  在8086PC机中，存储单元的地址用两个元素来描述，即段地址和偏移地址。<br>  “数据在21F60H内存单元中” 这句话对于8086PC机一般不这样讲，取而代之的是两种类似的说法： ①数据存在内存 2000:1F60 单元中；②数据存在内存的 2000H 段中的 1F60H 单元中。这两种描述都表示“数据在内存 21F60H 单元中”。</p>
+<p>  可以根据需要，将地址连续、起始地址为16的倍数的一组内存单元定义为一个段。</p>
 <ol>
-<li>在原有项目的基础上配置好相关信息，发现打包卡死在一个地方<br><img src="/2019/03/24/blog-13/img_4.png" alt="b"><br>解决: config/index文件的配置配了一个父路径，改成默认‘/’的就行了<br><img src="/2019/03/24/blog-13/img_5.png" alt="b"></li>
-<li>打包出来的html页面内容是空的<br><img src="/2019/03/24/blog-13/img_6.png" alt="b"><br>解决: 我发现有些页面信息获取写在了beforeRouteEnter钩子函数里边，把里面这些函数放到created钩子函数里就可以了<br><img src="/2019/03/24/blog-13/img_7.png" alt="b"></li>
-<li>需要预渲染的页面较多，打包时会报一个错误，详情就是不能打包所有的路由，可能是电脑得配置不好，我那几十个页面分了好几批才打包完成。而且对于信息变化频繁的页面也不适合静态打包。</li>
+<li>段地址在8086CPU的段寄存器中存放。当8086CPU要访问内存时，由段寄存器提供内存单元的段地址。8086CPU有4个段寄存器，其中CS用来存放指令的段地址。</li>
+<li>CS 存放指令的段地址，IP存放指令的偏移地址。<br>8086机中，任意时刻，CPU将CS:IP指向的内容当做指令执行。</li>
+<li>8086CPU的工作过程：<br>（1）从CS:IP指向的内存单元读取指令，读取的指令进入指令缓冲器；<br>（2）IP指向下一条指令；<br>（3）执行指令。（转到步骤1，重复这个过程）</li>
+<li>8086CPU提供转移指令修改CS、IP的内容。</li>
 </ol>
-<p>通过这次调整，我发现前期规划真的很重要。比如做门户、电商网站，前期就应该考虑seo的问题，比如复杂一点项目就架构就用ssr，不然做完后再调整就很难了，</p>
+<h1 id="寄存器（内存访问）"><a href="#寄存器（内存访问）" class="headerlink" title="寄存器（内存访问）"></a>寄存器（内存访问）</h1><ol>
+<li>字在内存中储存时，要用两个地址连续的内存单元来存放，字的低位字节存放在低地址单元中，高位字节存放在高地址单元中。</li>
+<li>用 mov 指令访问内存单元，可以在 mov 指令中只给出单元的偏移地址，此时，段地址默认在DS 寄存器中。</li>
+<li>[address]表示一个偏移地址为address的内存单元。</li>
+<li>在内存和寄存器之间传送字型数据时，高地址单元和高8位寄存器、低地址单元和低8位寄存器相对应。 </li>
+<li>mov、 add、 sub 是具有两个操作对象的指令。jmp是具有一个操作对象的指令。</li>
+<li>在SS、SP中存放栈顶的段地址和偏移地址；提供入栈和出栈指令，它们根据SS:SP指示的地址，按照栈的方式访问内存单元。</li>
+<li>push指令的执行步骤：<br>（1）SP=SP-2;<br>（2）向SS:SP指向的字单元中送入数据。</li>
+<li>pop指令的执行步骤：<br>（1）从SS:SP指向的字单元中读取数据；<br>（2）SP=SP+2</li>
+<li>任意时刻，SS:SP指向栈顶元素。</li>
+<li>8086CPU只记录栈顶，栈空间的大小我们要自己管理。</li>
+<li>用栈来暂存以后需要恢复的寄存器内容时，寄存器出栈的顺序要和入栈的顺序相反。</li>
+<li>push、 pop实质上是一种内存传送指令。</li>
+</ol>
+<p>操作系统是由多个功能模块机组成的庞大、复杂的软件系统。任何通用的操作系统，都要提供一个称为shell（外壳）的程序，用户（操作人员）使用这个程序来操作计算机系统进行工作。<br>DOS中一个程序command.com,这个程序在DOS中称为命令解释器，也就是DOS系统的shell。<br>DOS启动时，先完成其他重要的初始化工作，然后运行command.com，command.com运行后，执行完成其他的相关任务后，在屏幕上显示出由当前盘符和当前路劲组成的提示符，比如：“c:\”或“c:\windows”等，然后等待用户的输入。<br>用户可以输入所要执行的命令，比如，cd、dir、type等，这些命令由command执行，command执行完这些命令后，再次显示由当前盘符和当前路劲组成的提示符，等待用户的输入。<br>如果用户要执行一个程序，则输入改程序的可执行文件的名称，command首先根据文件名找到可执行文件，然后将这个可执行文件中的程序加载入内存，设置CS:IP指向程序的入口。此后，commandz暂停运行，CPU运行程序，程序运行结束后，返回到command中，command再次显示由当前盘符和当前路劲组成的提示符，等待用户的输入。<br>在DOS中，command处理各种输入：命令或要执行的程序的文件名。我们就是通过command来进行工作的。</p>
 
       
     </div>
@@ -440,12 +459,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Vue-js/" rel="tag"># Vue.js</a>
-          
-        </div>
-      
 
       
       
@@ -455,8 +468,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/12/blog-12/" rel="next" title="《算法图解》">
-                <i class="fa fa-chevron-left"></i> 《算法图解》
+              <a href="/2019/05/28/blog-15/" rel="next" title="校验密码不能出现6位以上的连续字符">
+                <i class="fa fa-chevron-left"></i> 校验密码不能出现6位以上的连续字符
               </a>
             
           </div>
@@ -465,8 +478,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/23/blog-14/" rel="prev" title="《网络是怎样连接的》">
-                《网络是怎样连接的》 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/06/01/blog-17/" rel="prev" title="《代码大全》">
+                《代码大全》 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -519,8 +532,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -623,6 +645,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础知识"><span class="nav-number">1.</span> <span class="nav-text">基础知识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#寄存器"><span class="nav-number">2.</span> <span class="nav-text">寄存器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#寄存器（内存访问）"><span class="nav-number">3.</span> <span class="nav-text">寄存器（内存访问）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
