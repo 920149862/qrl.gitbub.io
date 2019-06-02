@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="喔喔屋">
 <meta property="og:description" content="软件构建 软件构建是软件开发的核心活动；构建活动是每个项目中唯一一项必不可少的工作。 软件构建的主要活动包括：详细设计、编码、调试、集成、开发者测试（包括单元测试和集成测试）。 构建也常被称作“编码”和“编程”。 构建活动的质量对软件的质量有着实质性的影响。  隐喻 隐喻是启示而不是算法。因此它们往往有一点随意。 隐喻把软件开发过程与其他你熟悉的活动联系在一起，帮助你更好地理解。 有些隐喻比其他隐">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-01T11:37:14.213Z">
+<meta property="og:updated_time" content="2019-06-02T09:26:33.507Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《代码大全》">
 <meta name="twitter:description" content="软件构建 软件构建是软件开发的核心活动；构建活动是每个项目中唯一一项必不可少的工作。 软件构建的主要活动包括：详细设计、编码、调试、集成、开发者测试（包括单元测试和集成测试）。 构建也常被称作“编码”和“编程”。 构建活动的质量对软件的质量有着实质性的影响。  隐喻 隐喻是启示而不是算法。因此它们往往有一点随意。 隐喻把软件开发过程与其他你熟悉的活动联系在一起，帮助你更好地理解。 有些隐喻比其他隐">
@@ -364,7 +364,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3.1k
+                  7.4k
                 </span>
               
 
@@ -380,7 +380,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  10
+                  24
                 </span>
               
             </div>
@@ -494,6 +494,147 @@
 <li>指针很容易出错。用访问器子程序或类以及防御式编程实践来保护自己的代码。</li>
 <li>避免用全局变量，不只是因为它们很危险，还是因为你可以用其他更好地方法来取代它们。</li>
 <li>如果你不得不使用全局变量，那么就通过访问器子程序来使用它。访问器子程序能为你带来全局变量所能带来的一切优点，还有一些额外好处。</li>
+</ol>
+<h1 id="直线型代码"><a href="#直线型代码" class="headerlink" title="直线型代码"></a>直线型代码</h1><ol>
+<li>组织直线型代码的最主要原则是按照依赖关系进行排列。</li>
+<li>可以用好的子程序名、参数列表、注释，以及—-如果代码足够重要—-内务管理变量来让依赖关系变得更明显。</li>
+<li>如果代码之间没有顺序依赖关系，那就设法使相关的语句尽可能地接近。</li>
+</ol>
+<h1 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h1><ol>
+<li>对于简单的if-else语句，请注意 if 子句和 else 子句的顺序，特别是用它来处理大量错误的时候。要确认正常的情况是清晰的。</li>
+<li>对于 if-then-else 语句串和 case 语句，选择一种最有利阅读的排序。</li>
+<li>为了捕捉错误，可以使用 case 语句中的 default 子句（默认子句），或者使用 if-then-else 语句串中的最后那个 else 子句。</li>
+<li>各种控制结构并不是生来平等的。请为代码的每个部分选用最合适的控制结构。</li>
+</ol>
+<h1 id="控制循环"><a href="#控制循环" class="headerlink" title="控制循环"></a>控制循环</h1><ol>
+<li>循环很复杂。保持循环简单将有助于别人阅读你的代码。</li>
+<li>保持循环简单的技巧包括：避免使用怪异的循环、减少嵌套层次、让入口和出口一目了然、把内务操作和代码放在一处。</li>
+<li>循环下标很容易被滥用。因此命名要准确，并且要把它们各自仅用于一个用途。</li>
+<li>仔细地考虑循环，确认它在每一种情况下都运行正常，并且在所有可能的条件下都能退出。</li>
+</ol>
+<h1 id="不常见的控制结构"><a href="#不常见的控制结构" class="headerlink" title="不常见的控制结构"></a>不常见的控制结构</h1><ol>
+<li>多个 return 可以增强子程序的可读性和可维护性，同时可以避免产生很深的嵌套逻辑。但是使用它的时候要多加小心。</li>
+<li>递归能够很优雅地解决一小部分问题。对它的使用也要倍加小心。</li>
+<li>在少数情况下，goto是编写可读性和可维护代码的最佳方法。但这种情况非常罕见。除非万不得已，不要使用goto。</li>
+</ol>
+<h1 id="表驱动法"><a href="#表驱动法" class="headerlink" title="表驱动法"></a>表驱动法</h1><ol>
+<li>表提供了一种复杂的逻辑和继承结构的替换方案。如果你发现自己对某个应用程序的逻辑或者继承树关系感到困惑，那么问问自己它是否可以通过一个查询表来加以简化。</li>
+<li>使用表的一项关键决策是决定如何去访问表。你可以采取直接访问、索引访问或者阶梯访问。</li>
+<li>使用表的另一项关键决策是决定应该把什么内容放入表中。</li>
+</ol>
+<h1 id="一般控制问题"><a href="#一般控制问题" class="headerlink" title="一般控制问题"></a>一般控制问题</h1><ol>
+<li>使布尔表达式简单可读，将非常有助于提高你的代码质量。</li>
+<li>深层次的嵌套使得子程序变得难以理解。所幸的是，你可以相对容易地避免这么做。</li>
+<li>结构化编程是一种简单并且仍然适用的思想： 你可以通过把顺序、选择和循环三者组合起来而开发出任何程序。</li>
+<li>将复杂度降到最低水平是编写高质量代码的关键。</li>
+</ol>
+<h1 id="代码改善"><a href="#代码改善" class="headerlink" title="代码改善"></a>代码改善</h1><ol>
+<li>开发高质量代码最终并没有要求你付出更多，只是你需要对资源进行重新分配，以低廉的成本来防止缺陷出现，从而避免代价高昂的修正工作。</li>
+<li>并非所有的质量保证目标都可以全部实现。明确哪些目标是你希望达到的，并就这些目标和团队成员进行沟通。</li>
+<li>没有任何一种错误检测方法能够解决全部问题，测试本身并不是排除错误的最有效方法。成功的质量保证计划应该使用多种不同的技术来检查各种不同类型的错误。</li>
+<li>在构建期间应当使用一些有效的质量保证技术，但在这之前，一些具有同样的强大功能的质量保证技术也是必不可少的。错误发现越早，它与其余代码的纠缠就越少，由此造成的损失也就越小。</li>
+<li>软件领域的质量保证是面向过程的。软件开发与制造业不一样，在这里并不存在会影响最终产品的重复的阶段，因此最终产品的质量受到开发软件所用的过程的控制。</li>
+</ol>
+<h1 id="协同构建"><a href="#协同构建" class="headerlink" title="协同构建"></a>协同构建</h1><ol>
+<li>协同开发实践往往能比测试发现更多的缺陷，并且更有效率。</li>
+<li>协同开发实践所发现错误的类型通常跟测试所发现的不同，这意味着你需要同时使用详查和测试来保证你软件的质量。</li>
+<li>正式检查通过运用核对表、准备工作、明确定义的角色以及对方法的持续改善，将缺陷侦测的效率提升至最高。它往往能比走查发现更多得缺陷。</li>
+<li>通常，结对编程拥有和详查相同的成本，并能产生质量相当的代码。当需要缩短开发周期的时候，结对编程就非常有价值。相对于单独工作来说，有些开发人员更喜欢结对工作。</li>
+<li>正式检查可以应用在除代码之外的很多工作成果上，例如需求、设计以及测试用例等。</li>
+<li>走查和代码阅读是详查的替代方法。代码阅读更富有弹性，能有效地利用每个人的时间。</li>
+</ol>
+<h1 id="开发者测试"><a href="#开发者测试" class="headerlink" title="开发者测试"></a>开发者测试</h1><ol>
+<li>开发人员测试是完整测试策略的一个关键部分。独立测试也很重要。</li>
+<li>同编码之后编写测试测试用例相比较，编码开始之前编写测试用例，工作量和花费的时间差不多，但是后者可以缩短缺陷-侦测-调试-修正这一周期。</li>
+<li>即使考虑到了各种可用的测试手段，测试仍然只是良好软件质量计划的一部分。高质量的开发方法至少和测试一样重要，这包括尽可能减少需求和设计阶段的缺陷。在检测错误方面，协同开发的成效至少与测试相当。这些方法所检测错误的类型也各不相同。</li>
+<li>可以根据各种不同的思路来产生很多测试用例，这些思路包括基础测试、数据流分析、边界分析、错误数据类型以及正确数据类型等。还可以通过猜测错误的方式得到更多的测试用例。</li>
+<li>错误往往集中在少数几个容易出错的类和子程序上，找出这部分代码，重新设计和编写它们。</li>
+<li>测试数据本身错误的密度往往比被测试代码还要高。查找这种错误完全是浪费时间，又不能对代码有所改善，因此测试数据里面的错误更加让人烦恼。要像写代码一样小心地开发测试用例，也是进行回归测试的基础。</li>
+<li>从长远来看，改善测试过程的最好方法就是将其规范化，并对其进行评估，然后用从评估中获得的经验教训来改善这个过程。</li>
+</ol>
+<h1 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h1><ol>
+<li>调试同整个软件开发的成败息息相关。</li>
+<li>要想成功，系统化地查找和改正错误徐的方法至关重要。要要专注于你的调试工作，让每一次测试都能让你朝着正确的方向前进一步。要使用科学的调试方法。</li>
+<li>在动手解决问题之前，要理解问题的根本。胡乱猜测错误的来源和随机修改将会让你的程序陷入比刚开始调试时更为糟糕的境地。</li>
+<li>将编译器警告级别设置为最严格，把警告信息所报告的错误都改正。如果你忽略了明显的错误，那么要改正那些微妙的错误就会非常麻烦。</li>
+<li>调试工具对软件开发而言是强有力的支持手段。找出这些工具并加以利用，当然，请记得在调试的时候开动脑筋。</li>
+</ol>
+<h1 id="重构"><a href="#重构" class="headerlink" title="重构"></a>重构</h1><ol>
+<li>修改是程序一生都要面对的事情，不仅包括最初的开发阶段，还包括首次发布之后。</li>
+<li>在修改中软件的质量要么改进，要么恶化。软件演化的首要法则就是代码演化应当提升程序的内在质量。</li>
+<li>重构成功之关键在于程序员应学会关注那些标志着代码需要重构的众多的警告或“代码臭味”。</li>
+<li>重构成功的另一要素是程序员应当掌握大量特定的重构方法。</li>
+<li>重构成功的最后要点在于要有安全重构的策略。一些重构方法会比其他重构方法要好。</li>
+<li>开发阶段的重构是提升程序质量的最佳时机,应为你可以立刻让刚刚产生的改变梦想变成现实。请珍惜这些开发阶段的天赐良机。</li>
+</ol>
+<h1 id="代码调整策略"><a href="#代码调整策略" class="headerlink" title="代码调整策略"></a>代码调整策略</h1><ol>
+<li>性能只是软件整体质量的一个方面，通常不是最重要的。精细的代码调整也只是实现整体性能的一种方法，通常也不是决定性的。相对于代码本身的效率而言，程序的架构、细节设计以及数据结构和算法选择对程序的运行速度和资源占用的影响通常会更大。</li>
+<li>定量测量是实现性能性能最优化的关键。定量测量需要找出能真正决定程序性能的部分，在修改之后，应当通过重复测量来明确修改是提高还是降低了软件的性能。</li>
+<li>绝大多数的程序都有那么一小部分代码耗费了绝大部分的运行时间。如果没有测量，你不会知道是那一部分。</li>
+<li>代码调整需要反复尝试，这样才能获得理想的性能提高。</li>
+<li>为性能优化工作做好准备的最佳方式就是在最初阶段编写清晰的代码，从而使代码在后续工作中易于理解和修改。</li>
+</ol>
+<h1 id="代码调整技术"><a href="#代码调整技术" class="headerlink" title="代码调整技术"></a>代码调整技术</h1><ol>
+<li>优化结果在不同的语言、编译器和环境下有很大差异。如果没有对每一次的优化进行测量，你将无法判断优化到底是帮助还是损害了这个程序。</li>
+<li>第一次优化通常不会是最好的。即使找到了效果很不错的，也不要停下扩大战果的步伐。</li>
+<li>代码调整这一话题有点类似于核能，富有争议，甚至会让人冲动。一些人认为代码调整损害了代码可读性和可维护性，他们绝对会将其弃之不用。其他人则认为只要有适当的安全保障，代码调整对程序是有益的。</li>
+</ol>
+<h1 id="系统考虑"><a href="#系统考虑" class="headerlink" title="系统考虑"></a>系统考虑</h1><ol>
+<li>随着项目规模的扩大，交流需要加以支持。大多数方法论的关键点都在于减少交流中的问题，而一项方法论的存亡关键也应取决于它能否促进交流。</li>
+<li>在其他条件都相等的时候，大项目的生产率会低于小项目。</li>
+<li>在其他条件都相等的时候，大项目的每千行代码错误率会高于小项目。</li>
+<li>在小项目里的一些看起来“理当如此”的活动在大项目中必须仔细地计划。随着项目规模扩大，构建活动的主导地位逐渐降低。</li>
+<li>放大轻量级的方法论要好于缩小重量级的方法论。最有效的办法是使用“适量级”方法论。</li>
+</ol>
+<h1 id="管理构建"><a href="#管理构建" class="headerlink" title="管理构建"></a>管理构建</h1><ol>
+<li>好的编码实践可以通过“贯彻标准”或者“使用更为灵活的方法”来达到。</li>
+<li>配置管理，如果应用得当，会使程序员的工作变得更加轻松。特别包括变更控制。</li>
+<li>好的软件评估是一项重大挑战。成功的关键包括采用多种方法、随着项目的开展而修缮评估结果，以及很好地利用数据来创建评估等。</li>
+<li>度量是构建管理成功的关键。你可以采取措施度量项目的任何方面，而这要比根本不度量好得多。准确的度量是制定准确的进度条、质量控制和改进开发过程的关键。</li>
+<li>程序员和管理人员都是人，在把他们当人看的时候工作得最好。</li>
+</ol>
+<h1 id="集成"><a href="#集成" class="headerlink" title="集成"></a>集成</h1><ol>
+<li>构建的先后次序和集成的步骤会影响设计、编码、测试各类的顺序。</li>
+<li>一个经过充分思考的集成顺序能减少测试的工作量，并使调试变容易。</li>
+<li>增量集成有若干变型，而且—-除非项目是微不足道的—-任何一种形式的增量集成都比阶段式集成好。</li>
+<li>针对每个特定的项目，最佳的集成步骤通常是自顶向下、自底向上、风险导向及其他集成方法的某种组合。T-型集成和竖直分块集成通常都能工作得很好。</li>
+</ol>
+<h1 id="编程工具"><a href="#编程工具" class="headerlink" title="编程工具"></a>编程工具</h1><ol>
+<li>程序员有时会在长达数年的时间里忽视某些最强大的工具，之后才发现并使用之。</li>
+<li>好的工具能让你的日子安逸得多。</li>
+<li>下面这些工具已经可用了：编辑、分析代码质量、重构、版本控制、除错、测试、代码调整。</li>
+<li>你能打造许多自己用的专用工具。</li>
+<li>好的工具能减少软件开发中最单调乏味的工作的量，但它不能消除对“编程”的需要，虽然它会持续地重塑“编程”的含义。</li>
+</ol>
+<h1 id="布局与风格"><a href="#布局与风格" class="headerlink" title="布局与风格"></a>布局与风格</h1><ol>
+<li>可视化布局的首要任务是指明代码的逻辑组织。评估该任务是否实现的指标包括准确性、一致性、易读性和易维护性。</li>
+<li>外表悦目比起其他指标是最不重要的。然而，如果其他指标都达到了，代码又质量好，那么布局效果看上去也会不错。</li>
+<li>结构化代码有其他自身目的。始终如一地沿用某个习惯而少来创新。不能持久的布局规范只会损害可读性。</li>
+<li>布局的很多方面涉及信仰问题。应试着将客观需要和主观偏好区分开来。定出明确的指标，在此基础上再讨论风格参数的选择。</li>
+</ol>
+<h1 id="自说明代码"><a href="#自说明代码" class="headerlink" title="自说明代码"></a>自说明代码</h1><ol>
+<li>该不该注释是个需要认真对待的问题。差劲的注释只会浪费时间，帮倒忙；好的注释才有价值。</li>
+<li>源代码应当含有程序大部分的关键信息。只要程序依然在用，源代码比其他资料都能保持更新，故而将重要信息融入代码是很有用处的。</li>
+<li>好代码本身就是最好的说明。如果代码太糟，需要大量注释，应先试着改进代码，直至无须过多注释为止。</li>
+<li>注释应说出代码无法说出的东西—-例如概述或用意等信息。</li>
+<li>有的注释风格需要许多重复性劳动，应舍弃之，该用易于维护的账户是风格。</li>
+</ol>
+<h1 id="个人性格"><a href="#个人性格" class="headerlink" title="个人性格"></a>个人性格</h1><ol>
+<li>人的个性对其编程能力有直接影响。</li>
+<li>最有关系的性格为：谦虚、求知欲、诚实、创造性和纪律，以及高明的偷懒。</li>
+<li>程序员高手的性格与天分无关，而任何事情都与个人发展相关。</li>
+<li>出乎意料的是，小聪明、经验、坚持和疯狂既有助也有害。</li>
+<li>很多程序员不愿主动吸收新知识和技术，只依靠工作时偶尔接触新的信息。如果你能抽出少量时间阅读和学习编程知识,要不了多久就能鹤立鸡群。</li>
+<li>好性格与培养正确的习惯关系甚大。要成为杰出的程序员，先要养成良好习惯，其他自然水到渠成。</li>
+</ol>
+<h1 id="软件工艺的话题"><a href="#软件工艺的话题" class="headerlink" title="软件工艺的话题"></a>软件工艺的话题</h1><ol>
+<li>编程的主要目的之一是管理复杂度。</li>
+<li>编程过程对最终产品有深远影响。</li>
+<li>合作开发要求团队成员之间进行广泛沟通，甚于同计算机的交互；而单人开发则是自我交流，其次才是计算机。</li>
+<li>编程规范一旦滥用，只会雪上加霜；使用得当则能为开发环境带来良好机制，有助于管理复杂度和相互沟通。</li>
+<li>编程应基于问题域而非解决方案，这样便于复杂性管理。</li>
+<li>开发时迭代次数越多，产品的质量越好。</li>
+<li>墨守成规的方法有悖于高质量的软件开发。请将编程工具箱中填满各种编程工具，不断提高自己挑选合适工具的能力。</li>
 </ol>
 
       
@@ -702,7 +843,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#软件构建"><span class="nav-number">1.</span> <span class="nav-text">软件构建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#隐喻"><span class="nav-number">2.</span> <span class="nav-text">隐喻</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#前期准备"><span class="nav-number">3.</span> <span class="nav-text">前期准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构建决策"><span class="nav-number">4.</span> <span class="nav-text">构建决策</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构建中的设计"><span class="nav-number">5.</span> <span class="nav-text">构建中的设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#可以工作的类"><span class="nav-number">6.</span> <span class="nav-text">可以工作的类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#高质量的子程序"><span class="nav-number">7.</span> <span class="nav-text">高质量的子程序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#防御式编程"><span class="nav-number">8.</span> <span class="nav-text">防御式编程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#伪代码"><span class="nav-number">9.</span> <span class="nav-text">伪代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量"><span class="nav-number">10.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量名"><span class="nav-number">11.</span> <span class="nav-text">变量名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本数据类型"><span class="nav-number">12.</span> <span class="nav-text">基本数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#不常见的数据类型"><span class="nav-number">13.</span> <span class="nav-text">不常见的数据类型</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#软件构建"><span class="nav-number">1.</span> <span class="nav-text">软件构建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#隐喻"><span class="nav-number">2.</span> <span class="nav-text">隐喻</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#前期准备"><span class="nav-number">3.</span> <span class="nav-text">前期准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构建决策"><span class="nav-number">4.</span> <span class="nav-text">构建决策</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构建中的设计"><span class="nav-number">5.</span> <span class="nav-text">构建中的设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#可以工作的类"><span class="nav-number">6.</span> <span class="nav-text">可以工作的类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#高质量的子程序"><span class="nav-number">7.</span> <span class="nav-text">高质量的子程序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#防御式编程"><span class="nav-number">8.</span> <span class="nav-text">防御式编程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#伪代码"><span class="nav-number">9.</span> <span class="nav-text">伪代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量"><span class="nav-number">10.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量名"><span class="nav-number">11.</span> <span class="nav-text">变量名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本数据类型"><span class="nav-number">12.</span> <span class="nav-text">基本数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#不常见的数据类型"><span class="nav-number">13.</span> <span class="nav-text">不常见的数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#直线型代码"><span class="nav-number">14.</span> <span class="nav-text">直线型代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#条件语句"><span class="nav-number">15.</span> <span class="nav-text">条件语句</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#控制循环"><span class="nav-number">16.</span> <span class="nav-text">控制循环</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#不常见的控制结构"><span class="nav-number">17.</span> <span class="nav-text">不常见的控制结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表驱动法"><span class="nav-number">18.</span> <span class="nav-text">表驱动法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一般控制问题"><span class="nav-number">19.</span> <span class="nav-text">一般控制问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码改善"><span class="nav-number">20.</span> <span class="nav-text">代码改善</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#协同构建"><span class="nav-number">21.</span> <span class="nav-text">协同构建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开发者测试"><span class="nav-number">22.</span> <span class="nav-text">开发者测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#调试"><span class="nav-number">23.</span> <span class="nav-text">调试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重构"><span class="nav-number">24.</span> <span class="nav-text">重构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码调整策略"><span class="nav-number">25.</span> <span class="nav-text">代码调整策略</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码调整技术"><span class="nav-number">26.</span> <span class="nav-text">代码调整技术</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#系统考虑"><span class="nav-number">27.</span> <span class="nav-text">系统考虑</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#管理构建"><span class="nav-number">28.</span> <span class="nav-text">管理构建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#集成"><span class="nav-number">29.</span> <span class="nav-text">集成</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编程工具"><span class="nav-number">30.</span> <span class="nav-text">编程工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#布局与风格"><span class="nav-number">31.</span> <span class="nav-text">布局与风格</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自说明代码"><span class="nav-number">32.</span> <span class="nav-text">自说明代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#个人性格"><span class="nav-number">33.</span> <span class="nav-text">个人性格</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件工艺的话题"><span class="nav-number">34.</span> <span class="nav-text">软件工艺的话题</span></a></li></ol></div>
             
 
           </div>
@@ -736,7 +877,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">14.8k</span>
+    <span title="Site words total count">19.1k</span>
   
 </div>
 
