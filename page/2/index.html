@@ -281,6 +281,295 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/23/blog-14/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="邱仁亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/mm.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="喔喔屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/23/blog-14/" itemprop="url">《网络是怎样连接的》</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-23T21:01:48+08:00">
+                2019-05-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/知识点/" itemprop="url" rel="index">
+                    <span itemprop="name">知识点</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>   通过这本书了解到客户端（浏览器）发出请求到服务器返回响应这一过程中发生了哪些事情，网络中各种设备怎么协调工作，最终达到用户的需求。</p>
+<p>   完整的请求过程如下：<br>   浏览器（发送请求） –&gt;  TCP/IP协议 –&gt; 网卡驱动 –&gt; 集线器 –&gt; 路由器 –&gt; 接入网 –&gt; 电话局 –&gt;  网络运营商 –&gt; (光纤、双绞线) –&gt; 网络运营商 –&gt; 电话局 –&gt; 接入网 –&gt; 防护墙 –&gt; 缓存服务器 –&gt; 网卡驱动 –&gt; TCP/IP协议 –&gt; 服务器程序</p>
+<h1 id="浏览器："><a href="#浏览器：" class="headerlink" title="浏览器："></a>浏览器：</h1><ol>
+<li><p>生成 HTTP 请求消息<br>浏览器的第一步工作就是对输入的 URL 进行解析。URL开头表示访问数据源的机制，也就是协议（http或者ftp）,“//”后面的字符串表示服务器的名称“<a href="http://www.baidu.com”" target="_blank" rel="noopener">www.baidu.com”</a>, 接着表示数据源（文件）的路径名。</p>
+<p><img src="/2019/05/23/blog-14/img_1.png" alt="a"></p>
+<p>HTTP 中主要的头字段<br><img src="/2019/05/23/blog-14/img_2.png" alt="a"><br><img src="/2019/05/23/blog-14/img_3.png" alt="a"><br><img src="/2019/05/23/blog-14/img_4.png" alt="a"></p>
+<p>1 条请求消息中只能写 1 个 URI。如果需要获取多个文件，必须对每个文件单独发送 1 条请求。</p>
+</li>
+<li><p>向 DNS 服务器查询 Web 服务器的 IP 地址<br>Socket 库是用于调用网络功能的程序组件集合,提供查询 IP 地址的功能。根据域名查询 IP 地址时，浏览器会使用 Socket 库中的解析器。</p>
+</li>
+<li><p>全世界 DNS 服务器的接力<br>DNS 服务器会从域名与 IP 地址的对照表中查找相应的记录，并返回 IP 地址。 客户端（<a href="http://www.baidu.com）" target="_blank" rel="noopener">www.baidu.com）</a> –&gt; 最近的DNS服务器 –&gt; 根域 –&gt; com –&gt; baidu  –&gt; www,  可以通过缓存加快 DNS 服务器的响应</p>
+</li>
+<li><p>委托协议栈发送消息<br>向操作系统内部的协议栈发出委托时，需要按照指定的顺序来调用 Socket 库中的程序组件。（1）创建套接字（创建套接字阶段）（2）将管道连接到服务器端的套接字上（连接阶段）（3）收发数据（通信阶段）（4）断开管道并删除套接字（断开阶段） 应用程序是通过“描述符”这一类似号码牌的东西来识别套接字的。描述符：应用程序用来识别套接字的机制;IP 地址和端口号：客户端和服务器之间用来识别对方套接字的机制</p>
+</li>
+</ol>
+<h1 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h1><ol>
+<li><p>TCP在网络包出错丢失时可以重发，所以浏览器、邮件等一般应用程序收发数据时用 TCP（需要连接），这可能会浪费性能，DNS 查询等收发较短的控制数据时用 UDP（不需要连接）</p>
+</li>
+<li><p>套接字的实体就是通信控制信息：例如通信对象的 IP 地址、 端口号、 通信操作的进行状态等。协议栈是根据套接字中记录的控制信息来工作的。<br>通信操作中使用的控制信息分为两类。<br>（1） 头部中记录的信息<br>（2） 套接字（协议栈中的内存空间）中记录的信息</p>
+</li>
+<li><p>TCP连接过程（3次握手）<br>（1） 连接操作的第一步是在 TCP 模块处创建表示连接控制信息的头部。<br>（2） 通过 TCP 头部中的发送方和接收方端口号可以找到要连接的套接字。将头部中的控制位的 SYN 比特设置为 1<br>（3）  TCP 模块会将信息传递给 IP 模块并委托它进行发送；服务端IP模块接收到数据传给TCP模块，根据 TCP 头部中的信息找到端口号对应的套接字，从处于等待连接状态的套接字中找到与 TCP 头部中记录的端口号相同的套接字就可以了。 （第一次握手）<br>（4） 服务器的 TCP 模块会返回响应， 这个过程和客户端一样， 需要在 TCP 头部中设置发送方和接收方端口号以及 SYN 为1。此外，在返回响应时还需要将 ACK 控制位设为1， 设置ACK 比特就是用来进行确认网络包是否到达； （第二次握手）<br>（5）  客户端也需要将 ACK 比特设置为 1 并发回服务器， 告诉服务器刚才的响应包已经收到。 （第三次握手）</p>
+</li>
+<li><p>收发数据<br>MTU：一个网络包的最大长度，以太网中一般为 1500 字节。<br>MSS：除去头部之后，一个网络包所能容纳的 TCP 数据的最大长度。<br>对较大的数据进行拆分,使用 ACK 号确认网络包已收到。通过“序号”和“ACK 号”可以确认接收方是否收到了网络包。</p>
+</li>
+<li><p>断开连接并删除套接字（完成数据发送的一方会发起断开过程：4次挥手）<br>（1） 连接方断开方协议栈会生成包含断开信息的 TCP 头部， 具体来说就是将控制位中的 FIN 比特设为 1<br>（2） 当收到连接方发来的 FIN 为 1 的 TCP 头部时，接受方协议栈会将自己的套接字标记为进入断开操作状态。 然后， 为了告知连接方已收到 FIN 为 1 的包， 会向连接方返回一个 ACK 号<br>（3） 数据全部接收后，接收方会生成一个 FIN 比特为 1 的 TCP 包， 然后委托 IP 模块发送给连接方。<br>（4） 连接方会返回ACK 号，通信结束。（两方ACK号对比确认数据成功传达）</p>
+<p> <img src="/2019/05/23/blog-14/img_5.png" alt="a"></p>
+</li>
+<li><p>无论要收发的包是控制包还是数据包，IP 对各种类型的包的收发操作都是相同的。<br>IP 模块负责添加如下两个头部。<br>（1） MAC 头部：以太网用的头部，包含 MAC 地址<br>（2） IP 头部：IP 用的头部，包含 IP 地址<br>IP 头部的“接收方 IP 地址”填写通信对象的 IP 地址。发送方 IP 地址需要判断发送所使用的网卡，并填写该网卡的 IP地址。<br>IP 模块根据路由表 Gateway 栏的内容判断应该把包发送给谁。<br>将 IP 包转换成电或光信号发送出去</p>
+</li>
+</ol>
+<h1 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h1><ol>
+<li><p>数据很短， 用一个包就能装得下，就不需要建立和断开连接的步骤，出错时重新发送一次就行，不用多次确认。</p>
+</li>
+<li><p>音频和视频数据：必须在规定的时间发送（实时），就算其中出错了，也只会造成失真和卡顿。</p>
+</li>
+<li><p>无需重发数据， 或者是重发了也没什么意义的情况下， 使用 UDP 发送数据的效率会更高。</p>
+</li>
+</ol>
+<h1 id="集线器、交换机和路由器"><a href="#集线器、交换机和路由器" class="headerlink" title="集线器、交换机和路由器"></a>集线器、交换机和路由器</h1><ol>
+<li><p>每个包都是独立传输的</p>
+</li>
+<li><p>防止网线中的信号衰减很重要</p>
+</li>
+<li><p>“双绞”是为了抑制噪声</p>
+</li>
+<li><p>集线器将信号发送给所有连接在它上面的线路</p>
+</li>
+<li><p>交换机端口的 MAC 模块不具有 MAC 地址。交换机根据 MAC 地址表查找 MAC 地址，然后将信号发送到相应的端口</p>
+</li>
+<li><p>交换机的全双工模式可以同时发送和接收信号</p>
+</li>
+<li><p>路由器的各个端口都具有 MAC 地址和 IP 地址。路由器根据“IP 地址”判断转发目标。路由器会忽略主机号，只匹配网络号</p>
+</li>
+<li><p>路由表的子网掩码列只表示在匹配网络包目标地址时需要对比的比特数量</p>
+</li>
+<li><p>路由器的端口都具有 MAC 地址，只接收与自身地址匹配的包，遇到不匹配的包则直接丢弃</p>
+</li>
+<li><p>通过路由器转发的网络包，其接收方 MAC 地址为路由器端口的 MAC 地址。路由表中子网掩码为 0.0.0.0 的记录表示“默认路由”</p>
+</li>
+<li><p>路由器判断下一个转发目标的方法如下<br>（1） 如果路由表的网关列内容为 IP 地址，则该地址就是下一个转发目标<br>（2）如果路由表的网关列内容为空，则 IP 头部中的接收方 IP 地址就是下一个转发目标</p>
+</li>
+<li><p>IP（路由器）负责将包送达通信对象这一整体过程，而其中将包传输到下一个路由器的过程则是由以太网（交换机）来负责的</p>
+</li>
+</ol>
+<h1 id="接入网和网络运营商"><a href="#接入网和网络运营商" class="headerlink" title="接入网和网络运营商"></a>接入网和网络运营商</h1><ol>
+<li><p>互联网接入路由器会在网络包前面加上 MAC 头部、PPPoE 头部、PPP 头 部 总 共 3 种 头 部， 然 后 发 送 给 ADSL Modem（PPPoE 方式）</p>
+</li>
+<li><p>ADSL Modem 将包拆分成信元，并转换成电信号发送给分离器</p>
+</li>
+<li><p>DSLAM 具有 ATM 接口，和后方路由器收发数据时使用的是原始网络包拆分后的 ATM 信元形式</p>
+</li>
+<li><p>BAS 负责将 ATM 信元还原成网络包并转发到互联网内部</p>
+</li>
+<li><p>PPPoE 是将 PPP 消息装入以太网包进行传输的方式</p>
+</li>
+<li><p>互联网接入路由器通过 PPPoE 的发现机制查询 BAS 的 MAC 地址</p>
+</li>
+<li><p>BAS 下发的 TCP/IP 参数会被配置到互联网接入路由器的 BAS端的端口上，这样路由器就完成接入互联网的准备了</p>
+</li>
+<li><p>BAS 在收到用户路由器发送的网络包之后，会去掉 MAC 头部和PPPoE 头部，然后用隧道机制将包发送给网络运营商的路由器</p>
+</li>
+<li><p>一对一连接的端口可以不分配 IP 地址，这种方式称为无编号</p>
+</li>
+<li><p>PPPoA 方式不添加 MAC 头部和 PPPoE 头部，而是直接将包装入信元中。</p>
+</li>
+<li><p>还有一种 DHCP 方式，它不使用 PPP，而是将以太网包直接转换成 ADSL 信号发送给 DSLAM</p>
+</li>
+<li><p>网络包通过接入网之后，到达运营商 POP 的路由器</p>
+</li>
+<li><p>互联网内部使用 BGP 机制在运营商之间交换路由信息</p>
+</li>
+</ol>
+<h1 id="服务器端的局域网"><a href="#服务器端的局域网" class="headerlink" title="服务器端的局域网"></a>服务器端的局域网</h1><ol>
+<li><p>防火墙： 包过滤方式的防火墙可根据接收方 IP 地址、发送方 IP 地址、接收方端口号、发送方端口号、控制位等信息来判断是否允许某个包通过</p>
+</li>
+<li><p>负载均衡： 通过将请求平均分配给多台服务器来平衡负载</p>
+</li>
+<li><p>缓存服务器分担负载：缓存服务器使用的代理机制放在客户端一侧—-正向代理：使用正向代理时， 一般需要在浏览器的设置窗口中的“代理服务器”一栏中填写正向代理的 IP 地址， 浏览器发送请求消息的过程也会发生相应的变化，设置浏览器非常麻烦， 如果设置错误还可能导致浏览器无法正常工作；通过将请求消息中的 URI 中的目录名与 Web 服务器进行关联， 使得代理能够转发一般的不包含完整网址的请求消息。—- 反向代理；查看请求消息的包头部。 因为包的 IP 头部中包含接收方 IP 地址， 只要知道了这个地址， 就知道用户要访问哪台服务器了 —- 透明代理</p>
+</li>
+<li><p>利用内容分发服务分担负载：CDS/CDN  让用户访问最近的缓存服务器， 不应采用轮询方式， 应该判断客户端与缓存服务器的距离， 并返回距离客户端最近的缓存服务器IP 地址。 </p>
+</li>
+</ol>
+<h1 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h1><ol>
+<li><p>服务器需要同时和多个客户端通信，每有一个客户端连接进来， 就启动一个新的服务器程序， 确保服务器程序和客户端是一对一的状态。</p>
+</li>
+<li><p>网卡的 MAC 模块将网络包从信号还原为数字信息，校验 FCS 并存入缓冲区。</p>
+</li>
+<li><p>网卡驱动会根据 MAC 头部判断协议类型，并将包交给相应的协议栈。</p>
+</li>
+<li><p>协议栈的 IP 模块会检查 IP 头部<br>（1） 判断是不是发给自己的；<br>（2） 判断网络包是否经过分片；（3） 将包转交给 TCP 模块或 UDP模块。</p>
+</li>
+<li><p>如果收到的是发起连接的包，则 TCP 模块会<br>（1） 确认 TCP 头部的控制位 SYN；<br>（2） 检查接收方端口号；<br>（3） 为相应的等待连接套接字复制一个新的副本；<br>（4） 记录发送方 IP 地址和端口号等信息。</p>
+</li>
+<li><p>收到数据包时，TCP 模块会<br>（1） 根据收到的包的发送方 IP 地址、发送方端口号、接收方 IP 地址、接收方端口号找到相对应的套接字；<br>（2） 将数据块拼合起来并保存在接收缓冲区中；<br>（3） 向客户端返回 ACK。</p>
+</li>
+</ol>
+<h1 id="网络包的旅程"><a href="#网络包的旅程" class="headerlink" title="网络包的旅程"></a>网络包的旅程</h1><p>  <img src="/2019/05/23/blog-14/img_6.png" alt="a"><br>  <img src="/2019/05/23/blog-14/img_7.png" alt="a"><br>  <img src="/2019/05/23/blog-14/img_8.png" alt="a"><br>  <img src="/2019/05/23/blog-14/img_9.png" alt="a"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/24/blog-13/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1004,200 +1293,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/25/blog-9/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="邱仁亮">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/mm.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="喔喔屋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/25/blog-9/" itemprop="url">前端优化</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-25T22:21:16+08:00">
-                2018-12-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/优化/" itemprop="url" rel="index">
-                    <span itemprop="name">优化</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  537
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>从浏览器发送请求到渲染页面的大致过程来讨论前端优化</p>
-<ol>
-<li><p>输入网址，解析域名，查询是否有DNS缓存<br>这阶段前端没有可优化的</p>
-</li>
-<li><p>DNS查询<br>减少DNS查询次数（减少域名），比如把css、js等静态文件放在同一个域名下</p>
-</li>
-<li><p>建立TCP链接<br>连接复用、keep-alive，http2.0的多路复用（自行查找资料）</p>
-</li>
-<li><p>发送http请求<br>减少cookie的大小，合理设置cache-control，可以做到一段时内利用缓存，不发送http请求。浏览器遇到页面有几个css或者js的时候会同时发送多个http请求，这个有限制，比如好像ie对一个域名同时最多发4个请求。所以我们可以增加域名，把css等放cdn,这样同时就能发送8个或16个http请求了。但是这种方式又和第二阶段相冲突，这就需要判断项目的实际情况来权衡，引入静态文件过多，就多准备几个域名。</p>
-</li>
-<li><p>接收响应<br>运用ETag技术，可以判断出请求或者资源自上次请求后是否改变过，没改变就返回304，让浏览器去请求缓存，还有压缩技术Gzip,资源传输过程中压缩成Gzip格式，浏览器会自动解压，耗费cpu</p>
-</li>
-<li><p>接收完成，返回html<br>去掉html中的回车、空格、注释等</p>
-</li>
-<li><p>DOCTYPE<br>不能不写，不能写错。让浏览器自己去猜会影响渲染速度</p>
-</li>
-<li>逐行解析</li>
-<li><p>看到标签<div><p>…<br>减少标签数量（影响不大） ie 页面先显示内容，再渲染样式；Chrome 等样式渲染完后在显示内容</p>
-</div></p></li>
-<li><p>看到css js（下载并行 解析串行，排队挨个解析）<br>压缩（去掉空格，变量名一个字符）<br>CDN内容分布网络（主要技术）<br>css 阻塞看浏览器心情，js是一定会阻塞，所以css放head：尽早下载css，让用户尽早看到页面，js放body后： 尽早显示页面，能获取dom节点，就算js没解析完，按钮点不动，影响也不大</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1250,7 +1345,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1272,7 +1367,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1364,7 +1459,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">20.5k</span>
+    <span title="Site words total count">26.6k</span>
   
 </div>
 
