@@ -291,7 +291,7 @@
                 目前共计 13 个标签
             </div>
             <div class="tag-cloud-tags">
-              <a href="/tags/CSS/" style="font-size: 12px; color: #ccc">CSS</a> <a href="/tags/JavaScript/" style="font-size: 30px; color: #111">JavaScript</a> <a href="/tags/Java数组/" style="font-size: 12px; color: #ccc">Java数组</a> <a href="/tags/Vue-js/" style="font-size: 30px; color: #111">Vue.js</a> <a href="/tags/css选择器/" style="font-size: 12px; color: #ccc">css选择器</a> <a href="/tags/git命令/" style="font-size: 12px; color: #ccc">git命令</a> <a href="/tags/http状态码/" style="font-size: 12px; color: #ccc">http状态码</a> <a href="/tags/事件冒泡捕获/" style="font-size: 12px; color: #ccc">事件冒泡捕获</a> <a href="/tags/事件委托/" style="font-size: 12px; color: #ccc">事件委托</a> <a href="/tags/二分查找/" style="font-size: 12px; color: #ccc">二分查找</a> <a href="/tags/优化/" style="font-size: 12px; color: #ccc">优化</a> <a href="/tags/类型转换/" style="font-size: 12px; color: #ccc">类型转换</a> <a href="/tags/跨域/" style="font-size: 12px; color: #ccc">跨域</a>
+              <a href="/tags/CSS/" style="font-size: 12px; color: #ccc">CSS</a> <a href="/tags/JavaScript/" style="font-size: 30px; color: #111">JavaScript</a> <a href="/tags/Java数组/" style="font-size: 12px; color: #ccc">Java数组</a> <a href="/tags/Vue-js/" style="font-size: 21px; color: #6f6f6f">Vue.js</a> <a href="/tags/css选择器/" style="font-size: 12px; color: #ccc">css选择器</a> <a href="/tags/git命令/" style="font-size: 12px; color: #ccc">git命令</a> <a href="/tags/http状态码/" style="font-size: 12px; color: #ccc">http状态码</a> <a href="/tags/事件冒泡捕获/" style="font-size: 12px; color: #ccc">事件冒泡捕获</a> <a href="/tags/事件委托/" style="font-size: 12px; color: #ccc">事件委托</a> <a href="/tags/二分查找/" style="font-size: 12px; color: #ccc">二分查找</a> <a href="/tags/优化/" style="font-size: 12px; color: #ccc">优化</a> <a href="/tags/类型转换/" style="font-size: 12px; color: #ccc">类型转换</a> <a href="/tags/跨域/" style="font-size: 12px; color: #ccc">跨域</a>
             </div>
           </div>
         
@@ -311,6 +311,14 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+        <div id="gitment-container" style="display:none"></div>
+      
+    </div>
 
   
 
@@ -353,7 +361,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -467,7 +475,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">27.5k</span>
+    <span title="Site words total count">31.1k</span>
   
 </div>
 
@@ -634,6 +642,52 @@
 
 
 
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'oow',
+            repo: 'https://qqrl.github.io/',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '0e8b9f3af1c6a317bbabf252865b59222d44c6c1',
+            
+                client_id: 'bc6bbbca30b0559f6988'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      function showGitment(){
+        document.getElementById("gitment-display-button").style.display = "none";
+        document.getElementById("gitment-container").style.display = "block";
+        renderGitment();
+      }
+      
+      </script>
+    
 
 
 

@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="喔喔屋">
 <meta property="og:description" content="JavaScript 简介 JavaScript 是一种专为与网页交互而设计的脚本语言，由下列三个不同的部分组成：（1） ECMAScript,由 ECMA-262 定义，提供核心语言功能；（2） 文档对象模型（DOM），提供访问和操作网页内容的方法和接口；（3） 浏览器对象模型（BOM），提供与浏览器交互的方法和接口。  在 HTML 中使用 JavaScript 把 JavaScript 插入">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-23T05:11:07.579Z">
+<meta property="og:updated_time" content="2019-06-30T06:08:57.886Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《JavaScript高级》">
 <meta name="twitter:description" content="JavaScript 简介 JavaScript 是一种专为与网页交互而设计的脚本语言，由下列三个不同的部分组成：（1） ECMAScript,由 ECMA-262 定义，提供核心语言功能；（2） 文档对象模型（DOM），提供访问和操作网页内容的方法和接口；（3） 浏览器对象模型（BOM），提供与浏览器交互的方法和接口。  在 HTML 中使用 JavaScript 把 JavaScript 插入">
@@ -346,6 +346,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/23/blog-19/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/06/23/blog-19/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -449,11 +459,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function compare(value1,value2)&#123;</span><br><span class="line">  if(value1 &lt; value2)&#123;</span><br><span class="line">    return 1;</span><br><span class="line">  &#125; else if(value1 &gt; value2)&#123;</span><br><span class="line">    return -1;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 数值类型或者其 valueOf() 方法会返回数值类型的对象类型，更简单的比较函数</span><br><span class="line">function compare(value1,value2)&#123;</span><br><span class="line">  return value2 - value1; // 降序</span><br><span class="line">  return value1 - value2; // 升序</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>（3） reverse() 和 sort() 方法的返回值是经过排序之后的数组</p>
 </li>
-<li>操作方法<br>（1） concat() 方法会先创建当前数组的一个副本，然后将接受到的参数添加到这个副本的末尾，最后返回新构建的数组。原来的数组值保持不变<br>（2） slice() 基于当前数组中的一或多个项创建一个新数组，可以接收一或两个参数，即要返回项的起始和结束位置。一个参数：返回从该参数指定位置开始到当前数组末尾的所有项；两个参数：返回起始和结束位置之间的项—-但不包括结束位置的项。参数是负数，则用数组长度加上改数来确定相应的位置。slice() 方法不会影响原始数组<br>（3） splice() 主要用途是向数组的中部插入项。<pre><code>*删除：* 指定两个参数：要删除的第一项的位置和要删除的项数
-*插入：* 提供3个参数：起始位置、0（要删除的项数）和需要插入的项。插入多项可以再传入第四、五以至任意多个项
-*替换：* 指定3个参数：起始位置、要删除的项数和要插入任意数量的项
-splice() 方法始终返回一个数组，该数组包含从原始数组中删除的项
-</code></pre></li>
+<li>操作方法<br>（1） concat() 方法会先创建当前数组的一个副本，然后将接受到的参数添加到这个副本的末尾，最后返回新构建的数组。原来的数组值保持不变<br>（2） slice() 基于当前数组中的一或多个项创建一个新数组，可以接收一或两个参数，即要返回项的起始和结束位置。一个参数：返回从该参数指定位置开始到当前数组末尾的所有项；两个参数：返回起始和结束位置之间的项—-但不包括结束位置的项。参数是负数，则用数组长度加上改数来确定相应的位置。slice() 方法不会影响原始数组<br>（3） splice() 主要用途是向数组的中部插入项。<br><em>删除：</em> 指定两个参数：要删除的第一项的位置和要删除的项数<br><em>插入：</em> 提供3个参数：起始位置、0（要删除的项数）和需要插入的项。插入多项可以再传入第四、五以至任意多个项<br><em>替换：</em> 指定3个参数：起始位置、要删除的项数和要插入任意数量的项<br>splice() 方法始终返回一个数组，该数组包含从原始数组中删除的项</li>
 <li>位置方法<br>（1） indexOf() 和 lastIndexOf() 这两个方法都接收两个参数，要查找的项和（可选的）表示查找起点位置的索引。区别是indexOf()方法从数组的开头开始向后查找，lastIndexOf()从末尾开始向前查找。都返回要查找的项在数组中的位置，没找到的情况下返回 -1</li>
 <li>迭代方法<br>（1） every():对数组中的每一项运行给定函数，如果该函数对每一项都返回true,则返回true<br>（2） filter():对数组中的每一项运行给定函数，返回该函数会返回true的项组成的数组<br>（3） foreEach():对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组<br>（4） map():对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组<br>（5） some():对数组中的每一项运行给定函数，如果该函数对任一项返回true,则返回true<br>以上方法都不会修改数组中的包含的值</li>
 <li>缩小方法<br>（1） reduce():从数组的第一项开始，逐个遍历到最后。迭代数组的所有项，然后构建一个最终返回的值<br>（2） reduceRight(): 从数组的最后一项开始，逐个遍历到最第一项。迭代数组的所有项，然后构建一个最终返回的值<br>这两个方法都接收两个参数：一个在每一项上调用的函数和（可选的）作为缩小基础的初始值。传入函数接收4个参数：前一个值、当前值、项的索引和数组对象。这个函数返回的任何值都会作为第一个参数自动传给下一项</li>
@@ -552,6 +558,14 @@ splice() 方法始终返回一个数组，该数组包含从原始数组中删�
           
 
   
+    <div class="comments" id="comments">
+      
+        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+        <div id="gitment-container" style="display:none"></div>
+      
+    </div>
+
+  
 
 
 
@@ -601,7 +615,7 @@ splice() 方法始终返回一个数组，该数组包含从原始数组中删�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -731,7 +745,7 @@ splice() 方法始终返回一个数组，该数组包含从原始数组中删�
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">27.5k</span>
+    <span title="Site words total count">31.1k</span>
   
 </div>
 
@@ -898,6 +912,52 @@ splice() 方法始终返回一个数组，该数组包含从原始数组中删�
 
 
 
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'oow',
+            repo: 'https://qqrl.github.io/',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '0e8b9f3af1c6a317bbabf252865b59222d44c6c1',
+            
+                client_id: 'bc6bbbca30b0559f6988'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      function showGitment(){
+        document.getElementById("gitment-display-button").style.display = "none";
+        document.getElementById("gitment-container").style.display = "block";
+        renderGitment();
+      }
+      
+      </script>
+    
 
 
 
