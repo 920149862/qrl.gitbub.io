@@ -1031,7 +1031,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/23/blog-6/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/23/blog-5/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="邱仁亮">
@@ -1050,7 +1050,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/23/blog-6/" itemprop="url">http需要知道的状态码</a></h1>
+                <a class="post-title-link" href="/2018/12/23/blog-5/" itemprop="url">跨域</a></h1>
         
 
         <div class="post-meta">
@@ -1085,8 +1085,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/http/" itemprop="url" rel="index">
-                    <span itemprop="name">http</span>
+                  <a href="/categories/安全/" itemprop="url" rel="index">
+                    <span itemprop="name">安全</span>
                   </a>
                 </span>
 
@@ -1116,7 +1116,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  234
+                  216
                 </span>
               
 
@@ -1155,10 +1155,22 @@
       
         
           
-            <h3 id="记录常用的http状态码"><a href="#记录常用的http状态码" class="headerlink" title="记录常用的http状态码"></a>记录常用的http状态码</h3><p>200： 请求成功，返回响应内容；204： 请求成功，但是没有内容返回； 206（范围请求）： 请求成功，返回请求的部分内容。</p>
-<p>301： 资源永久性重定向；302： 资源临时性重定向；303；资源有两个访问url,应当使用get方法定向请求该资源；304： 客户端请求带条件，服务器资源已找到，但是没有满足条件；307：临时重定向，与302不同的是302可以禁止把post变为get,但是大家都不遵守，307是强制不能把post转为get.</p>
-<p>400: 请求报文中存在语法错误； 401： 发送的请求需要通过http认证； 403： 发送的请求被服务端拒绝了； 404（not found）：请求的资源服务端没有找到.</p>
-<p>500: 服务器内部发生错误； 503： 服务器忙或者正在维护，现在无法处理请求；</p>
+            <p>开发项目时，前后端数据交互会产生跨域问题。这是保障数据数据安全，不然其他地方都能调用支付宝、银行的接口进行转账，支付了。</p>
+<h3 id="跨域产生的原因："><a href="#跨域产生的原因：" class="headerlink" title="跨域产生的原因："></a>跨域产生的原因：</h3><ol>
+<li>浏览器限制，同源策略：不在同一个局域网，协议、域名、端口不同</li>
+<li>XmlHttpRequest请求（json请求就不会产生跨域）</li>
+</ol>
+<h3 id="解决跨域可以从两个方面入手："><a href="#解决跨域可以从两个方面入手：" class="headerlink" title="解决跨域可以从两个方面入手："></a>解决跨域可以从两个方面入手：</h3><ol>
+<li>服务端允许跨域</li>
+<li>调用方隐藏跨域请求</li>
+</ol>
+<h3 id="具体方法："><a href="#具体方法：" class="headerlink" title="具体方法："></a>具体方法：</h3><ol>
+<li>服务端添加允许跨域的代码，比如在filter里添加请求头的相关代码(response.setHeader()方法),常用</li>
+<li>浏览器设置允许跨域，开发时可以，上线了不行</li>
+<li>不用xhr请求，比如jsonp(缺点只有get请求)</li>
+<li>中间服务器Nginx或apache配置代理请求</li>
+<li>springboot 注解@CrossOrigin</li>
+</ol>
 
           
         
@@ -1380,6 +1392,14 @@
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
 
 
 
