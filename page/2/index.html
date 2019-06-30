@@ -404,8 +404,7 @@
 
       
         
-          
-            <p>现在我们的生活离不开计算机，但是计算机是怎么识别用户的指令从而完成一系列的操作？通过这本书，可以大致理解计算机工作的基本原理，扩充自己的知识点。</p>
+          <p>现在我们的生活离不开计算机，但是计算机是怎么识别用户的指令从而完成一系列的操作？通过这本书，可以大致理解计算机工作的基本原理，扩充自己的知识点。</p>
 <h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><ol>
 <li>汇编指令（mov ax,bx）是机器指令(1000100111011000)的助记符，同机器指令一一对应,两者转换需要编译器。用高级语言描述（ax = bx）。</li>
 <li>每一种CPU都有自己的汇编指令集。</li>
@@ -415,41 +414,14 @@
 <li>一个存储单元可以存储8个bit，即8位二进制数。</li>
 <li>1 Byte = 8 bit; 1 KB = 1024 Byte; 1 MB = 1024 KB; 1 GB = 1024 MB</li>
 <li><p>每一个CPU芯片都有许多管脚，这些管脚和总线相连。也可以说，这些管脚引出总线。一个CPU可以引出3种总线的宽度标志了这个CPU的不同方面的性能：<br>（1）地址总线的宽度决定的CPU的寻址能力<br>（2）数据总线的宽度决定了CPU与其他器件进行数据传送时的一次数据传送量<br>（3）控制总线的宽度决定了CPU对系统中其他器件的控制能力</p>
-<p>最终运行程序的是CPU,我们用汇编语言编程时，必须要从CPU的角度考虑问题。对CPU来讲，系统中的所有存储器中的存储单元都处于一个统一的逻辑存储器中，他的容量受CPU寻址能力的限制。这个逻辑存储器即是我们所说的内存地址空间。 </p>
-</li>
-</ol>
-<h1 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h1><p>任何数据，到了计算机中都是以二进制的形式存放的。为了描述不同的问题，又经常将它们用其他的进制来表示。比如寄存器AX中的数据是0100111000100000，这就是AX中的信息本身，可以用不同的逻辑意义来看待它。可以将它看<br>作一个数值，大小是20000。<br>当然，二进制数0100111000100000本身也可以表示一个数值的大小，但人类习惯的是十进制，用十进制20000表示可以使我们直观地感受到这个数值的大小。<br>十六进制数的一位相当于二进制数的四位，如0100111000100000可以表示成4(0100)、E(1110)、2(0010)、0(0000)四位十六进制数。<br>由于一个内存单元可以存放8位数据，CPU中的寄存器又可存放n个8位的数据。也就是说，计算机中的数据大多是由1~N个8位数据构成的。很多时候，需要直观地看出组成数据的各个字节数据的值，用十六进制来表示数据可以直观地看出这个数据是由哪些8位数据构成的。比如20000写成4E20就可以直观地看出，这个数据是由4E和20两个8位数据构成的，如果AX中存放4E20,则AH里是4E,AL里是20。这种表示方法便于许多问题的直观分析。<br>计算机中所有信息都是以二进制的形式存储的，机器只能处理二进制信息，“左移4位”中的位，值的是二进制位。<br>例子，一个数据为2H,二进制形式为10B,对其进行左移运算：</p>
-<p>左移位数        二进制        十六进制        十进制<br>  0             10B            2H              2<br>  1             100B           4H              4<br>  2             1000B          8H              8<br>  3             10000B        10H              16<br>  4             100000B       20H              32</p>
-<p>观察上面移位次数和各种形式数据的关系，我们可以发现：</p>
-<p> （1）一个数据的二进制形式左移1位，相当于该数据乘以2；<br> （2）一个数据的二进制形式左移N位，相当于该数据乘以2的N次方；<br> （3）地址加法器如何完成段地址*16的运算？就是将以二进制形式存放的段地址左移4位。</p>
-<p> 一个数据的十六进制左移1位，相当于乘以16；一个数据的十进制形式左移1位，相当于乘以10；一个X进制的数据左移1位，相当于乘以X。</p>
-<p> CPU访问内存单元时，必须向CPU提供内存单元的物理地址。8086CPU在内部用段地址和偏移地址移位相加的方法形成最终的物理地址。</p>
-<p> （1）CPU可以用不同的段地址和偏移地址形成同一物理地址。<br>  比如CPU要访问21F60H单元，则它给出的段地址SA和偏移地址EA满足SA*16 + EA = 21F60H 即可。<br> （2）偏移地址16位，变化范围 0~FFFFH,仅用偏移地址来寻址最多可寻 64KB 个内存单元。<br>  比如给定段地址 1000H,用偏移地址来寻址，CPU的寻址范围为：10000H ~ 1FFFFH。</p>
-<p>  在8086PC机中，存储单元的地址用两个元素来描述，即段地址和偏移地址。<br>  “数据在21F60H内存单元中” 这句话对于8086PC机一般不这样讲，取而代之的是两种类似的说法： ①数据存在内存 2000:1F60 单元中；②数据存在内存的 2000H 段中的 1F60H 单元中。这两种描述都表示“数据在内存 21F60H 单元中”。</p>
-<p>  可以根据需要，将地址连续、起始地址为16的倍数的一组内存单元定义为一个段。</p>
-<ol>
-<li>段地址在8086CPU的段寄存器中存放。当8086CPU要访问内存时，由段寄存器提供内存单元的段地址。8086CPU有4个段寄存器，其中CS用来存放指令的段地址。</li>
-<li>CS 存放指令的段地址，IP存放指令的偏移地址。<br>8086机中，任意时刻，CPU将CS:IP指向的内容当做指令执行。</li>
-<li>8086CPU的工作过程：<br>（1）从CS:IP指向的内存单元读取指令，读取的指令进入指令缓冲器；<br>（2）IP指向下一条指令；<br>（3）执行指令。（转到步骤1，重复这个过程）</li>
-<li>8086CPU提供转移指令修改CS、IP的内容。</li>
-</ol>
-<h1 id="寄存器（内存访问）"><a href="#寄存器（内存访问）" class="headerlink" title="寄存器（内存访问）"></a>寄存器（内存访问）</h1><ol>
-<li>字在内存中储存时，要用两个地址连续的内存单元来存放，字的低位字节存放在低地址单元中，高位字节存放在高地址单元中。</li>
-<li>用 mov 指令访问内存单元，可以在 mov 指令中只给出单元的偏移地址，此时，段地址默认在DS 寄存器中。</li>
-<li>[address]表示一个偏移地址为address的内存单元。</li>
-<li>在内存和寄存器之间传送字型数据时，高地址单元和高8位寄存器、低地址单元和低8位寄存器相对应。 </li>
-<li>mov、 add、 sub 是具有两个操作对象的指令。jmp是具有一个操作对象的指令。</li>
-<li>在SS、SP中存放栈顶的段地址和偏移地址；提供入栈和出栈指令，它们根据SS:SP指示的地址，按照栈的方式访问内存单元。</li>
-<li>push指令的执行步骤：<br>（1）SP=SP-2;<br>（2）向SS:SP指向的字单元中送入数据。</li>
-<li>pop指令的执行步骤：<br>（1）从SS:SP指向的字单元中读取数据；<br>（2）SP=SP+2</li>
-<li>任意时刻，SS:SP指向栈顶元素。</li>
-<li>8086CPU只记录栈顶，栈空间的大小我们要自己管理。</li>
-<li>用栈来暂存以后需要恢复的寄存器内容时，寄存器出栈的顺序要和入栈的顺序相反。</li>
-<li>push、 pop实质上是一种内存传送指令。</li>
-</ol>
-<p>操作系统是由多个功能模块机组成的庞大、复杂的软件系统。任何通用的操作系统，都要提供一个称为shell（外壳）的程序，用户（操作人员）使用这个程序来操作计算机系统进行工作。<br>DOS中一个程序command.com,这个程序在DOS中称为命令解释器，也就是DOS系统的shell。<br>DOS启动时，先完成其他重要的初始化工作，然后运行command.com，command.com运行后，执行完成其他的相关任务后，在屏幕上显示出由当前盘符和当前路劲组成的提示符，比如：“c:\”或“c:\windows”等，然后等待用户的输入。<br>用户可以输入所要执行的命令，比如，cd、dir、type等，这些命令由command执行，command执行完这些命令后，再次显示由当前盘符和当前路劲组成的提示符，等待用户的输入。<br>如果用户要执行一个程序，则输入改程序的可执行文件的名称，command首先根据文件名找到可执行文件，然后将这个可执行文件中的程序加载入内存，设置CS:IP指向程序的入口。此后，commandz暂停运行，CPU运行程序，程序运行结束后，返回到command中，command再次显示由当前盘符和当前路劲组成的提示符，等待用户的输入。<br>在DOS中，command处理各种输入：命令或要执行的程序的文件名。我们就是通过command来进行工作的。</p>
-
-          
+<p>最终运行程序的是CPU,我们用汇编语言编程时，必须要从CPU的角度考虑问题。对CPU来讲，系统中的所有存储器中的存储单元都处于一个统一的逻辑存储器中，他的容量受CPU寻址能力的限制。这个逻辑存储器即是我们所说的内存地址空间。 </p></li></ol>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/06/01/blog-16/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -795,8 +767,7 @@
 
       
         
-          
-            <p>   通过这本书了解到客户端（浏览器）发出请求到服务器返回响应这一过程中发生了哪些事情，网络中各种设备怎么协调工作，最终达到用户的需求。</p>
+          <p>   通过这本书了解到客户端（浏览器）发出请求到服务器返回响应这一过程中发生了哪些事情，网络中各种设备怎么协调工作，最终达到用户的需求。</p>
 <p>   完整的请求过程如下：<br>   浏览器（发送请求） –&gt;  TCP/IP协议 –&gt; 网卡驱动 –&gt; 集线器 –&gt; 路由器 –&gt; 接入网 –&gt; 电话局 –&gt;  网络运营商 –&gt; (光纤、双绞线) –&gt; 网络运营商 –&gt; 电话局 –&gt; 接入网 –&gt; 防护墙 –&gt; 缓存服务器 –&gt; 网卡驱动 –&gt; TCP/IP协议 –&gt; 服务器程序</p>
 <h1 id="浏览器："><a href="#浏览器：" class="headerlink" title="浏览器："></a>浏览器：</h1><ol>
 <li><p>生成 HTTP 请求消息<br>浏览器的第一步工作就是对输入的 URL 进行解析。URL开头表示访问数据源的机制，也就是协议（http或者ftp）,“//”后面的字符串表示服务器的名称“<a href="http://www.baidu.com”" target="_blank" rel="noopener">www.baidu.com”</a>, 接着表示数据源（文件）的路径名。</p>
@@ -808,113 +779,14 @@
 </li>
 <li><p>全世界 DNS 服务器的接力<br>DNS 服务器会从域名与 IP 地址的对照表中查找相应的记录，并返回 IP 地址。 客户端（<a href="http://www.baidu.com）" target="_blank" rel="noopener">www.baidu.com）</a> –&gt; 最近的DNS服务器 –&gt; 根域 –&gt; com –&gt; baidu  –&gt; www,  可以通过缓存加快 DNS 服务器的响应</p>
 </li>
-<li><p>委托协议栈发送消息<br>向操作系统内部的协议栈发出委托时，需要按照指定的顺序来调用 Socket 库中的程序组件。（1）创建套接字（创建套接字阶段）（2）将管道连接到服务器端的套接字上（连接阶段）（3）收发数据（通信阶段）（4）断开管道并删除套接字（断开阶段） 应用程序是通过“描述符”这一类似号码牌的东西来识别套接字的。描述符：应用程序用来识别套接字的机制;IP 地址和端口号：客户端和服务器之间用来识别对方套接字的机制</p>
-</li>
-</ol>
-<h1 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h1><ol>
-<li><p>TCP在网络包出错丢失时可以重发，所以浏览器、邮件等一般应用程序收发数据时用 TCP（需要连接），这可能会浪费性能，DNS 查询等收发较短的控制数据时用 UDP（不需要连接）</p>
-</li>
-<li><p>套接字的实体就是通信控制信息：例如通信对象的 IP 地址、 端口号、 通信操作的进行状态等。协议栈是根据套接字中记录的控制信息来工作的。<br>通信操作中使用的控制信息分为两类。<br>（1） 头部中记录的信息<br>（2） 套接字（协议栈中的内存空间）中记录的信息</p>
-</li>
-<li><p>TCP连接过程（3次握手）<br>（1） 连接操作的第一步是在 TCP 模块处创建表示连接控制信息的头部。<br>（2） 通过 TCP 头部中的发送方和接收方端口号可以找到要连接的套接字。将头部中的控制位的 SYN 比特设置为 1<br>（3）  TCP 模块会将信息传递给 IP 模块并委托它进行发送；服务端IP模块接收到数据传给TCP模块，根据 TCP 头部中的信息找到端口号对应的套接字，从处于等待连接状态的套接字中找到与 TCP 头部中记录的端口号相同的套接字就可以了。 （第一次握手）<br>（4） 服务器的 TCP 模块会返回响应， 这个过程和客户端一样， 需要在 TCP 头部中设置发送方和接收方端口号以及 SYN 为1。此外，在返回响应时还需要将 ACK 控制位设为1， 设置ACK 比特就是用来进行确认网络包是否到达； （第二次握手）<br>（5）  客户端也需要将 ACK 比特设置为 1 并发回服务器， 告诉服务器刚才的响应包已经收到。 （第三次握手）</p>
-</li>
-<li><p>收发数据<br>MTU：一个网络包的最大长度，以太网中一般为 1500 字节。<br>MSS：除去头部之后，一个网络包所能容纳的 TCP 数据的最大长度。<br>对较大的数据进行拆分,使用 ACK 号确认网络包已收到。通过“序号”和“ACK 号”可以确认接收方是否收到了网络包。</p>
-</li>
-<li><p>断开连接并删除套接字（完成数据发送的一方会发起断开过程：4次挥手）<br>（1） 连接方断开方协议栈会生成包含断开信息的 TCP 头部， 具体来说就是将控制位中的 FIN 比特设为 1<br>（2） 当收到连接方发来的 FIN 为 1 的 TCP 头部时，接受方协议栈会将自己的套接字标记为进入断开操作状态。 然后， 为了告知连接方已收到 FIN 为 1 的包， 会向连接方返回一个 ACK 号<br>（3） 数据全部接收后，接收方会生成一个 FIN 比特为 1 的 TCP 包， 然后委托 IP 模块发送给连接方。<br>（4） 连接方会返回ACK 号，通信结束。（两方ACK号对比确认数据成功传达）</p>
-<p> <img src="/2019/05/23/blog-14/img_5.png" alt="a"></p>
-</li>
-<li><p>无论要收发的包是控制包还是数据包，IP 对各种类型的包的收发操作都是相同的。<br>IP 模块负责添加如下两个头部。<br>（1） MAC 头部：以太网用的头部，包含 MAC 地址<br>（2） IP 头部：IP 用的头部，包含 IP 地址<br>IP 头部的“接收方 IP 地址”填写通信对象的 IP 地址。发送方 IP 地址需要判断发送所使用的网卡，并填写该网卡的 IP地址。<br>IP 模块根据路由表 Gateway 栏的内容判断应该把包发送给谁。<br>将 IP 包转换成电或光信号发送出去</p>
-</li>
-</ol>
-<h1 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h1><ol>
-<li><p>数据很短， 用一个包就能装得下，就不需要建立和断开连接的步骤，出错时重新发送一次就行，不用多次确认。</p>
-</li>
-<li><p>音频和视频数据：必须在规定的时间发送（实时），就算其中出错了，也只会造成失真和卡顿。</p>
-</li>
-<li><p>无需重发数据， 或者是重发了也没什么意义的情况下， 使用 UDP 发送数据的效率会更高。</p>
-</li>
-</ol>
-<h1 id="集线器、交换机和路由器"><a href="#集线器、交换机和路由器" class="headerlink" title="集线器、交换机和路由器"></a>集线器、交换机和路由器</h1><ol>
-<li><p>每个包都是独立传输的</p>
-</li>
-<li><p>防止网线中的信号衰减很重要</p>
-</li>
-<li><p>“双绞”是为了抑制噪声</p>
-</li>
-<li><p>集线器将信号发送给所有连接在它上面的线路</p>
-</li>
-<li><p>交换机端口的 MAC 模块不具有 MAC 地址。交换机根据 MAC 地址表查找 MAC 地址，然后将信号发送到相应的端口</p>
-</li>
-<li><p>交换机的全双工模式可以同时发送和接收信号</p>
-</li>
-<li><p>路由器的各个端口都具有 MAC 地址和 IP 地址。路由器根据“IP 地址”判断转发目标。路由器会忽略主机号，只匹配网络号</p>
-</li>
-<li><p>路由表的子网掩码列只表示在匹配网络包目标地址时需要对比的比特数量</p>
-</li>
-<li><p>路由器的端口都具有 MAC 地址，只接收与自身地址匹配的包，遇到不匹配的包则直接丢弃</p>
-</li>
-<li><p>通过路由器转发的网络包，其接收方 MAC 地址为路由器端口的 MAC 地址。路由表中子网掩码为 0.0.0.0 的记录表示“默认路由”</p>
-</li>
-<li><p>路由器判断下一个转发目标的方法如下<br>（1） 如果路由表的网关列内容为 IP 地址，则该地址就是下一个转发目标<br>（2）如果路由表的网关列内容为空，则 IP 头部中的接收方 IP 地址就是下一个转发目标</p>
-</li>
-<li><p>IP（路由器）负责将包送达通信对象这一整体过程，而其中将包传输到下一个路由器的过程则是由以太网（交换机）来负责的</p>
-</li>
-</ol>
-<h1 id="接入网和网络运营商"><a href="#接入网和网络运营商" class="headerlink" title="接入网和网络运营商"></a>接入网和网络运营商</h1><ol>
-<li><p>互联网接入路由器会在网络包前面加上 MAC 头部、PPPoE 头部、PPP 头 部 总 共 3 种 头 部， 然 后 发 送 给 ADSL Modem（PPPoE 方式）</p>
-</li>
-<li><p>ADSL Modem 将包拆分成信元，并转换成电信号发送给分离器</p>
-</li>
-<li><p>DSLAM 具有 ATM 接口，和后方路由器收发数据时使用的是原始网络包拆分后的 ATM 信元形式</p>
-</li>
-<li><p>BAS 负责将 ATM 信元还原成网络包并转发到互联网内部</p>
-</li>
-<li><p>PPPoE 是将 PPP 消息装入以太网包进行传输的方式</p>
-</li>
-<li><p>互联网接入路由器通过 PPPoE 的发现机制查询 BAS 的 MAC 地址</p>
-</li>
-<li><p>BAS 下发的 TCP/IP 参数会被配置到互联网接入路由器的 BAS端的端口上，这样路由器就完成接入互联网的准备了</p>
-</li>
-<li><p>BAS 在收到用户路由器发送的网络包之后，会去掉 MAC 头部和PPPoE 头部，然后用隧道机制将包发送给网络运营商的路由器</p>
-</li>
-<li><p>一对一连接的端口可以不分配 IP 地址，这种方式称为无编号</p>
-</li>
-<li><p>PPPoA 方式不添加 MAC 头部和 PPPoE 头部，而是直接将包装入信元中。</p>
-</li>
-<li><p>还有一种 DHCP 方式，它不使用 PPP，而是将以太网包直接转换成 ADSL 信号发送给 DSLAM</p>
-</li>
-<li><p>网络包通过接入网之后，到达运营商 POP 的路由器</p>
-</li>
-<li><p>互联网内部使用 BGP 机制在运营商之间交换路由信息</p>
-</li>
-</ol>
-<h1 id="服务器端的局域网"><a href="#服务器端的局域网" class="headerlink" title="服务器端的局域网"></a>服务器端的局域网</h1><ol>
-<li><p>防火墙： 包过滤方式的防火墙可根据接收方 IP 地址、发送方 IP 地址、接收方端口号、发送方端口号、控制位等信息来判断是否允许某个包通过</p>
-</li>
-<li><p>负载均衡： 通过将请求平均分配给多台服务器来平衡负载</p>
-</li>
-<li><p>缓存服务器分担负载：缓存服务器使用的代理机制放在客户端一侧—-正向代理：使用正向代理时， 一般需要在浏览器的设置窗口中的“代理服务器”一栏中填写正向代理的 IP 地址， 浏览器发送请求消息的过程也会发生相应的变化，设置浏览器非常麻烦， 如果设置错误还可能导致浏览器无法正常工作；通过将请求消息中的 URI 中的目录名与 Web 服务器进行关联， 使得代理能够转发一般的不包含完整网址的请求消息。—- 反向代理；查看请求消息的包头部。 因为包的 IP 头部中包含接收方 IP 地址， 只要知道了这个地址， 就知道用户要访问哪台服务器了 —- 透明代理</p>
-</li>
-<li><p>利用内容分发服务分担负载：CDS/CDN  让用户访问最近的缓存服务器， 不应采用轮询方式， 应该判断客户端与缓存服务器的距离， 并返回距离客户端最近的缓存服务器IP 地址。 </p>
-</li>
-</ol>
-<h1 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h1><ol>
-<li><p>服务器需要同时和多个客户端通信，每有一个客户端连接进来， 就启动一个新的服务器程序， 确保服务器程序和客户端是一对一的状态。</p>
-</li>
-<li><p>网卡的 MAC 模块将网络包从信号还原为数字信息，校验 FCS 并存入缓冲区。</p>
-</li>
-<li><p>网卡驱动会根据 MAC 头部判断协议类型，并将包交给相应的协议栈。</p>
-</li>
-<li><p>协议栈的 IP 模块会检查 IP 头部<br>（1） 判断是不是发给自己的；<br>（2） 判断网络包是否经过分片；（3） 将包转交给 TCP 模块或 UDP模块。</p>
-</li>
-<li><p>如果收到的是发起连接的包，则 TCP 模块会<br>（1） 确认 TCP 头部的控制位 SYN；<br>（2） 检查接收方端口号；<br>（3） 为相应的等待连接套接字复制一个新的副本；<br>（4） 记录发送方 IP 地址和端口号等信息。</p>
-</li>
-<li><p>收到数据包时，TCP 模块会<br>（1） 根据收到的包的发送方 IP 地址、发送方端口号、接收方 IP 地址、接收方端口号找到相对应的套接字；<br>（2） 将数据块拼合起来并保存在接收缓冲区中；<br>（3） 向客户端返回 ACK。</p>
-</li>
-</ol>
-<h1 id="网络包的旅程"><a href="#网络包的旅程" class="headerlink" title="网络包的旅程"></a>网络包的旅程</h1><p>  <img src="/2019/05/23/blog-14/img_6.png" alt="a"><br>  <img src="/2019/05/23/blog-14/img_7.png" alt="a"><br>  <img src="/2019/05/23/blog-14/img_8.png" alt="a"><br>  <img src="/2019/05/23/blog-14/img_9.png" alt="a"></p>
-
-          
+<li><p>委托协议栈发送消息<br>向操作系统内部的协议栈发出委托时，需要按照指定的顺序来调用 Socket 库中的程序组件。（1）创建套接字（创建套接字阶段）（2）将管道连接到服务器端的套接字上（连接阶段）（3）收发数据（通信阶段）（4）断开管道并删除套接字（断开阶段） 应用程序是通过“描述符”这一类似号码牌的东西来识别套接字的。描述符：应用程序用来识别套接字的机制;IP 地址和端口号：客户端和服务器之间用来识别对方套接字的机制</p></li></ol>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/05/23/blog-14/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1084,25 +956,17 @@
 
       
         
-          
-            <p>  公司基于Vue.js做的网站上线后，发现爬虫根本爬取不了网站的信息，导致网站排名很低并且提升不了，让我找找有什么方法可以解决。查询相关资料后，发现网站是vue单页面架构，客户端渲染，首屏加载慢，对seo特别不友好（爬虫只能爬到js信息）。要解决这个问题，目前知道两种方案：</p>
+          <p>  公司基于Vue.js做的网站上线后，发现爬虫根本爬取不了网站的信息，导致网站排名很低并且提升不了，让我找找有什么方法可以解决。查询相关资料后，发现网站是vue单页面架构，客户端渲染，首屏加载慢，对seo特别不友好（爬虫只能爬到js信息）。要解决这个问题，目前知道两种方案：</p>
 <ol>
 <li>SSR(服务端渲染)–通过node.js做中间层，取服务端的数据渲染好页面之后再发送给浏览器，这样网络爬虫就能获取到网页信息。相关插件有Nuxt.js,但是这种方案项目必须重新架构，页面上一些钩子函数也需重新编写，花费时间人力比较长，被我pass掉。</li>
-<li>预渲染–通过插件把vue单页面静态打包成html页面，这样浏览器访问的就是一个静态的html文件，开发成本低。只需要在项目webpack打包部署时配置相关信息，就能解决seo的问题。</li>
-</ol>
-<p>这里讲解第二种方案：<br>  单页面应用每个页面都是通过js渲染，爬虫爬到的信息就是这样,没有具体的信息：<br>  <img src="/2019/03/24/blog-13/img_2.png" alt="b"><br>  vue单页面应用可以通过prerender-spa-plugin插件进行静态打包成html，通过vue-cli脚手架搭建的项目，相关配置如下(具体信息可以阅读插件相关文档)：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">// webpack.prop.conf.js</span><br><span class="line">var path = require(&apos;path&apos;)</span><br><span class="line">var PrerenderSpaPlugin = require(&apos;prerender-spa-plugin&apos;)</span><br><span class="line"></span><br><span class="line">plugins: [</span><br><span class="line">  new PrerenderSPAPlugin(&#123;</span><br><span class="line">    // 生成文件的路径，也可以与webpakc打包的一致。</span><br><span class="line">    // 下面这句话非常重要！！！</span><br><span class="line">    // 这个目录只能有一级，如果目录层次大于一级，在生成的时候不会有任何错误提示，在预渲染的时候只会卡着不动。</span><br><span class="line">    staticDir: path.join(__dirname,&apos;../dist&apos;),</span><br><span class="line">    // 对应自己的路由文件，比如a有参数，就需要写成 /a/param1。</span><br><span class="line">    routes: [&apos;/Pecs&apos;],</span><br><span class="line">    // 这个很重要，如果没有配置这段，也不会进行预编译</span><br><span class="line">    renderer: new Renderer(&#123;</span><br><span class="line">      inject: &#123;</span><br><span class="line">        foo: &apos;bar&apos;</span><br><span class="line">      &#125;,</span><br><span class="line">      headless: false,</span><br><span class="line">      // 在 main.js 中 document.dispatchEvent(new Event(&apos;render-event&apos;))，两者的事件名称要对应上。</span><br><span class="line">      renderAfterDocumentEvent: &apos;render-event&apos;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">// main.js</span><br><span class="line">var vm = new Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  store,</span><br><span class="line">  render: h =&gt; h(Main),</span><br><span class="line">  // 与webpack.prop.conf.js里的事件名相对应</span><br><span class="line">  mounted () &#123;</span><br><span class="line">    document.dispatchEvent(new Event(&apos;render-event&apos;))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>这个配置好后就可以打包出相关的html静态页面。<br><img src="/2019/03/24/blog-13/img_1.png" alt="b"><br>到这里已经算成功了，不过为了提升网站seo排名，可以配合vue-meta-info插件对页面的tkd进行配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  ...</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    metaInfo: &#123;</span><br><span class="line">      title: &apos;My Example App&apos;, // set a title</span><br><span class="line">      meta: [&#123;                 // set meta</span><br><span class="line">        name: &apos;keyWords&apos;,</span><br><span class="line">        content: &apos;My Example App&apos;</span><br><span class="line">      &#125;]</span><br><span class="line">      link: [&#123;                 // set link</span><br><span class="line">        rel: &apos;asstes&apos;,</span><br><span class="line">        href: &apos;https://assets-cdn.github.com/&apos;</span><br><span class="line">      &#125;]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
-<p>这样我们的网站信息就变成了<br><img src="/2019/03/24/blog-13/img_3.png" alt="b"><br>相比之前的只有js,页面内容丰富了很多，也利于爬虫的爬取。</p>
-<p>下面记录这次调整遇到的问题：</p>
-<ol>
-<li>在原有项目的基础上配置好相关信息，发现打包卡死在一个地方<br><img src="/2019/03/24/blog-13/img_4.png" alt="b"><br>解决: config/index文件的配置配了一个父路径，改成默认‘/’的就行了<br><img src="/2019/03/24/blog-13/img_5.png" alt="b"></li>
-<li>打包出来的html页面内容是空的<br><img src="/2019/03/24/blog-13/img_6.png" alt="b"><br>解决: 我发现有些页面信息获取写在了beforeRouteEnter钩子函数里边，把里面这些函数放到created钩子函数里就可以了<br><img src="/2019/03/24/blog-13/img_7.png" alt="b"></li>
-<li>需要预渲染的页面较多，打包时会报一个错误，详情就是不能打包所有的路由，可能是电脑得配置不好，我那几十个页面分了好几批才打包完成。而且对于信息变化频繁的页面也不适合静态打包。</li>
-</ol>
-<p>通过这次调整，我发现前期规划真的很重要。比如做门户、电商网站，前期就应该考虑seo的问题，比如复杂一点项目就架构就用ssr，不然做完后再调整就很难了，</p>
-
-          
+<li><p>预渲染–通过插件把vue单页面静态打包成html页面，这样浏览器访问的就是一个静态的html文件，开发成本低。只需要在项目webpack打包部署时配置相关信息，就能解决seo的问题。</p></li></ol>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/24/blog-13/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1272,35 +1136,16 @@
 
       
         
-          
-            <pre><code>这几天看完了《算法图解》这本书，确实这是一本好的算法入门书。在此记录一些书中的知识点。
+          <pre><code>这几天看完了《算法图解》这本书，确实这是一本好的算法入门书。在此记录一些书中的知识点。
 </code></pre><ol>
-<li><p>算法运行时间并不以秒为单位，用大O表示法表示，是从其增速的角度度量的。算法的速度指的并非时间， 而是操作数的增速。谈论算法的速度时， 我们说的是随着输入的增加， 其运行时间将以什么样的速度增加。大O表示法指出了最糟情况下的运行时间。比如把一张正方形的纸平均裁成16份，一种方式是算出每一份的大小，一份一份的裁，一共要操作16次。这种裁法用算法时间O(n)来表示,也称线性时间,另一种方法就是对折4次再裁就能得到均分的16份，这种操作数只需4次，用大O表示法O(log n )，也称对数时间。O(log n )比O(n )快， 当需要搜索的元素越多时， 前者比后者快得越多。<br>（1） O (log<sub>2</sub> n )， 也叫对数时间 ， 这样的算法包括二分查找。<br>（2） O (n )， 也叫线性时间 ， 这样的算法包括简单查找。<br>（3） O (n * log<sub>2</sub> n )， 这样的算法包括快速排序——一种速度较快的排序算法。<br>（4） O (n 2 )， 这样的算法包括选择排序——一种速度较慢的排序算法。<br>（5） O (n !)， 这样的算法包括旅行商问题的解决方案——一种非常慢的算法。</p>
-</li>
-<li><p>计算机内存犹如一大堆抽屉。需要存储多个元素时，可使用数组或链表。数组的元素都在一起，所以读取特别快。链表的元素是分开的，其中每个元素都存储了下一个元素的地址，所以插入和删除特别快。</p>
-</li>
-<li><p>栈有两种操作： 压入和弹出。递归指的是调用自己的函数，每个递归函数都有两个条件： 基线条件和递归条件。基线条件用来结束递归，递归条件用来调用自己。比如一个倒计时3 2 1 方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function countdown(i)&#123;</span><br><span class="line">  console.log(i)</span><br><span class="line">  if (i &lt;= 0) ←------基线条件</span><br><span class="line">  return</span><br><span class="line">  else ←------递归条件</span><br><span class="line">  countdown(i-1)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>分而治之 （divide and conquer， D&amp;C） ——一种著名的递归式问题解决方法。D&amp;C将问题逐步分解。 使用D&amp;C处理列表时， 基线条件很可能是空数组或只包含一个元素的数组。实现快速排序时， 请随机地选择用作基准值的元素。 快速排序的平均运行时间为O(n log n )。大O表示法中的常量有时候事关重大， 这就是快速排序比合并排序快的原因所在。</p>
-</li>
-<li><p>散列表也就是哈希表。你几乎根本不用自己去实现散列表， 因为你使用的编程语言提供了散列表实现。散列表是一种功能强大的数据结构，其操作速度快， 还能让你以不同的方式创建数据模型。比如我们常用的js对象就是基于散列表实现的。</p>
-</li>
-<li><p>广度优先搜索指出是否有从A到B的路径。如果有， 广度优先搜索将找出最短路径。面临类似于寻找最短路径的问题时， 可尝试使用图来创建模型， 再使用广度优先搜索来解决问题。有向图中的边为箭头， 箭头的方向指定了关系的方向， 例如，rama→adit表示rama欠adit钱。无向图中的边不带箭头， 其中的关系是双向的， 例如， ross - rachel表示“ross与rachel约会， 而rachel也与ross约会”。队列是先进先出（FIFO） 的。栈是后进先出（LIFO） 的。你需要按加入顺序检查搜索列表中的人， 否则找到的就不是最短路径， 因此搜索列表必须是队列。对于检查过的人， 务必不要再去检查， 否则可能导致无限循环。</p>
-</li>
-<li><p>广度优先搜索用于在非加权图中查找最短路径（比如地图中寻找最短路径，不考虑其他情况）。狄克斯特拉算法用于在加权图中查找最短路径（当路上堵车或者其他情况，每段路径花费的时间不同，时间就是加权）。仅当权重为正时狄克斯特拉算法才管用。如果图中包含负权边（比如我想用华为换我弟的iPhone8，我弟说可以直接换，但是我又可以用华为加1000元换iphoneX,我弟又愿意用iPhone8加1500元换iPhone X，这样我还能赚500元，如果用狄克斯特拉算法就会选择直接换了），请使用贝尔曼-福德算法。</p>
-</li>
-<li><p>贪婪算法寻找局部最优解，企图以这种方式获得全局最优解。贪婪算法很简单： 每步都采取最优的做法。用专业术语说， 就是你每步都选择局部最优解 ， 最终得到的就是全局最优解。对于NP完全问题， 还没有找到快速解决方案。面临NP完全问题时， 最佳的做法是使用近似算法。贪婪算法易于实现、 运行速度快， 是不错的近似算法。</p>
-</li>
-<li><p>需要在给定约束条件下优化某种指标时， 动态规划很有用。问题可分解为离散子问题时， 可使用动态规划来解决。每种动态规划解决方案都涉及网格。单元格中的值通常就是你要优化的值。每个单元格都是一个子问题， 因此你需要考虑如何将问题分解为子问题。没有放之四海皆准的计算动态规划解决方案的公式。</p>
-</li>
-<li><p>K最近邻算法：用于推荐系统。KNN用于分类和回归， 需要考虑最近的邻居。分类就是编组。回归就是预测结果（如数字） 。特征抽取意味着将物品（如水果或用户） 转换为一系列可比较的数字。能否挑选合适的特征事关KNN算法的成败。</p>
-</li>
-<li><p>其他还有树、反向索引、傅里叶变换、并行算法、线性规划等等复杂的算法，都是需要单独去研究学习的。</p>
-</li>
-</ol>
-
-          
+<li>算法运行时间并不以秒为单位，用大O表示法表示，是从其增速的角度度量的。算法的速度指的并非时间， 而是操作数的增速。谈论算法的速度时， 我们说的是随着输入的增加， 其运行时间将以什么样的速度增加。大O表示法指出了最糟情况下的运行时间。比如把一张正方形的纸平均裁成16份，一种方式是算出每一份的大小，一份一份的裁，一共要操作16次。这种裁法用算法时间O(n)来表示,也称线性时间,另一种方法就是对折4次再裁就能得到均分的16份，这种操作数只需4次，用大O表示法O(log n )，也称对数时间。O(log n )比O(n )快， 当需要搜索的元素越多时， 前者比后者快得越多。<br>（1） O (log<sub>2</sub> n )， 也叫对数时间 ， 这样的算法包括二分查找。<br>（2） O (n )， 也叫线性时间 ， 这样的算法包括简单查找。<br>（3） O (n * log<sub>2</sub> n )， 这样的算法包括快速排序——一种速度较快的排序算法。<br>（4） O (n 2 )， 这样的算法包括选择排序——一种速度较慢的排序算法。<br>（5） O (n !)， 这样的算法包括旅行商问题的解决方案——一种非常慢的算法。</li></ol>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/12/blog-12/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1500,7 +1345,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">31.1k</span>
+    <span title="Site words total count">31.9k</span>
   
 </div>
 

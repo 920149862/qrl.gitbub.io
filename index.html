@@ -366,7 +366,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3.6k
+                  4.4k
                 </span>
               
 
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  14
+                  18
                 </span>
               
             </div>
@@ -404,76 +404,16 @@
 
       
         
-          
-            <h1 id="面向对象的程序设计"><a href="#面向对象的程序设计" class="headerlink" title="面向对象的程序设计"></a>面向对象的程序设计</h1><pre><code>我们可以把 ECMAScript 的对象想象成散列表：无非就是一组名值对，其中值可以是数据或函数。
+          <h1 id="面向对象的程序设计"><a href="#面向对象的程序设计" class="headerlink" title="面向对象的程序设计"></a>面向对象的程序设计</h1><pre><code>我们可以把 ECMAScript 的对象想象成散列表：无非就是一组名值对，其中值可以是数据或函数。
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// 创建一个 Object 的实例</span><br><span class="line">var person = new Object();</span><br><span class="line">person.name = &quot;Nicholas&quot;;</span><br><span class="line">person.age = 26;</span><br><span class="line">person.job = &quot;Software Engineer&quot;;</span><br><span class="line"></span><br><span class="line">person.sayName = function()&#123;</span><br><span class="line">   alert(this.name);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// 对象字面量语法</span><br><span class="line">var person = &#123;</span><br><span class="line">   name: &quot;Nicholas&quot;,</span><br><span class="line">   age: 29,</span><br><span class="line">   job: &quot;Software Engineer&quot;,</span><br><span class="line"></span><br><span class="line">   sayName: function()&#123;</span><br><span class="line">      alert(this.name);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</code></pre><h2 id="属性类型-数据属性和访问器属性"><a href="#属性类型-数据属性和访问器属性" class="headerlink" title="属性类型 数据属性和访问器属性"></a>属性类型 数据属性和访问器属性</h2><ol>
-<li>数据属性：包含一个数据值的位置，在这个位置可以读取和写入值。<br>（1）<code>[[Configurable]]</code>: 表示能否通过 delete 删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。像前面例子中那样直接在对象上定义的属性，他们的这个特性默认值是 true<br>（2）<code>[[Enumerable]]</code>: 表示能否通过 for-in 循环返回属性。像前面例子中那样直接在对象上定义的属性，它们的这个特性默认值为 true<br>（3）<code>[[Writable]]</code>: 表示能否修改属性的值。像前面例子中那样直接在对象上定义的属性，它们的这个特性默认值为 true<br>（4）<code>[[Value]]</code>: 包含这个属性的数据值。读取属性值的时候，从这个位置读；写入属性值的时候，把新值保存在这个位置。这个特性的默认值为 undefined<br>要修改属性默认的特性，必须使用 Object.defineProperty() 方法，这个方法接收三个参数：属性所在的对象、属性的名字和一个描述符对象（属性必须是: configurable、enumerable、writable、value）。一旦把 writable 属性定义为不可配置，再调用 Object.defineProperty() 方法修改除 writable 之外的特性，都会导致错误</li>
-<li><p>访问器属性<br>不包含数据值；包含一对儿 getter 和 setter 函数（不是必须）。再读取访问器属性时，会调用 getter 函数，这个函数负责返回有效的值；在写入访问器属性时，会调用 setter 函数并传入新值，这个函数负责决定如何处理数据。<br>（1）<code>[[Configurable]]</code>: 表示能否通过 delete 删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。对于直接在对象上定义的属性，他们的这个特性默认值是 true<br>（2）<code>[[Enumerable]]</code>: 表示能否通过 for-in 循环返回属性。对于直接在对象上定义的属性，它们的这个特性默认值为 true<br>（3）<code>[[Get]]</code>: 在读取属性时调用的函数。默认值为 undefined。<br>（4）<code>[[Set]]</code>: 在写入属性时调用的函数。默认值为 undefined。<br>访问器属性不能直接定义，必须使用 Object.defineProperty() 来定义</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">var book = &#123;</span><br><span class="line">   _year: 2004,</span><br><span class="line">   edition: 1</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">Object.defineProperty(book,&quot;year&quot;,&#123;</span><br><span class="line">   get: function()&#123;</span><br><span class="line">      return this._year;</span><br><span class="line">   &#125;,</span><br><span class="line">   set: function(newValue)&#123;</span><br><span class="line">      if(newValue &gt; 2004)&#123;</span><br><span class="line">         this._year = newValue;</span><br><span class="line">         this.edition += newValue -2004;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">book.year = 2005;</span><br><span class="line">alert(book.edition); // 2  响应式更新数据，设置一个属性的值会导致其他属性发生变化</span><br><span class="line"></span><br><span class="line">var book = &#123;&#125;;</span><br><span class="line">Object.defineProperties(book, &#123;</span><br><span class="line">   _year: &#123;</span><br><span class="line">      value: 2004</span><br><span class="line">   &#125;,</span><br><span class="line">   edition: &#123;</span><br><span class="line">      writable:true, // 默认为false,设置了这个值才能响应式改变</span><br><span class="line">      value: 1</span><br><span class="line">   &#125;,</span><br><span class="line">   year: &#123;</span><br><span class="line">      get: function () &#123;</span><br><span class="line">         return this._year;</span><br><span class="line">      &#125;,</span><br><span class="line">      set: function (newValue) &#123;</span><br><span class="line">         if (newValue &gt; 2004) &#123;</span><br><span class="line">            this._year = newValue;</span><br><span class="line">            this.edition += newValue-2004;</span><br><span class="line">            &#125;</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;)</span><br><span class="line">book.year = 2005;</span><br><span class="line">alert(book.edition);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>读取属性的特性<br>Object.getOwnPropertyDescriptor() 方法，可以取得给定属性的描述符。该方法接收两个参数：属性所在的对象和要读取其描述符的属性名称。返回值是一个对象，如果是访问器属性，这个对象的属性有 configurable、enumerable、get 和 set；如果是数据属性，这个对象属性有 configurable、enumerable、writable 和 value</p>
-</li>
-</ol>
-<h2 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h2><ol>
-<li>工厂模式： 抽象了创建具体对象的过程<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function createPerson(name,age,job)&#123;</span><br><span class="line">   var o = new Object();</span><br><span class="line">   o.name = name;</span><br><span class="line">   o.age = age;</span><br><span class="line">   o.job = job;</span><br><span class="line">   o.sayName = function()&#123;</span><br><span class="line">      alert(this.name);</span><br><span class="line">   &#125;;</span><br><span class="line">   return o;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var person1 = createPerson(&quot;张三&quot;, 26, &quot;软件工程师&quot;);</span><br><span class="line">var person2 = createPerson(&quot;李四&quot;, 24, &quot;运维工程师&quot;);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>解决了创建多个相似对象的问题，没有解决对象识别的问题</p>
-<ol start="2">
-<li>构造函数模式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function Person(name,age,job)&#123;</span><br><span class="line">   this.name = name;</span><br><span class="line">   this.age = age;</span><br><span class="line">   this.job = job;</span><br><span class="line">   this.sayName = function()&#123;</span><br><span class="line">      alert(this.name);</span><br><span class="line">   &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var person1 = new Person(&quot;张三&quot;, 26, &quot;软件工程师&quot;);</span><br><span class="line">var person2 = new Person(&quot;李四&quot;, 24, &quot;运维工程师&quot;);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>任何函数，只要通过 new 操作符来调用，那它就可以作为构造函数；而任何函数，如果不通过 new 操作符来调用，那它跟普通函数也不会有什么两样。<br>使用构造函数的主要问题，就是每个方法都要在每个实例上重新创建一遍。</p>
-<ol start="3">
-<li><p>原型模式<br>（1）我们创建的每个函数都有一个 prototype （原型）属性，这个属性是一个指针,指向一个对象，而这个对象的用途是包含可以由特定类型的所有实例共享的属性和方法(原型对象)，在默认情况下，所有原型对象都会自动获得一个 constructor （构造函数）属性，这个属性包含一个指向 prototype 属性所在函数的指针</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function Person()&#123;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.name = &quot;Nicholas&quot;;</span><br><span class="line">Person.prototype.age = 29;</span><br><span class="line">Person.prototype.job = &quot;Software Engineer&quot;;</span><br><span class="line">Person.prototype.sayName = function()&#123;</span><br><span class="line">   console.log(this.name);</span><br><span class="line">&#125;</span><br><span class="line">var person1 = new Person();</span><br><span class="line">person1.sayName(); // &quot;Nicholas&quot;</span><br><span class="line"></span><br><span class="line">var person2 = new Person();</span><br><span class="line">person2.sayName(); // &quot;Nicholas&quot;</span><br><span class="line"></span><br><span class="line">console.log(person1.sayName === person2.sayName); // true</span><br></pre></td></tr></table></figure>
-<p>（2） 使用 hasOwnProperty() 方法可以检测一个属性时存在实例中，还是存在于原型中，这个方法只在给定属性存在于对象实例中时，才返回 true<br>（3） 有两种方式使用 in 操作符：单独使用和在 for-in 循环中使用。单独使用时，in 操作符会在通过对象能够访问给定属性时返回 true,无论该属性存在于实例中还是原型中。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 确定该属性存在于对象中(false)，还是存在于原型中(true)</span><br><span class="line">function hasPrototypeProperty(object,name)&#123;</span><br><span class="line">   return !object.hasOwnProperty(name) &amp;&amp; (name in object);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>（4） 使用 for-in 循环，返回的是所有能够通过对象访问的、可枚举的 (enumerated) 属性，其中既包括存在于实例中的属性，也包括存在于原型中的属性。<br>（5） 取得对象上所有可枚举的实例属性，可以使用Object.key() 方法。这个方法接收一个对象作为参数，返回一个包含所有可枚举属性的字符串数组<br>（6） 取得所有实例属性，无论它是否可枚举，都可以使用 Object.getOwnPropertyNames() 方法<br>（7） 更简单的原型语法：对象字面量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function Person()&#123;</span><br><span class="line"></span><br><span class="line">&#125; </span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">   name： &quot;Nicholas&quot;,</span><br><span class="line">   age: 29,</span><br><span class="line">   job: &quot;Software Engineer&quot;,</span><br><span class="line">   sayName: function()&#123;</span><br><span class="line">      console.log(this.name);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>（8） 重写整个原型对象，等于切断了构造函数与最初原型之间的联系。实例中的指针仅指向原型，而不指向构造函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">function Person()&#123;   </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var friend = new Person();</span><br><span class="line"></span><br><span class="line">Person.prototype.sayHi = functon()&#123;</span><br><span class="line">   console.log(&quot;hi&quot;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">friend.sayHi(); // &quot;hi&quot;</span><br><span class="line"></span><br><span class="line">// 重写原型对象</span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">   constructor: Person,</span><br><span class="line">   name: &quot;Nicholas&quot;,</span><br><span class="line">   age: 29,</span><br><span class="line">   job: &quot;SoftWare Engineer&quot;,</span><br><span class="line">   sayName: function()&#123;</span><br><span class="line">      console.log(this.name);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">friend.sayName(); // 运行报错</span><br></pre></td></tr></table></figure>
-<p>（8） 所有原生引用类型（Object、Array、String,等等）都在其构造函数的原型上定义了方法。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(typeof Array.prototype.sort); // function</span><br><span class="line">console.log(typeof String.prototype.substring); // function</span><br></pre></td></tr></table></figure>
-<p>（9） 原型模式省略了为构造函数传递初始化参数这一环节，结果所有实例在默认情况下都取得相同的属性值。这种共享对于函数非常合适，对于那些包含基本值的属性倒也说得过去（通过在实例上添加一个同名属性可以覆盖原型中的对应属性），然而，对于包含引用类型值的属性就有问题了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">function Person()&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">    constructor: Person,</span><br><span class="line">    name: &quot;Nicholas&quot;,</span><br><span class="line">    age: 29,</span><br><span class="line">    job: &quot;SoftWare Engineer&quot;,</span><br><span class="line">    friends: [&quot;Shelby&quot;, &quot;Court&quot;],</span><br><span class="line">    sayName: function()&#123;</span><br><span class="line">    console.log(this.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var person1 = new Person();</span><br><span class="line">var person2 = new Person();</span><br><span class="line"></span><br><span class="line">person1.friends.push(&quot;Van&quot;);</span><br><span class="line"></span><br><span class="line">console.log(person1.friends); // &quot;Shelby,Court,Van&quot;</span><br><span class="line">console.log(person2.friends); // &quot;Shelby,Court,Van&quot;</span><br><span class="line">console.log(person1.friends === person2.friends); // true</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">4. 组合使用构造函数模式和原型模式</span><br><span class="line">   （1） 构造函数模式用于定义实例属性，而原型模式用于定义方法和共享的属性。结果，每个实例都会有自己的一份实例属性的副本，但同时又共享着对方法的引用，最大限度地节省了内存。另外，这种混成模式还支持向构造函数传递参数</span><br><span class="line">function Person(name,age,job)&#123;</span><br><span class="line">   this.name = name;</span><br><span class="line">   this.age = age;</span><br><span class="line">   this.job = job;</span><br><span class="line">   this.friends = [&quot;Shelby&quot;, &quot;court&quot;]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">   constructor: Person,</span><br><span class="line">   sayName: function()&#123;</span><br><span class="line">      console.log(this.name)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var person1 = new Person(&quot;Nicholas&quot;, 29, &quot;SoftWare Engineer&quot;);</span><br><span class="line">var person2 = new Person(&quot;Greg&quot;, 27, &quot;Doctor&quot;);</span><br><span class="line"></span><br><span class="line">person1.friends.push(&quot;Van&quot;);</span><br><span class="line">console.log(person1.friends); // &quot;Shelby, Count, Van&quot; </span><br><span class="line">console.log(person2.friends); // &quot;Shelby, Count&quot;</span><br><span class="line">console.log(person1.friends === person2.friends); // false</span><br><span class="line">console.log(person1.sayName === person2.sayName); // true</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>这种构造函数与原型混成的模式，是目前在 ECMAScript 中使用最广泛。认同度最高的一种创建自定义类型的方法</p>
-<ol start="5">
-<li>动态原型模式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function Person(name,age,job)&#123;</span><br><span class="line">   this.name = name;</span><br><span class="line">   this.age = age;</span><br><span class="line">   this.job = job;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 方法</span><br><span class="line">if(typeof this.sayName !== &quot;function&quot;)&#123;</span><br><span class="line">   Person.prototype.sayName = function()&#123;</span><br><span class="line">      console.log(this.name);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var person1 = new Person(&quot;Nicholas&quot;, 29, &quot;SoftWare Engineer&quot;);</span><br><span class="line">person1.sayName(); // &quot;Nicholas&quot;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>这里只在 sayName() 方法不存在的情况下，才会将它添加到原型中。不能使用对象字面量重写原型。</p>
-<ol start="6">
-<li>寄生构造函数模式<br>这种模式的基本思想是创建一个函数，该函数的作用仅仅是封装创建对象的代码，然后再返回新创建的对象。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function Person(name,age,job)&#123;</span><br><span class="line">   var o = new Object();</span><br><span class="line">   o.name = name;</span><br><span class="line">   o.age = age;</span><br><span class="line">   o.job = job;</span><br><span class="line">   o.sayName = function()&#123;</span><br><span class="line">      alert(this.name);</span><br><span class="line">   &#125;;</span><br><span class="line">   return o;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>看起来很像工厂模式，这个模式在可以在特殊情况下用来为对象创建构造函数，假设我们想创建一个具有额外方法的特殊数组，由于不能直接修改 Array 构造函数，因此可以使用这个模式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function SpecialArray()&#123;</span><br><span class="line">   // 创建数组</span><br><span class="line">   var values = new Array();</span><br><span class="line"></span><br><span class="line">   // 添加值</span><br><span class="line">   values.push.apply(values, arguments);</span><br><span class="line"></span><br><span class="line">   // 添加方法</span><br><span class="line">   values.toPipedString = function()&#123;</span><br><span class="line">      return this.join(&quot;|&quot;);      </span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   // 返回数组</span><br><span class="line">   return values;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var colors = new SpecialArray(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;);</span><br><span class="line">console.log(colors.toPipedString()) // &quot;red|blue|green&quot;</span><br></pre></td></tr></table></figure></p>
-<p>关于寄生构造函数模式，返回的对象与构造函数或者与构造函数的原型属性之间没有关系；也就是说，构造函数返回的对象与在构造函数外部创建的对象没有什么不同，不能依赖 instanceof 操作符来确定对象类型，不推荐使用这种模式</p>
-<ol start="7">
-<li>稳妥构造函数模式<br>稳妥对象，指的是没有公共属性，而且其方法也不引用 this 的对象。最适合在一些安全的环境中（禁止使用 this 和 new），或者在防止数据被其他应用程序改动时使用。稳妥构造函数遵循与寄生构造函数内饰的模式，但有两点不同：一是新创建对象的实例方法不引用 this;二是不使用 new 操作符条用构造函数。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function Person(name,age,job)&#123;</span><br><span class="line"></span><br><span class="line">   // 创建要返回的对象</span><br><span class="line">   var o = new Object();</span><br><span class="line">   </span><br><span class="line">   // 可以在这里定义私有变量和函数</span><br><span class="line"></span><br><span class="line">   // 添加方法</span><br><span class="line">   o.sayName = function()&#123;</span><br><span class="line">      console.log(name)</span><br><span class="line">   &#125;;</span><br><span class="line"></span><br><span class="line">   // 返回对象 </span><br><span class="line">    return o; // 除了使用 sayName() 方法外，没有其他方法访问 name 的值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="继承（接口继承和实现继承）"><a href="#继承（接口继承和实现继承）" class="headerlink" title="继承（接口继承和实现继承）"></a>继承（接口继承和实现继承）</h2><ol>
-<li><p>原型链<br>（1）原型链作为实现继承的主要方法。其基本思想是利用原型让一个引用类型继承另一个引用类型的属性和方法。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function SuperType()&#123;</span><br><span class="line">   this.property = true;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">SuperType.prototype.getSuperValue = function()&#123;</span><br><span class="line">   return this.property;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function SubType()&#123;</span><br><span class="line">   this.subproperty = false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 继承了 SuperType</span><br><span class="line">SubType.prototype = new SuperType();</span><br><span class="line"></span><br><span class="line">SubType.prototype.getSubValue = function()&#123;</span><br><span class="line">   return this.subproperty;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">var instance = new SubType();</span><br><span class="line">console.log(instance.getSuperValue()) // true</span><br><span class="line">console.log(instance.getSubValue())  // false</span><br></pre></td></tr></table></figure>
-<p>（2）所有引用类型默认都继承了 Object,因此默认原型都会包括一个内部指针，指向 Object.prototype。一句话， Subtype 继承了 SuperType,而 SuperType 继承了 Object。<br>（3）instanceof 操作符 和 isPrototypeOf() 方法都可以用来确定原型和实例之间的关系。<br>（4）子类型有时候需要重写超类型中的某个方法，或者需要添加超类型中不存在的某个方法。但不管怎样，给原型添加方法的代码一定要放在替换原型的语句之后，并且不能使用对象字面量创建原型方法<br>（5） 原型链的问题：包含引用类型值的原型；在创建子类型的实例时，不能向超类型的构造函数中传递参数。实际上，应该说是没有办法在不影响所有对象实例的情况下，给超类型的构造函数传递参数。</p>
-</li>
-<li><p>借用构造函数（伪造对象或经典继承）<br>（1） 通过使用 apply() 和 call() 方法可以在新创建的对象上执行构造函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function SuperType() &#123;</span><br><span class="line">   this.colors = [&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function SubType() &#123;</span><br><span class="line">   // 继承了 SuperType</span><br><span class="line">   SuperType.call(this)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var instance1 = new SubType();</span><br><span class="line">instance1.colors.push(&quot;black&quot;);</span><br><span class="line">console.log(instance1.colors); // &apos;red&apos;, &apos;blue&apos;, &apos;green&apos;, &apos;black&apos;</span><br><span class="line"></span><br><span class="line">var instance2 = new SubType()</span><br><span class="line">console.log(instance2.colors); // red&apos;, &apos;blue&apos;, &apos;green&apos;</span><br></pre></td></tr></table></figure>
-<p>（2） 传递参数<br><code>`</code><br>function SuperType(name) {<br>this.name = name;<br>}</p>
-</li>
-</ol>
-<p>function SubType() {<br>   // 继承了 SuperType,同时还传递了参数<br>   SuperType.call(this,”Nicholas”);</p>
-<p>   // 实例属性<br>   this.age = 29;<br>}</p>
-<p>var instance = new SubType();<br>console.log(instance.name); // Nicholas<br>console.log(instance.age); // 29<br><code>`</code><br>   （3） 仅仅是借用构造函数，方法都在构造函数中定义，因此函数复用就无从谈起了，这个技术也是很少单独使用的。</p>
-<ol start="3">
-<li>组合继承（伪经典继承）<br>（1） 将原型链和借用构造函数的技术组合到一块，从而发挥二者之长的一种继承模式。背后的思路是使用原型链实现对原型属性和方法的继承，通过借用构造函数来实现对实例属性的继承。</li>
-</ol>
-
-          
+</code></pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/06/30/blog-21/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -644,7 +584,7 @@
       
         
           
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">* 增： O(n)  如果只对最后一个元素操作依然是O(n)?因为resize?</span><br><span class="line">* 删： O(n)  如果只对最后一个元素操作依然是O(n)?因为resize?</span><br><span class="line">* 改： 已知索引 O(1)；未知索引 O(n)</span><br><span class="line">* 查： 已知索引 O(1)；未知索引 O(n)</span><br><span class="line">* */</span><br><span class="line"></span><br><span class="line">public class Array&lt;E&gt; &#123;</span><br><span class="line">    private E[] data;</span><br><span class="line">    private int size;</span><br><span class="line"></span><br><span class="line">    // 构造函数，传入数组的容量capacity构造Array</span><br><span class="line">    public Array(int capacity) &#123;</span><br><span class="line">        data = (E[]) new Object[capacity];</span><br><span class="line">        size = 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 无参数的构造函数，默认数组的容量是capacity=10</span><br><span class="line">    public Array() &#123;</span><br><span class="line">        this(10);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 获取数组中的元素个数</span><br><span class="line">    public int getSize() &#123;</span><br><span class="line">        return size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 获取数组的容量</span><br><span class="line">    public int getCapacity() &#123;</span><br><span class="line">        return data.length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 返回数组是否为空</span><br><span class="line">    public boolean isEmpty() &#123;</span><br><span class="line">        return size == 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 向所有元素后添加一个新元素</span><br><span class="line">    public void addLast(E e) &#123;</span><br><span class="line">        add(size, e);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 在所有元素前添加一个新元素</span><br><span class="line">    public void addFirst(E e) &#123;</span><br><span class="line">        add(0, e);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 在第index个位置插入一个新元素</span><br><span class="line">    public void add(int index, E e) &#123;</span><br><span class="line">        if (index &lt; 0 || index &gt; size) &#123;</span><br><span class="line">            throw new IllegalArgumentException(&quot;添加失败，index 错误&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        if (size == data.length) &#123;</span><br><span class="line">            resize(2 * data.length);</span><br><span class="line">        &#125;</span><br><span class="line">        for (int i = size - 1; i &gt;= index; i--) &#123;</span><br><span class="line">            data[i + 1] = data[i];</span><br><span class="line">        &#125;</span><br><span class="line">        data[index] = e;</span><br><span class="line">        size++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 获取index索引位置的元素</span><br><span class="line">    public E get(int index) &#123;</span><br><span class="line">        if (index &lt; 0 || index &gt;= size) &#123;</span><br><span class="line">            throw new IllegalArgumentException(&quot;获取失败，index 错误&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        return data[index];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 修改index索引位置的元素为e</span><br><span class="line">    public void set(int index, E e) &#123;</span><br><span class="line">        if (index &lt; 0 || index &gt;= size) &#123;</span><br><span class="line">            throw new IllegalArgumentException(&quot;获取失败，index 错误&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        data[index] = e;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 查找数组中是否存在元素e</span><br><span class="line">    public boolean comtains(E e) &#123;</span><br><span class="line">        for (int i = 0; i &lt; size; i++) &#123;</span><br><span class="line">            if (data[i].equals(e)) &#123;</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 查找数组中元素e所在的索引，如果不存在元素e,则返回-1，</span><br><span class="line">    public int find(E e) &#123;</span><br><span class="line">        for (int i = 0; i &lt; size; i++) &#123;</span><br><span class="line">            if (data[i].equals(e)) &#123;</span><br><span class="line">                return i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 从数组中删除index位置的元素，返回删除的元素</span><br><span class="line">    public E remove(int index) &#123;</span><br><span class="line">        if (index &lt; 0 || index &gt;= size) &#123;</span><br><span class="line">            throw new IllegalArgumentException(&quot;删除失败，index 错误&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        E ret = data[index];</span><br><span class="line">        for (int i = index + 1; i &lt; size; i++) &#123;</span><br><span class="line">            data[i - 1] = data[i];</span><br><span class="line">        &#125;</span><br><span class="line">        size--;</span><br><span class="line">        data[size] = null; // loitering objects != memory leak 释放内存</span><br><span class="line">        if (size == data.length / 4 &amp;&amp; data.length / 2 != 0) &#123;</span><br><span class="line">            resize(data.length / 2);</span><br><span class="line">        &#125;</span><br><span class="line">        return ret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 从数组中删除第一个元素，返回删除的元素</span><br><span class="line">    public E removeFirst() &#123;</span><br><span class="line">        return remove(0);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 从数组中删除最后一个元素，返回删除的元素</span><br><span class="line">    public E removeLast() &#123;</span><br><span class="line">        return remove(size - 1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 从数组中删除元素e</span><br><span class="line">    public void removeElement(E e) &#123;</span><br><span class="line">        int index = find(e);</span><br><span class="line">        if (index != -1) &#123;</span><br><span class="line">            remove(index);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        StringBuilder res = new StringBuilder();</span><br><span class="line">        res.append(String.format(&quot;Array: size = %d , capacity = %d\n&quot;, size, data.length));</span><br><span class="line">        res.append(&quot;[&quot;);</span><br><span class="line">        for (int i = 0; i &lt; size; i++) &#123;</span><br><span class="line">            res.append(data[i]);</span><br><span class="line">            if (i != size - 1) &#123;</span><br><span class="line">                res.append(&quot;, &quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        res.append(&quot;]&quot;);</span><br><span class="line">        return res.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 动态设置数组的容量</span><br><span class="line">    private void resize(int newCapacity) &#123;</span><br><span class="line">        E[] newData = (E[]) new Object[newCapacity];</span><br><span class="line">        for (int i = 0; i &lt; size; i++) &#123;</span><br><span class="line">            newData[i] = data[i];</span><br><span class="line">        &#125;</span><br><span class="line">        data = newData;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">* 增： O(n)  如果只对最后一个元素操作依然是O(n)?因为resize?</span><br><span class="line">* 删： O(n)  如果只对最后一个元素操作依然是O(n)?因为resize?</span><br><span class="line">* 改： 已知索引 O(1)；未知索引 O(n)</span><br><span class="line">* 查： 已知索引 O(1)；未知索引 O(n)</span><br><span class="line">* */</span><br><span class="line">public class Array&lt;E&gt; &#123;</span><br><span class="line">    private E[] data;</span><br><span class="line">    private int size;</span><br><span class="line"></span><br><span class="line">    // 构造函数，传入数组的容量capacity构造Array</span><br><span class="line">    public Array(int capacity) &#123;</span><br><span class="line">        data = (E[]) new Object[capacity];</span><br><span class="line">        size = 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 无参数的构造函数，默认数组的容量是capacity=10</span><br><span class="line">    public Array() &#123;</span><br><span class="line">        this(10);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 获取数组中的元素个数</span><br><span class="line">    public int getSize() &#123;</span><br><span class="line">        return size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 获取数组的容量</span><br><span class="line">    public int getCapacity() &#123;</span><br><span class="line">        return data.length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 返回数组是否为空</span><br><span class="line">    public boolean isEmpty() &#123;</span><br><span class="line">        return size == 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 向所有元素后添加一个新元素</span><br><span class="line">    public void addLast(E e) &#123;</span><br><span class="line">        add(size, e);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 在所有元素前添加一个新元素</span><br><span class="line">    public void addFirst(E e) &#123;</span><br><span class="line">        add(0, e);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 在第index个位置插入一个新元素</span><br><span class="line">    public void add(int index, E e) &#123;</span><br><span class="line">        if (index &lt; 0 || index &gt; size) &#123;</span><br><span class="line">            throw new IllegalArgumentException(&quot;添加失败，index 错误&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        if (size == data.length) &#123;</span><br><span class="line">            resize(2 * data.length);</span><br><span class="line">        &#125;</span><br><span class="line">        for (int i = size - 1; i &gt;= index; i--) &#123;</span><br><span class="line">            data[i + 1] = data[i];</span><br><span class="line">        &#125;</span><br><span class="line">        data[index] = e;</span><br><span class="line">        size++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 获取index索引位置的元素</span><br><span class="line">    public E get(int index) &#123;</span><br><span class="line">        if (index &lt; 0 || index &gt;= size) &#123;</span><br><span class="line">            throw new IllegalArgumentException(&quot;获取失败，index 错误&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        return data[index];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 修改index索引位置的元素为e</span><br><span class="line">    public void set(int index, E e) &#123;</span><br><span class="line">        if (index &lt; 0 || index &gt;= size) &#123;</span><br><span class="line">            throw new IllegalArgumentException(&quot;获取失败，index 错误&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        data[index] = e;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 查找数组中是否存在元素e</span><br><span class="line">    public boolean comtains(E e) &#123;</span><br><span class="line">        for (int i = 0; i &lt; size; i++) &#123;</span><br><span class="line">            if (data[i].equals(e)) &#123;</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 查找数组中元素e所在的索引，如果不存在元素e,则返回-1，</span><br><span class="line">    public int find(E e) &#123;</span><br><span class="line">        for (int i = 0; i &lt; size; i++) &#123;</span><br><span class="line">            if (data[i].equals(e)) &#123;</span><br><span class="line">                return i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 从数组中删除index位置的元素，返回删除的元素</span><br><span class="line">    public E remove(int index) &#123;</span><br><span class="line">        if (index &lt; 0 || index &gt;= size) &#123;</span><br><span class="line">            throw new IllegalArgumentException(&quot;删除失败，index 错误&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        E ret = data[index];</span><br><span class="line">        for (int i = index + 1; i &lt; size; i++) &#123;</span><br><span class="line">            data[i - 1] = data[i];</span><br><span class="line">        &#125;</span><br><span class="line">        size--;</span><br><span class="line">        data[size] = null; // loitering objects != memory leak 释放内存</span><br><span class="line">        if (size == data.length / 4 &amp;&amp; data.length / 2 != 0) &#123;</span><br><span class="line">            resize(data.length / 2);</span><br><span class="line">        &#125;</span><br><span class="line">        return ret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 从数组中删除第一个元素，返回删除的元素</span><br><span class="line">    public E removeFirst() &#123;</span><br><span class="line">        return remove(0);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 从数组中删除最后一个元素，返回删除的元素</span><br><span class="line">    public E removeLast() &#123;</span><br><span class="line">        return remove(size - 1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 从数组中删除元素e</span><br><span class="line">    public void removeElement(E e) &#123;</span><br><span class="line">        int index = find(e);</span><br><span class="line">        if (index != -1) &#123;</span><br><span class="line">            remove(index);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        StringBuilder res = new StringBuilder();</span><br><span class="line">        res.append(String.format(&quot;Array: size = %d , capacity = %d\n&quot;, size, data.length));</span><br><span class="line">        res.append(&quot;[&quot;);</span><br><span class="line">        for (int i = 0; i &lt; size; i++) &#123;</span><br><span class="line">            res.append(data[i]);</span><br><span class="line">            if (i != size - 1) &#123;</span><br><span class="line">                res.append(&quot;, &quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        res.append(&quot;]&quot;);</span><br><span class="line">        return res.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 动态设置数组的容量</span><br><span class="line">    private void resize(int newCapacity) &#123;</span><br><span class="line">        E[] newData = (E[]) new Object[newCapacity];</span><br><span class="line">        for (int i = 0; i &lt; size; i++) &#123;</span><br><span class="line">            newData[i] = data[i];</span><br><span class="line">        &#125;</span><br><span class="line">        data = newData;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -816,84 +756,19 @@
 
       
         
-          
-            <h1 id="JavaScript-简介"><a href="#JavaScript-简介" class="headerlink" title="JavaScript 简介"></a>JavaScript 简介</h1><ol>
+          <h1 id="JavaScript-简介"><a href="#JavaScript-简介" class="headerlink" title="JavaScript 简介"></a>JavaScript 简介</h1><ol>
 <li>JavaScript 是一种专为与网页交互而设计的脚本语言，由下列三个不同的部分组成：<br>（1） ECMAScript,由 ECMA-262 定义，提供核心语言功能；<br>（2） 文档对象模型（DOM），提供访问和操作网页内容的方法和接口；<br>（3） 浏览器对象模型（BOM），提供与浏览器交互的方法和接口。</li>
 </ol>
 <h1 id="在-HTML-中使用-JavaScript"><a href="#在-HTML-中使用-JavaScript" class="headerlink" title="在 HTML 中使用 JavaScript"></a>在 HTML 中使用 JavaScript</h1><ol>
 <li>把 JavaScript 插入到 HTML 页面中要使用 <code>&lt;script&gt;</code> 元素。使用这个元素可以把 JavaScript 嵌入到 HTML 页面中，让脚本与标记混合在一起；也可以包含外部的 JavaScript 文件。而我们需要注意的地方有：<br>（1） 在包含外部 JavaScript 文件时，必须将 src 属性设置为指向相应文件的 URL。而这个文件既可以是与包含它的页面位于同一个服务器上的文件，也可以是其他任何域中的文件。<br>（2） 所有 <code>&lt;script&gt;</code> 元素都会按照它们在页面中出现的先后顺序依次被解析。在不使用 defer 和 async 属性的情况下，只有在解析完前面 <code>&lt;script&gt;</code> 元素中的代码之后，才会开始解析后面 <code>&lt;script&gt;</code> 元素中的代码。<br>（3） 由于浏览器会先解析完不使用 defer 属性的 <code>&lt;script&gt;</code> 元素中的代码，然后再解析后面的内容，所以一般应该把 <code>&lt;script&gt;</code> 元素放在页面最后，即主要内容后面， <code>&lt;/body&gt;</code> 标签前面。<br>（4） 使用 defer 属性可以让脚本在文档完全呈现之后再执行。延迟脚本总是按照指定它们的顺序执行。<br>（5） 使用 async 属性可以表示当前脚本不必等待其他脚本，也不必阻塞文档呈现。不能保证异步脚本按照它们在页面中出现的顺序执行。</li>
-<li>另外，使用 <code>&lt;noscript&gt;</code> 元素可以指定在不支持脚本的浏览器中显示的替代内容。但在启用了脚本的情况下，浏览器不会显示 <code>&lt;noscript&gt;</code> 元素中的任何内容。</li>
-</ol>
-<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><ol>
-<li>严格模式： 为 JavaScript 定义了一种不同的解析与执行模型。在严格模式下，ECMAScript3 中的一些不确定的行为将得到处理，而且对某些不安全的操作会抛出错误。<br>（1） 在顶部添加代码 “use strict”; 整个脚本中启用严格模式<br>（2） 指定函数在严格模式下执行： <code>function doSomething(){ &quot;use strict&quot;; ...函数体 }</code></li>
-<li>5种简单数据类型： Undefined、Null、Boolean、Number、String;1种复杂数据类型：Object。ES6新增的一种原始数据类型： Symbol（符号、标记）。凡是属性名是 Symbol 类型的，就都是独一无二的，Symbol 值通过函数生成： <code>let s = Symbol() || let s = Symbol(&quot;s1&quot;)</code>;Symbol没有包装类型，不能使用 new 操作符。 </li>
-<li>typeof 操作符：检测给定变量的数据类型，是操作符不是函数。用法 typeof(value) 返回：<br>（1） “undefined” : value 未定义；<br>（2） “boolean”: value 是布尔值；<br>（3） “string”: value 是字符串；<br>（4） “number”: value 是数值；<br>（5） “object”: value 是对象或 null;<br>（6） “function”: value 是函数。<br>（老版本浏览器会将正则表达式也返回”function”,新版会返回”object”）</li>
-<li>位操作符：按内存中表示数值的位来操作数值，速度最快。<br>（1） 按位非（~）：执行按位非的结果就是返回数值的反码；<br>（2） 按位与（&amp;）：将两个数值的每一位对齐，两个数值的对应位都是1时才返回1，任何一位是0，结果就是0；<br>（3） 按位或（|）：将两个数值的每一位对齐，两个数值的对应位有一个位是1的就返回1，只有在两个位都是0的情况下才返回0；<br>（4） 按位异或（^）：将两个数值得每一位对齐，两个数值对应位上只有一个1时才返回1，如果对应的两位都是1或都是0，则返回0；<br>（5） 左移（&lt;&lt;）： 将数值的所有位向左移动指定的位数，以0来填充右侧多出的空位。左移不会影响操作数的符号位；<br>（6） 有符号的右移（&gt;&gt;）：将数值向右移动，但保留符号位，以0来填充左侧多出的空位；<br>（7） 无符号右移（&gt;&gt;&gt;）：将数值的所有32位都向右移动，正数的无符号右移和有符号右移结果相同，负数无符号右移后的结果非常大，因为负数以其绝对值得二进制补码形式表示。</li>
-<li>关系操作符： &gt;、 &lt; 、 &gt;= 、 &lt;=对两个值进行比较<br>（1） 如果两个操作数都是数值，则执行数值比较<br>（2） 如果两个操作数都是字符串，则比较两个字符串对应的字符编码值<br>（3） 如果一个操作数是数值，则将另一个操作数转换为一个数值，然后执行数值比较。<br>（4） 如果一个操作数是对象，则调用这个对象的 valueOf() 方法，用得到的结果按照前面的规则执行比较。如果对象没有 valueOf 方法，则调用 toString() 方法，并且得到的结果根据前面的规则执行比较<br>（5） 如果一个操作数是布尔值，则先将其转换为数值，然后再执行比较</li>
-<li>相等操作符： == 和 != 先转换再比较； === 和 ！== 仅比较而不转换<br>（1） 如果有一个操作数是布尔值，则在比较相等性之前先将其转换为数值—- false 转换为 0，而 true 转换为 1.<br>（2） 如果一个操作数是字符串，另一个操作数是数值，在比较相等性之前先将字符串转换为数值<br>（3） 如果一个操作数是对象，另一个操作数不是，则调用对象的 valueOf() 方法，用得到的基本类型值按照前面的规则进行比较<br>（4） null 和 undefined 是相等的。<br>（5） 要比较相等性之前，不能将 null 和 undefined 转换成其他任何值<br>（6） 如果有一个操作数是NaN,则相等操作符返回 false，而不相等操作符返回 true。重要提示：即使两个操作数都是NaN,相等操作符也返回 false;因为按照规则，NaN 不等于 NaN<br>（7） 如果两个操作数都是对象，则比较它们是不是同一个对象。如果两个操作数都指向同一个对象，则相等操作符返回 true； 否则，返回 false</li>
-<li>与其他语言不同，ECMScript 没有为整数和浮点数值分别定义不同的数据类型，Number 类型可用于表示所有数值。</li>
-<li>严格模式为这门语言中容易出错的地方施加了限制</li>
-<li>无需指定函数的返回值，因为任何 ECMScript 函数都可以在任何时候返回任何值；实际上，未指定返回值得函数返回的是一个特殊的 undefined 值。</li>
-<li>ECMScript 中也没有函数签名的概念，因为其函数参数是以一个包含零或多个值的数组的形式传递的；可以向 ECMScript 函数传递任意数量的参数，并且可以通过 arguments 对象来访问这些参数；由于不存在函数签名的特性，ECMScript 函数不能重载。</li>
-</ol>
-<h1 id="变量、作用域和内存问题"><a href="#变量、作用域和内存问题" class="headerlink" title="变量、作用域和内存问题"></a>变量、作用域和内存问题</h1><ol>
-<li>基本类型值在内存中占据固定大小的空间，因此被保存在栈内存中</li>
-<li>从一个变量向另一个变量复制基本类型的值，会创建这个值的一个副本</li>
-<li>引用类型的值是对象，保存在堆内存中</li>
-<li>包含引用类型值的变量实际上包含的并不是对象本身，而是一个指向该对象的指针</li>
-<li>从一个变量向另一个变量复制引用类型的值，复制的其实是指针，因此两个变量最终都指向一个对象</li>
-<li>确定一个值是哪种基本类型可以用 typeof 操作符，而确定一个值是哪种引用类型可以使用 instanceof 操作符</li>
-<li>执行环境有全局执行环境和函数执行环境之分</li>
-<li>每次进入一个新执行环境，都会创建一个用于搜索变量和函数的作用域链</li>
-<li>函数的局部环境不仅有权访问函数作用域中的变量，而且有权方位其包含（父）环境，乃至全局环境</li>
-<li>全局环境只能访问在全局环境中定义的变量和函数，而不能直接访问局部环境中的任何数据</li>
-<li>变量的执行环境有助于确定应该何时释放内存</li>
-<li>离开作用域的值将被自动标记为可以回收，因此将在垃圾收集期间被删除</li>
-<li>“标记清除”是目前主流的垃圾收集算法，这种算法的思想是给当前不使用的值加上标记，然后再回收其内存</li>
-<li>另一种垃圾收集算法是“引用计数”，这种算法的思想是跟踪记录所有值被引用的次数。JavaScript 引擎目前都不再使用这种算法；但在 IE 中访问非原生 JavaScript 对象（如 DOM 元素）时，这种算法仍然可能会导致问题</li>
-<li>当代码中存在循环引用现象时，“引用计数”算法就会导致问题</li>
-<li>解除变量的引用不仅有助于消除循环引用现象，而且对垃圾收集也有好处。为了确保有效地回收内存，应该及时解除不再使用的全局对象、全局对象属性以及循环引用变量的引用</li>
-</ol>
-<h1 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h1><ol>
-<li>Object 类型： 一个基础类型，其他所有类型都从 Object 继承了基本的行为</li>
-<li>Array 数组类型： 一组值的有序列表<br>（1） 数组的 length 属性很有特点—-不是只读的。因此，通过设置这个属性，可以从数组的末尾移除项或向数组中添加新项<br>（2） 检测数组： 对于一个网页或者一个全局作用域而言，使用 instanceof 操作符；如果网页中包含多个框架，存在两个以上不同的全局执行环境，从而存在两个以上不同版本的 Array 构造函数，ES5 新增了 Array.isArray() 方法来判断<br>（3） 转换方法： toString() 方法返回由数组中每个值的字符串形式拼接而成的一个以逗号分隔的字符串； valueOf() 返回的还是数组；toLocaleString() 经常也会返回与 toString() 和 valueOf() 方法相同的值，但也不总是如此，它会调用每一项的 toLocalString() 方法; join() 方法只接收一个参数，即用作分隔符的字符串，然后返回包含所有数组项的字符串。如果数组中的某一项的值是 null 或者 undefined ，==，那么该值在上述方法返回的结果中已以空字符串表示</li>
-<li>栈方法<br>（1） push() 方法可以接收任意数量的参数，把它们逐个添加到数组末尾，并返回修改后的数组长度<br>（2） pop() 方法从数组末尾移除最后一项，减少数组的 length 值，然后返回移除的项</li>
-<li>队列方法<br>（1） shift() 方法移除数组中的第一个项并返回该项，同时将数组长度减一<br>（2） unshift() 方法在数组前端添加任意个项并返回新数组的长度</li>
-<li><p>重排序方法<br>（1） reverse() 方法会反转数组项的顺序<br>（2） sort() 默认情况下，该方法按升序排列数组项—-即最小的值位于最前面，最大的值排在最后面。sort() 方法会调用每个数组项的 toString() 转型方法，然后比较得到的字符串，以确定如何排序。即使数组中的每一项都是数值，sort() 方法比较的也是字符串。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var arr = [0,1,5,10,15]</span><br><span class="line">arr.sort()</span><br><span class="line">console.log(arr) // 0,1,10,15,5</span><br></pre></td></tr></table></figure>
-<p>进行字符串比较时，“10”位于“5”的前面。因此 sort() 方法可以接收一个比较函数作为参数，以便我们指定哪个值位于哪个值的前面。比较函数接收两个参数，如果第一个参数应该位于第二个之前则返回一个负数，如果两个参数相等则返回0，如果第一个参数应该位于第二个之后则返回一个正数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function compare(value1,value2)&#123;</span><br><span class="line">  if(value1 &lt; value2)&#123;</span><br><span class="line">    return 1;</span><br><span class="line">  &#125; else if(value1 &gt; value2)&#123;</span><br><span class="line">    return -1;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 数值类型或者其 valueOf() 方法会返回数值类型的对象类型，更简单的比较函数</span><br><span class="line">function compare(value1,value2)&#123;</span><br><span class="line">  return value2 - value1; // 降序</span><br><span class="line">  return value1 - value2; // 升序</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>（3） reverse() 和 sort() 方法的返回值是经过排序之后的数组</p>
-</li>
-<li>操作方法<br>（1） concat() 方法会先创建当前数组的一个副本，然后将接受到的参数添加到这个副本的末尾，最后返回新构建的数组。原来的数组值保持不变<br>（2） slice() 基于当前数组中的一或多个项创建一个新数组，可以接收一或两个参数，即要返回项的起始和结束位置。一个参数：返回从该参数指定位置开始到当前数组末尾的所有项；两个参数：返回起始和结束位置之间的项—-但不包括结束位置的项。参数是负数，则用数组长度加上改数来确定相应的位置。slice() 方法不会影响原始数组<br>（3） splice() 主要用途是向数组的中部插入项。<br><em>删除：</em> 指定两个参数：要删除的第一项的位置和要删除的项数<br><em>插入：</em> 提供3个参数：起始位置、0（要删除的项数）和需要插入的项。插入多项可以再传入第四、五以至任意多个项<br><em>替换：</em> 指定3个参数：起始位置、要删除的项数和要插入任意数量的项<br>splice() 方法始终返回一个数组，该数组包含从原始数组中删除的项</li>
-<li>位置方法<br>（1） indexOf() 和 lastIndexOf() 这两个方法都接收两个参数，要查找的项和（可选的）表示查找起点位置的索引。区别是indexOf()方法从数组的开头开始向后查找，lastIndexOf()从末尾开始向前查找。都返回要查找的项在数组中的位置，没找到的情况下返回 -1</li>
-<li>迭代方法<br>（1） every():对数组中的每一项运行给定函数，如果该函数对每一项都返回true,则返回true<br>（2） filter():对数组中的每一项运行给定函数，返回该函数会返回true的项组成的数组<br>（3） foreEach():对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组<br>（4） map():对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组<br>（5） some():对数组中的每一项运行给定函数，如果该函数对任一项返回true,则返回true<br>以上方法都不会修改数组中的包含的值</li>
-<li>缩小方法<br>（1） reduce():从数组的第一项开始，逐个遍历到最后。迭代数组的所有项，然后构建一个最终返回的值<br>（2） reduceRight(): 从数组的最后一项开始，逐个遍历到最第一项。迭代数组的所有项，然后构建一个最终返回的值<br>这两个方法都接收两个参数：一个在每一项上调用的函数和（可选的）作为缩小基础的初始值。传入函数接收4个参数：前一个值、当前值、项的索引和数组对象。这个函数返回的任何值都会作为第一个参数自动传给下一项</li>
-<li>RegExp 实例方法<br>（1） exec(): 接收一个参数，即要应用模式的字符串，然后返回包含第一个匹配信息的数组；或者在没有匹配项的情况下返回 null。返回的数组包含两个额外的属性：index和input。其中，index 表示匹配项在字符创中的位置，而 input表示应用正则表达式的字符串<br>（2） test(): 接收一个字符串参数。在模式与该参数匹配的情况下返回 true;否则返回 false  </li>
-<li><p>函数声明与函数表达式<br>解析器在向执行环境中加载数据时，对函数声明和函数表达式并非一视同仁。解析器会率先读取函数声明，并使其在执行任何代码之前可用（可以访问）；至于函数表达式，则必须等到解析器执行到它所在的代码行，才会真正被解释执行。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 可以正常运行</span><br><span class="line">console.log(sum(10,10))</span><br><span class="line">function sum(num1,num2)&#123;</span><br><span class="line">  return num1 + num2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 不能运行</span><br><span class="line">console.log(sum(10,10))</span><br><span class="line">var sum =  function(num1,num2)&#123;</span><br><span class="line">  return num1 + num2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>作为值的函数<br>不仅可以像传递参数一样把一个函数传递给另一个函数，而且可以将一个函数作为另一个函数的结果返回。根据某个对象属性对对象数组进行排序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function createdComparisonFunction(propertyName)&#123;</span><br><span class="line">  return function(object1,object2)&#123;</span><br><span class="line">    let value1 = object1[propertyName];</span><br><span class="line">    let value2 = object2[propertyName];</span><br><span class="line">    if(value1 &lt; value2)&#123;</span><br><span class="line">      return -1;</span><br><span class="line">    &#125; else if(value1 &gt; value2)&#123;</span><br><span class="line">      return 1;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      return 0;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">let data = [&#123;age:10&#125;,&#123;age:5&#125;,&#123;age:20&#125;];</span><br><span class="line">data.sort(createdComparisonFunction(&quot;age&quot;));</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>函数内部属性<br>（1） arguments：一个类数组对象，包含着传入函数中的所有参数。这个对象有一个名叫 callee 的属性，该属性是一个指针，指向拥有这个 arguments 对象的函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function factorial(num)&#123;</span><br><span class="line">  if(num &lt;= 1)&#123;</span><br><span class="line">    return 1;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    return num * factorial(num - 1) // 与函数名耦合</span><br><span class="line">    return num * arguments.callee(num - 1) // 消除耦合</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>（2） this: 引用的是函数据以执行的环境对象—-或者也可以说是 this 值（当在网页的全局作用域中调用函数时，this 对象引用的就是 window）<br>（3） caller: 这个属性中保存着调用当前函数的函数的引用，如果是在全局作用域中调用当前函数，它的值为 null</p>
-</li>
-<li><p>函数属性和方法<br>（1） length: 该属性表示函数希望接收的命名参数的个数<br>（2） prototype： 保存他们所有实例方法<br>每个函数都包含两个非继承而来的方法： apply() 和 call()。用途都是在特定的作用域中调用函数，实际上等于设置函数体内 this 对象的值，apply() 方法接收两个参数：一个是在其中运行函数的作用域，另一个是参数数组。其中，第二个参数可以是 Array 实例，也可以是 arguments 对象。和 call() 方法作用相同，但 call() 方法接收的第二个参数必须逐个列举出出来，不能传 arguments</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function sum(num1,num2)&#123;</span><br><span class="line">  return num1 + num2;</span><br><span class="line">&#125;</span><br><span class="line">function callSum1(num1,num2)&#123;</span><br><span class="line">  return sum.apply(this, arguments); // 传入 arguments</span><br><span class="line">  return sum.call(this, arguments); // call() 不能这样写</span><br><span class="line">&#125;</span><br><span class="line">function callSum2(num1,num2)&#123;</span><br><span class="line">  return sum.apply(this,[num1, num2]); // 传入数组</span><br><span class="line">  return sum.call(this,num1, num2); // call() 只能这样写</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>传递参数并非 apply() 和 call() 真正的用武之地；它们真正强大的地方是能够扩充函数赖以运行的作用域</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">window.color = &quot;red&quot;;</span><br><span class="line">var o = &#123; color: &quot;blue&quot; &#125;;</span><br><span class="line">function sayColor()&#123;</span><br><span class="line">  console.log(this.color);</span><br><span class="line">&#125;</span><br><span class="line">sayColor(); // red</span><br><span class="line">sayColor.call(this); // red</span><br><span class="line">sayColor.call(window); // red</span><br><span class="line">sayColor.call(o); // blue </span><br><span class="line">// 好处：对象不需要与方法有任何耦合关系</span><br><span class="line"></span><br><span class="line">var objectSayColor = sayColor.bind(0); // bind() 方法会创建一个函数的实例，其 this 值会被绑定到传个 bind() 函数的值</span><br><span class="line">objectSayColor(); // blue</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>基本包装类型 Boolean、Number和String<br>（1） 每个包装类型都映射到同名的基本类型<br>（2） 在读取模式下访问基本类型值时，就会创建对应的基本包装类型的一个对象，从而方便了数据操作<br>（3） 操作基本类型值的语句一经执行完毕，就会立即销毁新创建的包装对象</p>
-</li>
-<li>String 类型<br>（1） charAt(): 接收一个参数，即基于0的字符位置。以单字符字符串的形式返回给定位置那个字符<br>（2） charCodeAt():  接收一个参数，即基于0的字符位置。以单字符字符串的形式返回给定位置那个字符编码<br>（3） concat(): 用于将一个或多个字符串拼接起来，返回拼接得到的新字符串。原始值不改变<br>（4） slice()、substr()、substring(): 返回被操作字符串的一个子字符串，接收一或两个参数。第一个参数指定子字符串的开始位置，第二个参数（在指定的情况下）表示子字符串到哪里结束。不会修改字符串本身的值，具体的不同MDN<br>（5） indexOf()、lastIndexOf(): 从一个字符串中搜索给定的子字符串，然后返回子字符串的位置（如果没有找到改字字符串，则返回-1）。区别是前者从字符串的开头向后搜索，后者从字符串的末尾向前搜索<br>（6） trim(): 创建一个字符串的副本，删除前置及后缀的所有空格，然后返回结果。不改变原始字符串<br>（7） toLowerCase()、toLocaleLowerCase()、toUpperCase()、toLocaleUpperCase(): 大小写转换方法<br>（8） match(): 模式匹配方法，本质上与调用 regExp 的 exec() 方法相同<br>（9） search(): 参数与 match() 参数相同：由字符串或 RegExp 对象指定的一个正则表达式。该方法返回字符串中第一个匹配项的索引；如果没有找到匹配项，则返回-1。而且该方法始终是从字符串开头向后查找<br>（10） replace(): 接收两个参数：第一个参数可以是一个 RegExp 对象或者一个字符串（不会被转换成正则表达式），第二个参数可以一个字符串或者一个函数<br>（11） split(): 基于指定的分割符将一个字符串分割成多个子字符串，并且将结果放在一个数组中。分隔符可以是字符串，也可以是一个 RegExp 对象。该方法还可以接受可选的第二个参数，用于指定数组的大小。<br>（12） localeCompare(): 比较两个字符串，如果字符串在字母表中应该排在字符串参数之前，则返回一个负数（大多是-1）；如果字符串等于字符串参数，则返回0；若果字符串在字母表中应该排在字符串之后，则返回一个正数（大多是1）<br>（13） fromCharCode(): 接收一或多个字符编码，让后将它们转换成一个字符串</li>
-<li>Global 对象<br>（1） encodeURI(): 主要用于整个 URI 进行编码，不会对本身属于 URI 的特殊字符进行编码，例如冒号、正斜杠、问号和井字号；对应的解码方法是 decodeURI() 方法<br>（2） encodeURIComponent(): 主要用于对 URI 中的某一段进行编码，会对它发现的任何非标准字符进行编码；对应的解码方法是 dencodeURIComponent() 方法<br>（3） eval(): 像是一个完整的 ECMAScript 解析器，只接受一个参数，即要执行的 ECMAScript（或 JavaScript）字符串</li>
-<li>window 对象<br>（1） 在全局作用域中声明的所有变量和函数，都成为了 window 对象的属性<br>（2） Web浏览器实现了承担 Global 对象的 window 对象</li>
-<li>Math 对象<br>（1） 包含的属性大都是数学计算中可能会用到的一些特殊值<br>（2） min()和max()方法：用于确定一组数值中的最小值和最大值。都可以接收任意多个数值参数<br>（3） ceil(): 向上舍入，它总是将数值向上舍入为最接近的整数<br>（4） floor(): 向下舍入，它总是将数值向下舍入为最接近的整数<br>（5） round(): 标准舍入，它总是将数值四舍五入为最接近的整数<br>（6） random(): 返回大于等于0小于1的一个随机数</li>
-</ol>
-
-          
+<li><p>另外，使用 <code>&lt;noscript&gt;</code> 元素可以指定在不支持脚本的浏览器中显示的替代内容。但在启用了脚本的情况下，浏览器不会显示 <code>&lt;noscript&gt;</code> 元素中的任何内容。</p></li></ol>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/06/23/blog-19/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1063,8 +938,7 @@
 
       
         
-          
-            <h1 id="基本知识点"><a href="#基本知识点" class="headerlink" title="基本知识点"></a>基本知识点</h1><ol>
+          <h1 id="基本知识点"><a href="#基本知识点" class="headerlink" title="基本知识点"></a>基本知识点</h1><ol>
 <li>将rel属性的值设置为alternate stylesheet 可以定义候选样式表。如果浏览器能使用候选样式表，它会使用lingk元素的title属性值生成一个候选样式列表。</li>
 <li>p.warning{ font-weight: bold;}选择器现在会匹配class属性包含warning的所有p元素，但是其他任何类型的元素都不匹配，不论是否有此class属性。</li>
 <li>属性选择器： h1[class]{},img[alt]{},img[alt=”测试”],a[href][title] ….选择有当前属性的标签赋予样式。p[class~=”warning”]{},选择class属性中包含warning的元素,等价于p.warning。[foo^=”bar”]:选择 foo 属性值以“bar” 开头的所有元素；[foo$=”bar”]:选择 foo 属性值以 “bar” 结尾的所有元素； [foo*=””bar]: 选择 foo 属性值中包含子串“bar”的所有元素。[lang |=”en”]: 选择lang属性等于en或者以 en- 开头的所有元素，比如 lang=”en”、lang=”en-us”。h1 + p {} 选择紧接在一个 h1 元素后出现的 p 元素，” + “ 选择相邻的兄弟元素。</li>
@@ -1075,35 +949,14 @@
 <li>CSS3 的 box-sizing 属性可以定义要使用哪种盒模型，但是除了一些非常特殊的场合之外很少需要使用这个属性。目前最好的解决方案是回避这个问题。也就是，不要给元素添加具有指定宽度的内边距，而是尝试将内边距或外边距添加到元素的父元素火子元素。</li>
 <li>外边距叠加： 当两个或更多垂直外边距相遇时，它们将形成一个外边距。这个外边距的高度等于两个发生叠加的外边距的高度中的较大者。这就是一系列空的段落元素占用的空间非常小的原因，因为它们的所有外边距都叠加到一起，形成一个小的外边距。只有普通文档流中块框的垂直外边距才会发生外边距叠加。行内框、浮动框或绝对定位框之间的外边距不会叠加。</li>
 <li>清除浮动：<br>（1） 添加没意义的标记 “br style=’clear: both ‘“<br>（2） 浮动容器 div<br>（3） overflow:hidden 属性自动清理包含的所有浮动元素，缺点会产生滚动条或截断内容。<br>（4） 父元素添加 .clearfix::after{ content: ‘’; display: block; clear:both; // zonm : 1 : 兼容IE} </li>
-<li>可以通过链接样式： a:link  a:visited a:hover a:active（修改背景图） 来做出很多有趣的效果，比如按钮翻转、气泡提示框……。</li>
-</ol>
-<h1 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h1><ol>
-<li>使用自动空白边让设计居中</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">   &lt;div id=&quot;wrapper&quot;&gt;</span><br><span class="line">   &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">#wrapper&#123;</span><br><span class="line">   width: 1200px; // 可以是主体的百分数，em</span><br><span class="line">   margin: 0 auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>IE5、IE6不支持自动空白边，会将 text-align:center 误解为让所有东西居中，而不只是文本。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">body&#123;</span><br><span class="line">   text-align: center;</span><br><span class="line">   min-width: 1200px; // 防止当浏览器窗口的宽度减少到小于容器的宽度时，容器的左边会跑到屏幕的外边。需要将主体元素的最小宽度设置为等于或略大于容器元素的宽度。</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#wrapper&#123;</span><br><span class="line">   width: 1200px; // 可以是主体的百分数，em</span><br><span class="line">   margin: 0 auto;</span><br><span class="line">   text-align: left; //兼容IE</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>使用定位和负值空白边让设计居中</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#wrapper&#123;</span><br><span class="line">   width: 1200px;</span><br><span class="line">   position: relative;</span><br><span class="line">   left: 50%;</span><br><span class="line">   margin-left: -600px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>流体布局，尺寸是百分数而不是像素。</li>
-<li>弹性布局，相对于字号来设置元素宽度。</li>
-<li>弹性-流体混合布局，以em设置宽度，然后用百分数设置最大宽度。</li>
-<li><p>IE的有条件注释</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- [if IE]</span><br><span class="line">   &lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">   @import(&quot;ie.css&quot;);</span><br><span class="line">   &lt;/style&gt;</span><br><span class="line">--&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>过滤单独的规则和声明，就是利用低版本IE浏览器不支持的某些属性。<br>（1） 子选择器 html&gt;body{}<br>（2） 属性选择器 div[id=”content”]{}<br>（3） 星号 HTML * html{} ，HTML 元素被认为是网页上的第一个元素（根元素）。但是，IE的所有当前版本有一个匿名的根元素，它包围着 HTML 元素。<br>（4） IE/Mac 注释反斜线 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/* Hiding from IE5/Mac \*/</span><br><span class="line">#nav a&#123;</span><br><span class="line">   width: 5em; // 现代浏览器会忽视这条规则</span><br><span class="line">&#125;</span><br><span class="line">/* End Hack */</span><br></pre></td></tr></table></figure>
-<p>（5） 转义属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#content&#123;</span><br><span class="line">   w\idth: 100px; // 现代浏览器会忽视&apos;\&apos;符号</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>（6） !important和下划线</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#nav&#123;</span><br><span class="line">   position: fiexd !important; // 现代浏览器会应用这条声明</span><br><span class="line">   position: static;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#nav&#123;</span><br><span class="line">   position: fiexd; // 现代浏览器会应用这条声明</span><br><span class="line">   _position: static; // 老版本IE会忽视&apos;_&apos;， 并且覆盖第一个规则。</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-
-          
+<li>可以通过链接样式： a:link  a:visited a:hover a:active（修改背景图） 来做出很多有趣的效果，比如按钮翻转、气泡提示框……。</li></ol>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/06/15/blog-18/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1273,8 +1126,7 @@
 
       
         
-          
-            <h1 id="软件构建"><a href="#软件构建" class="headerlink" title="软件构建"></a>软件构建</h1><ol>
+          <h1 id="软件构建"><a href="#软件构建" class="headerlink" title="软件构建"></a>软件构建</h1><ol>
 <li>软件构建是软件开发的核心活动；构建活动是每个项目中唯一一项必不可少的工作。</li>
 <li>软件构建的主要活动包括：详细设计、编码、调试、集成、开发者测试（包括单元测试和集成测试）。</li>
 <li>构建也常被称作“编码”和“编程”。</li>
@@ -1286,231 +1138,14 @@
 <li>有些隐喻比其他隐喻更贴切。</li>
 <li>通过把软件的构建过程比作是房屋的建设过程，我们可以发现，仔细的准备是必要的，而大型项目和小型项目之间也是有差异的。</li>
 <li>通过把软件开发中的实践比作是智慧工具箱中的工具，我们又发现，每位程序员都有许多工具，但并不存在任何一个能适用于所有工作的工具，因地制宜地选择正确工具是成为能有效编程程序员的关键。</li>
-<li>不同的隐喻彼此并不排斥，应当使用对你最有益处的某种隐喻组合。</li>
-</ol>
-<h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><ol>
-<li>构建活动的准备工作的根本目标在于降低风险。要确认你的准备活动是在降低风险，而非增加风险。</li>
-<li>如果你想开发高质量的软件，软件开发过程必须由始至终关注质量。在项目初期关注质量，对产品质量的正面影响比在项目末期关注质量的影响要大。</li>
-<li>程序员的一部分工作是教育老板和合作者，告诉他们软件开发过程，包括在开始编程之前进行充分准备的重要性。</li>
-<li>你所从事的软件项目的类型对构建活动的前期准备有重大影响–许多项目应该是高度迭代的，某些应该是序列式的。</li>
-<li>如果没有明确的问题定义，那么你可能会在构建期间解决错误的问题。</li>
-<li>如果没有做完良好的需求分析工作，你可能没能察觉待解决的问题的重要细节。如果需求变更发生在构建之后的阶段，其代价是“在项目早期更改需求”的20致100倍。因此在开始编程之前，你要确认“需求已经到位了”。</li>
-<li>如果没有做完良好的架构设计，你可能会在构建期间用错误的方法解决正确的问题。架构变更的代价随着“为错误的架构编写的代码数量”增加而增加，因此，也要确认“架构”已经到位了。</li>
-<li>理解项目的前期准备所采用的方法，并相应地选择构建方法。</li>
-</ol>
-<h1 id="构建决策"><a href="#构建决策" class="headerlink" title="构建决策"></a>构建决策</h1><ol>
-<li>每种的编程语言都有其优点和弱点。要知道你使用的语言的明确优点和弱点。</li>
-<li>在开始编程之前，做好一些约定。“改变代码使之符合这些约定”是近乎不可能的。</li>
-<li>“构建的实践方法”的种类比任何单个项目能用到的要多。有意识地选择最适合你的项目的实践方法。</li>
-<li>问问你自己，你采用的编程实践是对你所用的编程语言的正确响应，还是受它的控制？请记得“深入一种语言去编程”，不要仅“在一种语言上编程”。</li>
-<li>你在技术浪潮中的位置决定了哪种方法是有效的–甚至是可能用到的。确定你在技术浪潮中的位置，并相应调整计划和期望目标。</li>
-</ol>
-<h1 id="构建中的设计"><a href="#构建中的设计" class="headerlink" title="构建中的设计"></a>构建中的设计</h1><ol>
-<li>软件的首要技术使命就是管理复杂度。以简单性作为努力目标的设计方案对此最有帮助。</li>
-<li>简单性可以通过两种方式来获取：一是减少在同一时间所关注的本质性复杂度的量，二是避免生成不必要的偶然的复杂度。</li>
-<li>设计是一种启发式的过程。固执于某一种单一方法会损害创新能力，从而损害你的程序。</li>
-<li>好的设计都是迭代的。你尝试设计的可能性越多，你的最终设计方案就会变得越好。</li>
-<li>信息隐藏是个非常有价值的概念。通过询问“我应该隐藏些什么？”能够解决很多困难的设计问题。</li>
-</ol>
-<h1 id="可以工作的类"><a href="#可以工作的类" class="headerlink" title="可以工作的类"></a>可以工作的类</h1><ol>
-<li>类的接口应提供一致的抽象。很多问题都是由于违背该原则而引起的。</li>
-<li>类的接口应该隐藏一些信息—-如某个系统接口、某项设计决策、或一些实现细节。</li>
-<li>包含往往比继承更为可取—-除非你要对“是一个/is a”的关系建模。</li>
-<li>继承是一种有用的工具，但它却会增加复杂度，这有违于软件的首要技术使命—-管理复杂度。</li>
-<li>类是管理复杂度的首选工具。要在设计类时给予足够的关注，才能实现这一目标。</li>
-</ol>
-<h1 id="高质量的子程序"><a href="#高质量的子程序" class="headerlink" title="高质量的子程序"></a>高质量的子程序</h1><ol>
-<li>创建子程序最主要的目的是提高程序的可管理性，当然也有其他一些好的理由。其中，节省代码空间只是一个次要原因：提高可读性、可靠性和可修改性等原因都更重要一些。</li>
-<li>有时候，把一些简单的操作写成独立的子程序也非常有价值。</li>
-<li>子程序可以按照其内聚性分为很多类，而你应该让大多数子程序具有功能上的内聚性，这是最佳的一种内聚性。</li>
-<li>子程序的名字是它的质量的指示器。如果名字糟糕但恰如其分，那就说明这个子程序设计得很差劲。如果名字糟糕而且又不准确，那么它就反映不出程序是干什么的。不管怎样，糟糕的名字都意味着程序需要修改。</li>
-<li>只有在某个子程序的主要目的是返回由其名字所描述的特定结果时，才应该使用函数。</li>
-<li>细心的程序员会非常谨慎的使用宏，而且只在万不得已时才用。</li>
-</ol>
-<h1 id="防御式编程"><a href="#防御式编程" class="headerlink" title="防御式编程"></a>防御式编程</h1><ol>
-<li>最终产品代码中错误的处理方式要比“垃圾进，垃圾出”复杂得多。</li>
-<li>防御式编程技术可以让错误更容易发现、更容易修改，并减少错误对产品代码的破坏。</li>
-<li>断言可以帮助人尽早发现错误，尤其是在大型系统和高可靠性的系统中，以及快速变化的代码中。</li>
-<li>关于如何处理错误输入的决策是一项关键的错误处理决策，也是一项关键的高层设计决策。</li>
-<li>异常提供了一种<br>与代码正常流程角度不同的错误处理手段。如果留心使用异常，它可以成为程序员们知识工具箱中的一项有益补充，同时也应该在异常和其他错误处理手段之间进行权衡比较。</li>
-<li>针对产品代码的限制并不适用于开发中的软件。你可以利用这一优势在开发中添加有助于更快地排查错误的代码。</li>
-</ol>
-<h1 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h1><ol>
-<li>创建类和子程序通常都是一个迭代的过程。在创建子程序的过程中获得的认识常常会反过来影响类的设计。</li>
-<li>编写好的伪代码需要易懂的英语，要避免使用特定编程语言中才有的特性，同时要在意图的层面上写伪代码（即描述该做什么，而不是要怎么去做）。</li>
-<li>伪代码编程过程是一个行之有效的做详细设计的工作，它同时让编码工作更容易。伪代码会直接转化为注释，从而确保了注释的准确性和实用性。</li>
-<li>不要只停留在你所想到的第一种设计方案上。反复使用伪代码做出多种方案，然后选出其中最佳的一种方案再开始编码。</li>
-<li>每一步完成后都要检查你的工作成功，还要鼓励其他人帮你来检查。这样你就会在投入精力最少的时候，用最低的成本发现错误。</li>
-</ol>
-<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><ol>
-<li>数据初始化过程很容易出错，所以：<br>（1）在变量声明的同时初始化<br>（2）在靠近变量第一次使用的位置初始化它<br>（3）在靠近第一次使用变量的位置声明和定义该变量<br>（4）在可能的情况下使用final或者const<br>（5）特别注意计数器和累加器<br>（6）在类的构造函数里初始化该类的数据成员<br>（7）检查是否需要重新初始化<br>（8）一次性初始化具名常量：用可执行代码来初始化变量<br>（9）使用编译器设置来自动初始化所有变量<br>（10）利用编译器的警告信息<br>（11）检查输入参数的合法性<br>（12）使用内存访问检查工具来检查错误的指针<br>（13）在程序开始时初始化工作内存</li>
-<li>最小化每个变量的作用域。把同一变量的引用点集中在一起。把变量限定在子程序或类的范围之内。避免使用全局数据。</li>
-<li>把使用相同变量的语句尽可能集中在一起。</li>
-<li>早期绑定会减低灵活性，但有助于减小复杂度。晚期绑定可以增加灵活性，同时增加复杂度。</li>
-<li>把每个变量用于唯一的用途。</li>
-</ol>
-<h1 id="变量名"><a href="#变量名" class="headerlink" title="变量名"></a>变量名</h1><ol>
-<li>好的变量名是提高程序可读性的一项关键要素。对特殊种类的变量，比如循环下标和状态变量，需要加以特殊的考虑。</li>
-<li>名字要尽可能地具体。那些太模糊或者太通用以致于能够用于多种目的的名字通常都是很不好的。</li>
-<li>命名规则应该能够区分局部数据、类数据和全局数据。它们还应当可以区分类型名、具名常量、枚举类型名字和变量名。</li>
-<li>无论做哪种类型项目，你都应该采用某种变量名规则。你所采用的规则的种类取决于你的程序的规模，以及项目成员的人数。</li>
-<li>现代编程语言很少需要用到缩写。如果你真的要使用缩写，请使用项目缩写词典或者标准前缀来帮助理解缩写。</li>
-<li>代码阅读的次数远远多于编写的次数。确保你所取得的名字更侧重于阅读方便而不是编写方便。</li>
-</ol>
-<h1 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h1><ol>
-<li>使用特定的数据类型就意味着要记住适用于各个类型的很多独立的原则。</li>
-<li>如果你的语言支持，创建自定义类型会使得你的程序更容易修改，并更具有自描述性。</li>
-</ol>
-<h1 id="不常见的数据类型"><a href="#不常见的数据类型" class="headerlink" title="不常见的数据类型"></a>不常见的数据类型</h1><ol>
-<li>结构体可以使得程序更简单、更容易理解，以及更容易维护。</li>
-<li>每当你打算使用结构体时候，考虑采用类是不是会工作得更好。</li>
-<li>指针很容易出错。用访问器子程序或类以及防御式编程实践来保护自己的代码。</li>
-<li>避免用全局变量，不只是因为它们很危险，还是因为你可以用其他更好地方法来取代它们。</li>
-<li>如果你不得不使用全局变量，那么就通过访问器子程序来使用它。访问器子程序能为你带来全局变量所能带来的一切优点，还有一些额外好处。</li>
-</ol>
-<h1 id="直线型代码"><a href="#直线型代码" class="headerlink" title="直线型代码"></a>直线型代码</h1><ol>
-<li>组织直线型代码的最主要原则是按照依赖关系进行排列。</li>
-<li>可以用好的子程序名、参数列表、注释，以及—-如果代码足够重要—-内务管理变量来让依赖关系变得更明显。</li>
-<li>如果代码之间没有顺序依赖关系，那就设法使相关的语句尽可能地接近。</li>
-</ol>
-<h1 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h1><ol>
-<li>对于简单的if-else语句，请注意 if 子句和 else 子句的顺序，特别是用它来处理大量错误的时候。要确认正常的情况是清晰的。</li>
-<li>对于 if-then-else 语句串和 case 语句，选择一种最有利阅读的排序。</li>
-<li>为了捕捉错误，可以使用 case 语句中的 default 子句（默认子句），或者使用 if-then-else 语句串中的最后那个 else 子句。</li>
-<li>各种控制结构并不是生来平等的。请为代码的每个部分选用最合适的控制结构。</li>
-</ol>
-<h1 id="控制循环"><a href="#控制循环" class="headerlink" title="控制循环"></a>控制循环</h1><ol>
-<li>循环很复杂。保持循环简单将有助于别人阅读你的代码。</li>
-<li>保持循环简单的技巧包括：避免使用怪异的循环、减少嵌套层次、让入口和出口一目了然、把内务操作和代码放在一处。</li>
-<li>循环下标很容易被滥用。因此命名要准确，并且要把它们各自仅用于一个用途。</li>
-<li>仔细地考虑循环，确认它在每一种情况下都运行正常，并且在所有可能的条件下都能退出。</li>
-</ol>
-<h1 id="不常见的控制结构"><a href="#不常见的控制结构" class="headerlink" title="不常见的控制结构"></a>不常见的控制结构</h1><ol>
-<li>多个 return 可以增强子程序的可读性和可维护性，同时可以避免产生很深的嵌套逻辑。但是使用它的时候要多加小心。</li>
-<li>递归能够很优雅地解决一小部分问题。对它的使用也要倍加小心。</li>
-<li>在少数情况下，goto是编写可读性和可维护代码的最佳方法。但这种情况非常罕见。除非万不得已，不要使用goto。</li>
-</ol>
-<h1 id="表驱动法"><a href="#表驱动法" class="headerlink" title="表驱动法"></a>表驱动法</h1><ol>
-<li>表提供了一种复杂的逻辑和继承结构的替换方案。如果你发现自己对某个应用程序的逻辑或者继承树关系感到困惑，那么问问自己它是否可以通过一个查询表来加以简化。</li>
-<li>使用表的一项关键决策是决定如何去访问表。你可以采取直接访问、索引访问或者阶梯访问。</li>
-<li>使用表的另一项关键决策是决定应该把什么内容放入表中。</li>
-</ol>
-<h1 id="一般控制问题"><a href="#一般控制问题" class="headerlink" title="一般控制问题"></a>一般控制问题</h1><ol>
-<li>使布尔表达式简单可读，将非常有助于提高你的代码质量。</li>
-<li>深层次的嵌套使得子程序变得难以理解。所幸的是，你可以相对容易地避免这么做。</li>
-<li>结构化编程是一种简单并且仍然适用的思想： 你可以通过把顺序、选择和循环三者组合起来而开发出任何程序。</li>
-<li>将复杂度降到最低水平是编写高质量代码的关键。</li>
-</ol>
-<h1 id="代码改善"><a href="#代码改善" class="headerlink" title="代码改善"></a>代码改善</h1><ol>
-<li>开发高质量代码最终并没有要求你付出更多，只是你需要对资源进行重新分配，以低廉的成本来防止缺陷出现，从而避免代价高昂的修正工作。</li>
-<li>并非所有的质量保证目标都可以全部实现。明确哪些目标是你希望达到的，并就这些目标和团队成员进行沟通。</li>
-<li>没有任何一种错误检测方法能够解决全部问题，测试本身并不是排除错误的最有效方法。成功的质量保证计划应该使用多种不同的技术来检查各种不同类型的错误。</li>
-<li>在构建期间应当使用一些有效的质量保证技术，但在这之前，一些具有同样的强大功能的质量保证技术也是必不可少的。错误发现越早，它与其余代码的纠缠就越少，由此造成的损失也就越小。</li>
-<li>软件领域的质量保证是面向过程的。软件开发与制造业不一样，在这里并不存在会影响最终产品的重复的阶段，因此最终产品的质量受到开发软件所用的过程的控制。</li>
-</ol>
-<h1 id="协同构建"><a href="#协同构建" class="headerlink" title="协同构建"></a>协同构建</h1><ol>
-<li>协同开发实践往往能比测试发现更多的缺陷，并且更有效率。</li>
-<li>协同开发实践所发现错误的类型通常跟测试所发现的不同，这意味着你需要同时使用详查和测试来保证你软件的质量。</li>
-<li>正式检查通过运用核对表、准备工作、明确定义的角色以及对方法的持续改善，将缺陷侦测的效率提升至最高。它往往能比走查发现更多得缺陷。</li>
-<li>通常，结对编程拥有和详查相同的成本，并能产生质量相当的代码。当需要缩短开发周期的时候，结对编程就非常有价值。相对于单独工作来说，有些开发人员更喜欢结对工作。</li>
-<li>正式检查可以应用在除代码之外的很多工作成果上，例如需求、设计以及测试用例等。</li>
-<li>走查和代码阅读是详查的替代方法。代码阅读更富有弹性，能有效地利用每个人的时间。</li>
-</ol>
-<h1 id="开发者测试"><a href="#开发者测试" class="headerlink" title="开发者测试"></a>开发者测试</h1><ol>
-<li>开发人员测试是完整测试策略的一个关键部分。独立测试也很重要。</li>
-<li>同编码之后编写测试测试用例相比较，编码开始之前编写测试用例，工作量和花费的时间差不多，但是后者可以缩短缺陷-侦测-调试-修正这一周期。</li>
-<li>即使考虑到了各种可用的测试手段，测试仍然只是良好软件质量计划的一部分。高质量的开发方法至少和测试一样重要，这包括尽可能减少需求和设计阶段的缺陷。在检测错误方面，协同开发的成效至少与测试相当。这些方法所检测错误的类型也各不相同。</li>
-<li>可以根据各种不同的思路来产生很多测试用例，这些思路包括基础测试、数据流分析、边界分析、错误数据类型以及正确数据类型等。还可以通过猜测错误的方式得到更多的测试用例。</li>
-<li>错误往往集中在少数几个容易出错的类和子程序上，找出这部分代码，重新设计和编写它们。</li>
-<li>测试数据本身错误的密度往往比被测试代码还要高。查找这种错误完全是浪费时间，又不能对代码有所改善，因此测试数据里面的错误更加让人烦恼。要像写代码一样小心地开发测试用例，也是进行回归测试的基础。</li>
-<li>从长远来看，改善测试过程的最好方法就是将其规范化，并对其进行评估，然后用从评估中获得的经验教训来改善这个过程。</li>
-</ol>
-<h1 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h1><ol>
-<li>调试同整个软件开发的成败息息相关。</li>
-<li>要想成功，系统化地查找和改正错误徐的方法至关重要。要要专注于你的调试工作，让每一次测试都能让你朝着正确的方向前进一步。要使用科学的调试方法。</li>
-<li>在动手解决问题之前，要理解问题的根本。胡乱猜测错误的来源和随机修改将会让你的程序陷入比刚开始调试时更为糟糕的境地。</li>
-<li>将编译器警告级别设置为最严格，把警告信息所报告的错误都改正。如果你忽略了明显的错误，那么要改正那些微妙的错误就会非常麻烦。</li>
-<li>调试工具对软件开发而言是强有力的支持手段。找出这些工具并加以利用，当然，请记得在调试的时候开动脑筋。</li>
-</ol>
-<h1 id="重构"><a href="#重构" class="headerlink" title="重构"></a>重构</h1><ol>
-<li>修改是程序一生都要面对的事情，不仅包括最初的开发阶段，还包括首次发布之后。</li>
-<li>在修改中软件的质量要么改进，要么恶化。软件演化的首要法则就是代码演化应当提升程序的内在质量。</li>
-<li>重构成功之关键在于程序员应学会关注那些标志着代码需要重构的众多的警告或“代码臭味”。</li>
-<li>重构成功的另一要素是程序员应当掌握大量特定的重构方法。</li>
-<li>重构成功的最后要点在于要有安全重构的策略。一些重构方法会比其他重构方法要好。</li>
-<li>开发阶段的重构是提升程序质量的最佳时机,应为你可以立刻让刚刚产生的改变梦想变成现实。请珍惜这些开发阶段的天赐良机。</li>
-</ol>
-<h1 id="代码调整策略"><a href="#代码调整策略" class="headerlink" title="代码调整策略"></a>代码调整策略</h1><ol>
-<li>性能只是软件整体质量的一个方面，通常不是最重要的。精细的代码调整也只是实现整体性能的一种方法，通常也不是决定性的。相对于代码本身的效率而言，程序的架构、细节设计以及数据结构和算法选择对程序的运行速度和资源占用的影响通常会更大。</li>
-<li>定量测量是实现性能性能最优化的关键。定量测量需要找出能真正决定程序性能的部分，在修改之后，应当通过重复测量来明确修改是提高还是降低了软件的性能。</li>
-<li>绝大多数的程序都有那么一小部分代码耗费了绝大部分的运行时间。如果没有测量，你不会知道是那一部分。</li>
-<li>代码调整需要反复尝试，这样才能获得理想的性能提高。</li>
-<li>为性能优化工作做好准备的最佳方式就是在最初阶段编写清晰的代码，从而使代码在后续工作中易于理解和修改。</li>
-</ol>
-<h1 id="代码调整技术"><a href="#代码调整技术" class="headerlink" title="代码调整技术"></a>代码调整技术</h1><ol>
-<li>优化结果在不同的语言、编译器和环境下有很大差异。如果没有对每一次的优化进行测量，你将无法判断优化到底是帮助还是损害了这个程序。</li>
-<li>第一次优化通常不会是最好的。即使找到了效果很不错的，也不要停下扩大战果的步伐。</li>
-<li>代码调整这一话题有点类似于核能，富有争议，甚至会让人冲动。一些人认为代码调整损害了代码可读性和可维护性，他们绝对会将其弃之不用。其他人则认为只要有适当的安全保障，代码调整对程序是有益的。</li>
-</ol>
-<h1 id="系统考虑"><a href="#系统考虑" class="headerlink" title="系统考虑"></a>系统考虑</h1><ol>
-<li>随着项目规模的扩大，交流需要加以支持。大多数方法论的关键点都在于减少交流中的问题，而一项方法论的存亡关键也应取决于它能否促进交流。</li>
-<li>在其他条件都相等的时候，大项目的生产率会低于小项目。</li>
-<li>在其他条件都相等的时候，大项目的每千行代码错误率会高于小项目。</li>
-<li>在小项目里的一些看起来“理当如此”的活动在大项目中必须仔细地计划。随着项目规模扩大，构建活动的主导地位逐渐降低。</li>
-<li>放大轻量级的方法论要好于缩小重量级的方法论。最有效的办法是使用“适量级”方法论。</li>
-</ol>
-<h1 id="管理构建"><a href="#管理构建" class="headerlink" title="管理构建"></a>管理构建</h1><ol>
-<li>好的编码实践可以通过“贯彻标准”或者“使用更为灵活的方法”来达到。</li>
-<li>配置管理，如果应用得当，会使程序员的工作变得更加轻松。特别包括变更控制。</li>
-<li>好的软件评估是一项重大挑战。成功的关键包括采用多种方法、随着项目的开展而修缮评估结果，以及很好地利用数据来创建评估等。</li>
-<li>度量是构建管理成功的关键。你可以采取措施度量项目的任何方面，而这要比根本不度量好得多。准确的度量是制定准确的进度条、质量控制和改进开发过程的关键。</li>
-<li>程序员和管理人员都是人，在把他们当人看的时候工作得最好。</li>
-</ol>
-<h1 id="集成"><a href="#集成" class="headerlink" title="集成"></a>集成</h1><ol>
-<li>构建的先后次序和集成的步骤会影响设计、编码、测试各类的顺序。</li>
-<li>一个经过充分思考的集成顺序能减少测试的工作量，并使调试变容易。</li>
-<li>增量集成有若干变型，而且—-除非项目是微不足道的—-任何一种形式的增量集成都比阶段式集成好。</li>
-<li>针对每个特定的项目，最佳的集成步骤通常是自顶向下、自底向上、风险导向及其他集成方法的某种组合。T-型集成和竖直分块集成通常都能工作得很好。</li>
-</ol>
-<h1 id="编程工具"><a href="#编程工具" class="headerlink" title="编程工具"></a>编程工具</h1><ol>
-<li>程序员有时会在长达数年的时间里忽视某些最强大的工具，之后才发现并使用之。</li>
-<li>好的工具能让你的日子安逸得多。</li>
-<li>下面这些工具已经可用了：编辑、分析代码质量、重构、版本控制、除错、测试、代码调整。</li>
-<li>你能打造许多自己用的专用工具。</li>
-<li>好的工具能减少软件开发中最单调乏味的工作的量，但它不能消除对“编程”的需要，虽然它会持续地重塑“编程”的含义。</li>
-</ol>
-<h1 id="布局与风格"><a href="#布局与风格" class="headerlink" title="布局与风格"></a>布局与风格</h1><ol>
-<li>可视化布局的首要任务是指明代码的逻辑组织。评估该任务是否实现的指标包括准确性、一致性、易读性和易维护性。</li>
-<li>外表悦目比起其他指标是最不重要的。然而，如果其他指标都达到了，代码又质量好，那么布局效果看上去也会不错。</li>
-<li>结构化代码有其他自身目的。始终如一地沿用某个习惯而少来创新。不能持久的布局规范只会损害可读性。</li>
-<li>布局的很多方面涉及信仰问题。应试着将客观需要和主观偏好区分开来。定出明确的指标，在此基础上再讨论风格参数的选择。</li>
-</ol>
-<h1 id="自说明代码"><a href="#自说明代码" class="headerlink" title="自说明代码"></a>自说明代码</h1><ol>
-<li>该不该注释是个需要认真对待的问题。差劲的注释只会浪费时间，帮倒忙；好的注释才有价值。</li>
-<li>源代码应当含有程序大部分的关键信息。只要程序依然在用，源代码比其他资料都能保持更新，故而将重要信息融入代码是很有用处的。</li>
-<li>好代码本身就是最好的说明。如果代码太糟，需要大量注释，应先试着改进代码，直至无须过多注释为止。</li>
-<li>注释应说出代码无法说出的东西—-例如概述或用意等信息。</li>
-<li>有的注释风格需要许多重复性劳动，应舍弃之，该用易于维护的账户是风格。</li>
-</ol>
-<h1 id="个人性格"><a href="#个人性格" class="headerlink" title="个人性格"></a>个人性格</h1><ol>
-<li>人的个性对其编程能力有直接影响。</li>
-<li>最有关系的性格为：谦虚、求知欲、诚实、创造性和纪律，以及高明的偷懒。</li>
-<li>程序员高手的性格与天分无关，而任何事情都与个人发展相关。</li>
-<li>出乎意料的是，小聪明、经验、坚持和疯狂既有助也有害。</li>
-<li>很多程序员不愿主动吸收新知识和技术，只依靠工作时偶尔接触新的信息。如果你能抽出少量时间阅读和学习编程知识,要不了多久就能鹤立鸡群。</li>
-<li>好性格与培养正确的习惯关系甚大。要成为杰出的程序员，先要养成良好习惯，其他自然水到渠成。</li>
-</ol>
-<h1 id="软件工艺的话题"><a href="#软件工艺的话题" class="headerlink" title="软件工艺的话题"></a>软件工艺的话题</h1><ol>
-<li>编程的主要目的之一是管理复杂度。</li>
-<li>编程过程对最终产品有深远影响。</li>
-<li>合作开发要求团队成员之间进行广泛沟通，甚于同计算机的交互；而单人开发则是自我交流，其次才是计算机。</li>
-<li>编程规范一旦滥用，只会雪上加霜；使用得当则能为开发环境带来良好机制，有助于管理复杂度和相互沟通。</li>
-<li>编程应基于问题域而非解决方案，这样便于复杂性管理。</li>
-<li>开发时迭代次数越多，产品的质量越好。</li>
-<li>墨守成规的方法有悖于高质量的软件开发。请将编程工具箱中填满各种编程工具，不断提高自己挑选合适工具的能力。</li>
-</ol>
-
-          
+<li><p>不同的隐喻彼此并不排斥，应当使用对你最有益处的某种隐喻组合。</p></li></ol>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/06/01/blog-17/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1710,7 +1345,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">31.1k</span>
+    <span title="Site words total count">31.9k</span>
   
 </div>
 

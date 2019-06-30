@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="喔喔屋">
 <meta property="og:description" content="JavaScript 简介 JavaScript 是一种专为与网页交互而设计的脚本语言，由下列三个不同的部分组成：（1） ECMAScript,由 ECMA-262 定义，提供核心语言功能；（2） 文档对象模型（DOM），提供访问和操作网页内容的方法和接口；（3） 浏览器对象模型（BOM），提供与浏览器交互的方法和接口。  在 HTML 中使用 JavaScript 把 JavaScript 插入">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-30T06:08:57.886Z">
+<meta property="og:updated_time" content="2019-06-30T07:40:01.558Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《JavaScript高级》">
 <meta name="twitter:description" content="JavaScript 简介 JavaScript 是一种专为与网页交互而设计的脚本语言，由下列三个不同的部分组成：（1） ECMAScript,由 ECMA-262 定义，提供核心语言功能；（2） 文档对象模型（DOM），提供访问和操作网页内容的方法和接口；（3） 浏览器对象模型（BOM），提供与浏览器交互的方法和接口。  在 HTML 中使用 JavaScript 把 JavaScript 插入">
@@ -416,10 +416,11 @@
 </ol>
 <h1 id="在-HTML-中使用-JavaScript"><a href="#在-HTML-中使用-JavaScript" class="headerlink" title="在 HTML 中使用 JavaScript"></a>在 HTML 中使用 JavaScript</h1><ol>
 <li>把 JavaScript 插入到 HTML 页面中要使用 <code>&lt;script&gt;</code> 元素。使用这个元素可以把 JavaScript 嵌入到 HTML 页面中，让脚本与标记混合在一起；也可以包含外部的 JavaScript 文件。而我们需要注意的地方有：<br>（1） 在包含外部 JavaScript 文件时，必须将 src 属性设置为指向相应文件的 URL。而这个文件既可以是与包含它的页面位于同一个服务器上的文件，也可以是其他任何域中的文件。<br>（2） 所有 <code>&lt;script&gt;</code> 元素都会按照它们在页面中出现的先后顺序依次被解析。在不使用 defer 和 async 属性的情况下，只有在解析完前面 <code>&lt;script&gt;</code> 元素中的代码之后，才会开始解析后面 <code>&lt;script&gt;</code> 元素中的代码。<br>（3） 由于浏览器会先解析完不使用 defer 属性的 <code>&lt;script&gt;</code> 元素中的代码，然后再解析后面的内容，所以一般应该把 <code>&lt;script&gt;</code> 元素放在页面最后，即主要内容后面， <code>&lt;/body&gt;</code> 标签前面。<br>（4） 使用 defer 属性可以让脚本在文档完全呈现之后再执行。延迟脚本总是按照指定它们的顺序执行。<br>（5） 使用 async 属性可以表示当前脚本不必等待其他脚本，也不必阻塞文档呈现。不能保证异步脚本按照它们在页面中出现的顺序执行。</li>
-<li>另外，使用 <code>&lt;noscript&gt;</code> 元素可以指定在不支持脚本的浏览器中显示的替代内容。但在启用了脚本的情况下，浏览器不会显示 <code>&lt;noscript&gt;</code> 元素中的任何内容。</li>
-</ol>
-<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><ol>
-<li>严格模式： 为 JavaScript 定义了一种不同的解析与执行模型。在严格模式下，ECMAScript3 中的一些不确定的行为将得到处理，而且对某些不安全的操作会抛出错误。<br>（1） 在顶部添加代码 “use strict”; 整个脚本中启用严格模式<br>（2） 指定函数在严格模式下执行： <code>function doSomething(){ &quot;use strict&quot;; ...函数体 }</code></li>
+<li><p>另外，使用 <code>&lt;noscript&gt;</code> 元素可以指定在不支持脚本的浏览器中显示的替代内容。但在启用了脚本的情况下，浏览器不会显示 <code>&lt;noscript&gt;</code> 元素中的任何内容。</p>
+<a id="more"></a>
+<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1></li>
+<li><p>严格模式： 为 JavaScript 定义了一种不同的解析与执行模型。在严格模式下，ECMAScript3 中的一些不确定的行为将得到处理，而且对某些不安全的操作会抛出错误。<br>（1） 在顶部添加代码 “use strict”; 整个脚本中启用严格模式<br>（2） 指定函数在严格模式下执行： <code>function doSomething(){ &quot;use strict&quot;; ...函数体 }</code></p>
+</li>
 <li>5种简单数据类型： Undefined、Null、Boolean、Number、String;1种复杂数据类型：Object。ES6新增的一种原始数据类型： Symbol（符号、标记）。凡是属性名是 Symbol 类型的，就都是独一无二的，Symbol 值通过函数生成： <code>let s = Symbol() || let s = Symbol(&quot;s1&quot;)</code>;Symbol没有包装类型，不能使用 new 操作符。 </li>
 <li>typeof 操作符：检测给定变量的数据类型，是操作符不是函数。用法 typeof(value) 返回：<br>（1） “undefined” : value 未定义；<br>（2） “boolean”: value 是布尔值；<br>（3） “string”: value 是字符串；<br>（4） “number”: value 是数值；<br>（5） “object”: value 是对象或 null;<br>（6） “function”: value 是函数。<br>（老版本浏览器会将正则表达式也返回”function”,新版会返回”object”）</li>
 <li>位操作符：按内存中表示数值的位来操作数值，速度最快。<br>（1） 按位非（~）：执行按位非的结果就是返回数值的反码；<br>（2） 按位与（&amp;）：将两个数值的每一位对齐，两个数值的对应位都是1时才返回1，任何一位是0，结果就是0；<br>（3） 按位或（|）：将两个数值的每一位对齐，两个数值的对应位有一个位是1的就返回1，只有在两个位都是0的情况下才返回0；<br>（4） 按位异或（^）：将两个数值得每一位对齐，两个数值对应位上只有一个1时才返回1，如果对应的两位都是1或都是0，则返回0；<br>（5） 左移（&lt;&lt;）： 将数值的所有位向左移动指定的位数，以0来填充右侧多出的空位。左移不会影响操作数的符号位；<br>（6） 有符号的右移（&gt;&gt;）：将数值向右移动，但保留符号位，以0来填充左侧多出的空位；<br>（7） 无符号右移（&gt;&gt;&gt;）：将数值的所有32位都向右移动，正数的无符号右移和有符号右移结果相同，负数无符号右移后的结果非常大，因为负数以其绝对值得二进制补码形式表示。</li>
@@ -742,7 +743,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">31.1k</span>
+    <span title="Site words total count">31.9k</span>
   
 </div>
 

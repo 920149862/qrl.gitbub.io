@@ -124,7 +124,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/05/23/blog-14/img_7.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/23/blog-14/img_8.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/23/blog-14/img_9.png">
-<meta property="og:updated_time" content="2019-05-25T11:21:01.936Z">
+<meta property="og:updated_time" content="2019-06-30T07:40:22.562Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《网络是怎样连接的》">
 <meta name="twitter:description" content="通过这本书了解到客户端（浏览器）发出请求到服务器返回响应这一过程中发生了哪些事情，网络中各种设备怎么协调工作，最终达到用户的需求。    完整的请求过程如下：   浏览器（发送请求） –&amp;gt;  TCP/IP协议 –&amp;gt; 网卡驱动 –&amp;gt; 集线器 –&amp;gt; 路由器 –&amp;gt; 接入网 –&amp;gt; 电话局 –&amp;gt;  网络运营商 –&amp;gt; (光纤、双绞线) –&amp;gt; 网络运营">
@@ -434,9 +434,8 @@
 <li><p>全世界 DNS 服务器的接力<br>DNS 服务器会从域名与 IP 地址的对照表中查找相应的记录，并返回 IP 地址。 客户端（<a href="http://www.baidu.com）" target="_blank" rel="noopener">www.baidu.com）</a> –&gt; 最近的DNS服务器 –&gt; 根域 –&gt; com –&gt; baidu  –&gt; www,  可以通过缓存加快 DNS 服务器的响应</p>
 </li>
 <li><p>委托协议栈发送消息<br>向操作系统内部的协议栈发出委托时，需要按照指定的顺序来调用 Socket 库中的程序组件。（1）创建套接字（创建套接字阶段）（2）将管道连接到服务器端的套接字上（连接阶段）（3）收发数据（通信阶段）（4）断开管道并删除套接字（断开阶段） 应用程序是通过“描述符”这一类似号码牌的东西来识别套接字的。描述符：应用程序用来识别套接字的机制;IP 地址和端口号：客户端和服务器之间用来识别对方套接字的机制</p>
-</li>
-</ol>
-<h1 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h1><ol>
+<a id="more"></a>
+<h1 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h1></li>
 <li><p>TCP在网络包出错丢失时可以重发，所以浏览器、邮件等一般应用程序收发数据时用 TCP（需要连接），这可能会浪费性能，DNS 查询等收发较短的控制数据时用 UDP（不需要连接）</p>
 </li>
 <li><p>套接字的实体就是通信控制信息：例如通信对象的 IP 地址、 端口号、 通信操作的进行状态等。协议栈是根据套接字中记录的控制信息来工作的。<br>通信操作中使用的控制信息分为两类。<br>（1） 头部中记录的信息<br>（2） 套接字（协议栈中的内存空间）中记录的信息</p>
@@ -788,7 +787,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">31.1k</span>
+    <span title="Site words total count">31.9k</span>
   
 </div>
 
