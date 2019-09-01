@@ -281,6 +281,554 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/23/blog-14/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="邱仁亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/mm.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="喔喔屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/23/blog-14/" itemprop="url">《网络是怎样连接的》</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-23T21:01:48+08:00">
+                2019-05-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/知识点/" itemprop="url" rel="index">
+                    <span itemprop="name">知识点</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>   通过这本书了解到客户端（浏览器）发出请求到服务器返回响应这一过程中发生了哪些事情，网络中各种设备怎么协调工作，最终达到用户的需求。</p>
+<p>   完整的请求过程如下：<br>   浏览器（发送请求） –&gt;  TCP/IP协议 –&gt; 网卡驱动 –&gt; 集线器 –&gt; 路由器 –&gt; 接入网 –&gt; 电话局 –&gt;  网络运营商 –&gt; (光纤、双绞线) –&gt; 网络运营商 –&gt; 电话局 –&gt; 接入网 –&gt; 防护墙 –&gt; 缓存服务器 –&gt; 网卡驱动 –&gt; TCP/IP协议 –&gt; 服务器程序</p>
+<h1 id="浏览器："><a href="#浏览器：" class="headerlink" title="浏览器："></a>浏览器：</h1><ol>
+<li><p>生成 HTTP 请求消息<br>浏览器的第一步工作就是对输入的 URL 进行解析。URL开头表示访问数据源的机制，也就是协议（http或者ftp）,“//”后面的字符串表示服务器的名称“<a href="http://www.baidu.com”" target="_blank" rel="noopener">www.baidu.com”</a>, 接着表示数据源（文件）的路径名。</p>
+<p><img src="/2019/05/23/blog-14/img_1.png" alt="a"></p>
+<p>HTTP 中主要的头字段<br><img src="/2019/05/23/blog-14/img_2.png" alt="a"><br><img src="/2019/05/23/blog-14/img_3.png" alt="a"><br><img src="/2019/05/23/blog-14/img_4.png" alt="a"></p>
+<p>1 条请求消息中只能写 1 个 URI。如果需要获取多个文件，必须对每个文件单独发送 1 条请求。</p>
+</li>
+<li><p>向 DNS 服务器查询 Web 服务器的 IP 地址<br>Socket 库是用于调用网络功能的程序组件集合,提供查询 IP 地址的功能。根据域名查询 IP 地址时，浏览器会使用 Socket 库中的解析器。</p>
+</li>
+<li><p>全世界 DNS 服务器的接力<br>DNS 服务器会从域名与 IP 地址的对照表中查找相应的记录，并返回 IP 地址。 客户端（<a href="http://www.baidu.com）" target="_blank" rel="noopener">www.baidu.com）</a> –&gt; 最近的DNS服务器 –&gt; 根域 –&gt; com –&gt; baidu  –&gt; www,  可以通过缓存加快 DNS 服务器的响应</p>
+</li>
+<li><p>委托协议栈发送消息<br>向操作系统内部的协议栈发出委托时，需要按照指定的顺序来调用 Socket 库中的程序组件。（1）创建套接字（创建套接字阶段）（2）将管道连接到服务器端的套接字上（连接阶段）（3）收发数据（通信阶段）（4）断开管道并删除套接字（断开阶段） 应用程序是通过“描述符”这一类似号码牌的东西来识别套接字的。描述符：应用程序用来识别套接字的机制;IP 地址和端口号：客户端和服务器之间用来识别对方套接字的机制</p></li></ol>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/05/23/blog-14/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/24/blog-13/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="邱仁亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/mm.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="喔喔屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/24/blog-13/" itemprop="url">Vue.js项目seo解决方案--预渲染</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-24T20:00:13+08:00">
+                2019-03-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue-js/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue.js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>  公司基于Vue.js做的网站上线后，发现爬虫根本爬取不了网站的信息，导致网站排名很低并且提升不了，让我找找有什么方法可以解决。查询相关资料后，发现网站是vue单页面架构，客户端渲染，首屏加载慢，对seo特别不友好（爬虫只能爬到js信息）。要解决这个问题，目前知道两种方案：</p>
+<ol>
+<li>SSR(服务端渲染)–通过node.js做中间层，取服务端的数据渲染好页面之后再发送给浏览器，这样网络爬虫就能获取到网页信息。相关插件有Nuxt.js,但是这种方案项目必须重新架构，页面上一些钩子函数也需重新编写，花费时间人力比较长，被我pass掉。</li>
+<li><p>预渲染–通过插件把vue单页面静态打包成html页面，这样浏览器访问的就是一个静态的html文件，开发成本低。只需要在项目webpack打包部署时配置相关信息，就能解决seo的问题。</p></li></ol>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/24/blog-13/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/12/blog-12/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="邱仁亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/mm.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="喔喔屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/12/blog-12/" itemprop="url">《算法图解》</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-12T20:35:22+08:00">
+                2019-02-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/知识点/" itemprop="url" rel="index">
+                    <span itemprop="name">知识点</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <pre><code>这几天看完了《算法图解》这本书，确实这是一本好的算法入门书。在此记录一些书中的知识点。
+</code></pre><ol>
+<li>算法运行时间并不以秒为单位，用大O表示法表示，是从其增速的角度度量的。算法的速度指的并非时间， 而是操作数的增速。谈论算法的速度时， 我们说的是随着输入的增加， 其运行时间将以什么样的速度增加。大O表示法指出了最糟情况下的运行时间。比如把一张正方形的纸平均裁成16份，一种方式是算出每一份的大小，一份一份的裁，一共要操作16次。这种裁法用算法时间O(n)来表示,也称线性时间,另一种方法就是对折4次再裁就能得到均分的16份，这种操作数只需4次，用大O表示法O(log n )，也称对数时间。O(log n )比O(n )快， 当需要搜索的元素越多时， 前者比后者快得越多。<br>（1） O (log<sub>2</sub> n )， 也叫对数时间 ， 这样的算法包括二分查找。<br>（2） O (n )， 也叫线性时间 ， 这样的算法包括简单查找。<br>（3） O (n * log<sub>2</sub> n )， 这样的算法包括快速排序——一种速度较快的排序算法。<br>（4） O (n 2 )， 这样的算法包括选择排序——一种速度较慢的排序算法。<br>（5） O (n !)， 这样的算法包括旅行商问题的解决方案——一种非常慢的算法。</li></ol>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/12/blog-12/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/11/blog-11/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -618,594 +1166,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/25/blog-9/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="邱仁亮">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/mm.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="喔喔屋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/25/blog-9/" itemprop="url">前端优化</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-25T22:21:16+08:00">
-                2018-12-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/优化/" itemprop="url" rel="index">
-                    <span itemprop="name">优化</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  537
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>从浏览器发送请求到渲染页面的大致过程来讨论前端优化</p>
-<ol>
-<li><p>输入网址，解析域名，查询是否有DNS缓存<br>这阶段前端没有可优化的</p>
-</li>
-<li><p>DNS查询<br>减少DNS查询次数（减少域名），比如把css、js等静态文件放在同一个域名下</p>
-</li>
-<li><p>建立TCP链接<br>连接复用、keep-alive，http2.0的多路复用（自行查找资料）</p>
-</li>
-<li><p>发送http请求<br>减少cookie的大小，合理设置cache-control，可以做到一段时内利用缓存，不发送http请求。浏览器遇到页面有几个css或者js的时候会同时发送多个http请求，这个有限制，比如好像ie对一个域名同时最多发4个请求。所以我们可以增加域名，把css等放cdn,这样同时就能发送8个或16个http请求了。但是这种方式又和第二阶段相冲突，这就需要判断项目的实际情况来权衡，引入静态文件过多，就多准备几个域名。</p>
-</li>
-<li><p>接收响应<br>运用ETag技术，可以判断出请求或者资源自上次请求后是否改变过，没改变就返回304，让浏览器去请求缓存，还有压缩技术Gzip,资源传输过程中压缩成Gzip格式，浏览器会自动解压，耗费cpu</p>
-</li>
-<li><p>接收完成，返回html<br>去掉html中的回车、空格、注释等</p>
-</li>
-<li><p>DOCTYPE<br>不能不写，不能写错。让浏览器自己去猜会影响渲染速度</p>
-</li>
-<li>逐行解析</li>
-<li><p>看到标签<div><p>…<br>减少标签数量（影响不大） ie 页面先显示内容，再渲染样式；Chrome 等样式渲染完后在显示内容</p>
-</div></p></li>
-<li><p>看到css js（下载并行 解析串行，排队挨个解析）<br>压缩（去掉空格，变量名一个字符）<br>CDN内容分布网络（主要技术）<br>css 阻塞看浏览器心情，js是一定会阻塞，所以css放head：尽早下载css，让用户尽早看到页面，js放body后： 尽早显示页面，能获取dom节点，就算js没解析完，按钮点不动，影响也不大</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/25/blog-8/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="邱仁亮">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/mm.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="喔喔屋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/25/blog-8/" itemprop="url">一点感想</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-25T21:55:48+08:00">
-                2018-12-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/知识点/" itemprop="url" rel="index">
-                    <span itemprop="name">知识点</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  638
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p>软件开发是一项复杂的工程，不能只理解成编码。确定需求-&gt;架构设计-&gt;实现需求-&gt;测试发布。</p>
-</li>
-<li><p>隐喻，也就是软件工程中的建模。</p>
-</li>
-<li><p>关注质量，前期准备的重要性。‘架构师吃掉需求，设计师吃掉架构，程序员消化设计。’我们程序员只是软件开发中的一环。如果需求不确定，后期再修改，重新设计，重新编码，花费的代价是前期的几十上百倍。所以我们前期应该确定好需求，设计好架构，再进行编码。当然，需求不可能是一成不变的。我们应该在开发中留有应对需求变更的方法，比如演进交付法：小块小块的开发交付，获得反馈，再构建。</p>
-</li>
-<li><p>确定编程语言和所用框架，了解其优缺点，约定语言规范。</p>
-</li>
-<li><p>管理复杂度，迭代设计试错，确定软件架构，分析模块，显示什么，隐藏什么。</p>
-</li>
-<li><p>类是管理复杂度的首选工具，类的接口要保持一致的抽象，隐藏其中的一些信息，只提供操作方法，包含比继承更好，继承增加了复杂度。</p>
-</li>
-<li><p>子程序提高程序的可管理性，可读性更高，易于修改，比较可靠。但是必须要有一个好的命名。</p>
-</li>
-<li><p>统一处理异常。</p>
-</li>
-<li><p>编写伪代码来确定业务逻辑，便于寻找最佳方案。伪代码可能成为程序注释。</p>
-</li>
-<li><p>数据初始化，变量名必须具体，便于阅读而不是便于编写，团队命名规则必须统一（驼峰？下划线。。。），确定变量的作用域，避免使用全局变量。</p>
-</li>
-<li><p>熟悉所用语言的基本类型，正确运用其特性。javascript: number、string、null、undefined、object、boolean、 symbol</p>
-</li>
-<li><p>控制语句if-else、switch注意把概率高的事件放前边。</p>
-</li>
-<li><p>软件质量、协同工作、测试、调试等工作,只要前期确定好开发规范，架构合理，后期的工作将不会很难。</p>
-</li>
-<li><p>修改代码百分百会遇到，重构代码的最好时机是开发阶段，要想重构比较轻松，就保证编写代码的质量。</p>
-</li>
-<li><p>注释应该说出代码无法说出的东西，注释多不等于代码好，好的代码根本不需要注释。</p>
-</li>
-<li><p>大项目拆分模块，小项目掌控全局，都要用心去对待，编写高质量的代码。</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/23/blog-5/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="邱仁亮">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/mm.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="喔喔屋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/23/blog-5/" itemprop="url">跨域</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-23T19:19:08+08:00">
-                2018-12-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/安全/" itemprop="url" rel="index">
-                    <span itemprop="name">安全</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  216
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>开发项目时，前后端数据交互会产生跨域问题。这是保障数据数据安全，不然其他地方都能调用支付宝、银行的接口进行转账，支付了。</p>
-<h3 id="跨域产生的原因："><a href="#跨域产生的原因：" class="headerlink" title="跨域产生的原因："></a>跨域产生的原因：</h3><ol>
-<li>浏览器限制，同源策略：不在同一个局域网，协议、域名、端口不同</li>
-<li>XmlHttpRequest请求（json请求就不会产生跨域）</li>
-</ol>
-<h3 id="解决跨域可以从两个方面入手："><a href="#解决跨域可以从两个方面入手：" class="headerlink" title="解决跨域可以从两个方面入手："></a>解决跨域可以从两个方面入手：</h3><ol>
-<li>服务端允许跨域</li>
-<li>调用方隐藏跨域请求</li>
-</ol>
-<h3 id="具体方法："><a href="#具体方法：" class="headerlink" title="具体方法："></a>具体方法：</h3><ol>
-<li>服务端添加允许跨域的代码，比如在filter里添加请求头的相关代码(response.setHeader()方法),常用</li>
-<li>浏览器设置允许跨域，开发时可以，上线了不行</li>
-<li>不用xhr请求，比如jsonp(缺点只有get请求)</li>
-<li>中间服务器Nginx或apache配置代理请求</li>
-<li>springboot 注解@CrossOrigin</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1258,7 +1218,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1372,7 +1332,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">35.8k</span>
+    <span title="Site words total count">36.9k</span>
   
 </div>
 
