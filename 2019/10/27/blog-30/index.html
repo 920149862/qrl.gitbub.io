@@ -94,7 +94,7 @@
 
 
 
-  <meta name="keywords" content="跨域,">
+  <meta name="keywords" content="JavaScript,">
 
 
 
@@ -107,18 +107,18 @@
 
 
 
-<meta name="description" content="开发项目时，前后端数据交互会产生跨域问题。这是保障数据数据安全，不然其他地方都能调用支付宝、银行的接口进行转账，支付了。 跨域产生的原因： 浏览器限制，同源策略：不在同一个局域网，协议、域名、端口不同 XmlHttpRequest请求（json请求就不会产生跨域）  解决跨域可以从两个方面入手： 服务端允许跨域 调用方隐藏跨域请求  具体方法： 服务端添加允许跨域的代码，比如在filter里添加请">
-<meta name="keywords" content="跨域">
+<meta name="description" content="作用域和闭包 变量的赋值操作会执行两个动作，首先编译器会在当前作用域中声明一个变量（如果之前没有声明过），然后在运行时引擎会在作用域中查找该变量，如果能够找到就会对它赋值。 作用域是一套规则，用于确定在何处以及如何查找变量（标识符）。如果查找的目的是对变量进行赋值，那么就会使用LHS查询；如果目的是获取变量的值，就会使用RHS查询。 赋值操作符会导致LHS查询。=操作符或调用函数时传入参数的操作都">
+<meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="跨域">
-<meta property="og:url" content="http://yoursite.com/2018/12/23/blog-5/index.html">
+<meta property="og:title" content="基础知识">
+<meta property="og:url" content="http://yoursite.com/2019/10/27/blog-30/index.html">
 <meta property="og:site_name" content="喔喔屋">
-<meta property="og:description" content="开发项目时，前后端数据交互会产生跨域问题。这是保障数据数据安全，不然其他地方都能调用支付宝、银行的接口进行转账，支付了。 跨域产生的原因： 浏览器限制，同源策略：不在同一个局域网，协议、域名、端口不同 XmlHttpRequest请求（json请求就不会产生跨域）  解决跨域可以从两个方面入手： 服务端允许跨域 调用方隐藏跨域请求  具体方法： 服务端添加允许跨域的代码，比如在filter里添加请">
+<meta property="og:description" content="作用域和闭包 变量的赋值操作会执行两个动作，首先编译器会在当前作用域中声明一个变量（如果之前没有声明过），然后在运行时引擎会在作用域中查找该变量，如果能够找到就会对它赋值。 作用域是一套规则，用于确定在何处以及如何查找变量（标识符）。如果查找的目的是对变量进行赋值，那么就会使用LHS查询；如果目的是获取变量的值，就会使用RHS查询。 赋值操作符会导致LHS查询。=操作符或调用函数时传入参数的操作都">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-25T13:09:46.277Z">
+<meta property="og:updated_time" content="2019-10-27T04:22:03.527Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="跨域">
-<meta name="twitter:description" content="开发项目时，前后端数据交互会产生跨域问题。这是保障数据数据安全，不然其他地方都能调用支付宝、银行的接口进行转账，支付了。 跨域产生的原因： 浏览器限制，同源策略：不在同一个局域网，协议、域名、端口不同 XmlHttpRequest请求（json请求就不会产生跨域）  解决跨域可以从两个方面入手： 服务端允许跨域 调用方隐藏跨域请求  具体方法： 服务端添加允许跨域的代码，比如在filter里添加请">
+<meta name="twitter:title" content="基础知识">
+<meta name="twitter:description" content="作用域和闭包 变量的赋值操作会执行两个动作，首先编译器会在当前作用域中声明一个变量（如果之前没有声明过），然后在运行时引擎会在作用域中查找该变量，如果能够找到就会对它赋值。 作用域是一套规则，用于确定在何处以及如何查找变量（标识符）。如果查找的目的是对变量进行赋值，那么就会使用LHS查询；如果目的是获取变量的值，就会使用RHS查询。 赋值操作符会导致LHS查询。=操作符或调用函数时传入参数的操作都">
 
 
 
@@ -148,13 +148,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/23/blog-5/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/27/blog-30/">
 
 
 
 
 
-  <title>跨域 | 喔喔屋</title>
+  <title>基础知识 | 喔喔屋</title>
   
 
 
@@ -281,7 +281,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/23/blog-5/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/27/blog-30/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="邱仁亮">
@@ -298,7 +298,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">跨域</h1>
+          <h1 class="post-title" itemprop="name headline">基础知识</h1>
         
 
         <div class="post-meta">
@@ -310,8 +310,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-23T19:19:08+08:00">
-                2018-12-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-27T12:20:14+08:00">
+                2019-10-27
               </time>
             
 
@@ -333,8 +333,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/安全/" itemprop="url" rel="index">
-                    <span itemprop="name">安全</span>
+                  <a href="/categories/知识点/" itemprop="url" rel="index">
+                    <span itemprop="name">知识点</span>
                   </a>
                 </span>
 
@@ -369,7 +369,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  216
+                  2.9k
                 </span>
               
 
@@ -385,7 +385,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  10
                 </span>
               
             </div>
@@ -406,21 +406,48 @@
       
 
       
-        <p>开发项目时，前后端数据交互会产生跨域问题。这是保障数据数据安全，不然其他地方都能调用支付宝、银行的接口进行转账，支付了。</p>
-<h3 id="跨域产生的原因："><a href="#跨域产生的原因：" class="headerlink" title="跨域产生的原因："></a>跨域产生的原因：</h3><ol>
-<li>浏览器限制，同源策略：不在同一个局域网，协议、域名、端口不同</li>
-<li>XmlHttpRequest请求（json请求就不会产生跨域）</li>
+        <h1 id="作用域和闭包"><a href="#作用域和闭包" class="headerlink" title="作用域和闭包"></a>作用域和闭包</h1><ol>
+<li>变量的赋值操作会执行两个动作，首先编译器会在当前作用域中声明一个变量（如果之前没有声明过），然后在运行时引擎会在作用域中查找该变量，如果能够找到就会对它赋值。</li>
+<li>作用域是一套规则，用于确定在何处以及如何查找变量（标识符）。如果查找的目的是对变量进行赋值，那么就会使用LHS查询；如果目的是获取变量的值，就会使用RHS查询。</li>
+<li>赋值操作符会导致LHS查询。=操作符或调用函数时传入参数的操作都会导致关联作用域的赋值操作。</li>
+<li>JavaScript 引擎首先会在代码执行前对其进行编译，在这个过程中，像 <code>var = 2</code> 这样的声明会被分解成两个独立的步骤：首先，<code>var 2</code> 在其作用域中声明新变量。这会在最开始的阶段，也就是代码执行前进行。接下来，<code>a = 2</code> 会查询（LHS查询）变量 a 并对其进行赋值。<a id="more"></a></li>
+<li>LHS 和 RHS 查询都会在当前执行作用域中开始，如果有需要（也就是说它们没有找到所需的标识符），就会向上级作用域继续查找目标标识符，这样每次上升一级作用域（一层楼），最后抵达全局作用域（顶层），无论找到或没找到都将停止。</li>
+<li>不成功的RHS 引用会导致抛出 ReferenceError 异常。不成功的LHS 引用会导致自动隐式地创建一个全局变量（非严格模式下），该变量使用LHS引用的目标作为标识符，或者抛出 ReferenceError 异常（严格模式下）。</li>
+<li>JavaScript 中有两个机制可以“欺骗”词法作用域：eval(…) 和 with。前者可以对一段包含或多个声明的“代码”字符串进行演算，并借此来修改已经存在的词法作用域（在运行时）。后者本质上是通过将一个对象的引用当作作用域来处理，将对象的属性当作作用域中的标识符来处理，从而创建一个新的词法作用域。这两个机制的副作用是引擎无法在编译时对作用域进行查找优化，因为引擎只能谨慎地认为这样的优化是无效的。使用这其中任何一个机制都将导致代码运行变慢。不要使用它们。</li>
+<li>函数是 JavaScript 中最常见的作用域单元。本质上，声明在一个函数内部的变量或函数会在所处的作用域中“隐藏”起来，这是有意为之的良好软件的设计原则。但函数不是唯一的作用域单元。块作用域指的是变量和函数不仅可以属于所处的作用域，也可以属于某个代码块（通常指{..}内部）。ES3开始，try/catch 结构在catch 分句中鞠永块作用域。ES6中引入了let关键字，用来在任意代码块中声明变量。</li>
+<li>我们习惯将 <code>var a = 2;</code>看作一个声明，而实际上JavaScript引擎并不这么认为。它将 var a 和 a = 2 当作两个单独的声明，第一个是编译阶段的任务，而第二个则是执行阶段的任务。这意味着无论作用域中的声明出现在什么地方，都将在代码本身被执行前首先进行处理。可以将这个过程形象地想象成所有的声明（变量和函数）都会被“移动”到各自作用域的最顶端，这个过程被称为提升。声明本身会被提升，而包括函数表达式的赋值在内的赋值操作并不会提升。</li>
+<li>当函数可以记住并访问所在的词法作用域，即使函数是在当前词法作用域之外执行，这时就产生了闭包。</li>
+<li>模块有两个主要特征：（1） 为创建内部作用域而调用了一个包装函数；（2） 包装函数的返回值必须至少包括一个对内部函数的引用，这样就会创建涵盖整个包装函数内部作用域的闭包。</li>
 </ol>
-<h3 id="解决跨域可以从两个方面入手："><a href="#解决跨域可以从两个方面入手：" class="headerlink" title="解决跨域可以从两个方面入手："></a>解决跨域可以从两个方面入手：</h3><ol>
-<li>服务端允许跨域</li>
-<li>调用方隐藏跨域请求</li>
+<h1 id="this和原型对象"><a href="#this和原型对象" class="headerlink" title="this和原型对象"></a>this和原型对象</h1><ol>
+<li>this 既不指向函数本身也不指向函数的词法作用域，this 实际上是在函数被调用时发生的绑定，它指向什么完全取决于函数在哪里被调用。</li>
+<li>如果要判断一个运行函数的 this 绑定，就需要找到这个函数的直接调用位置。找到之后就可以顺序应用下面这四条规则来判断 this 的绑定对象。（1） 由 new 调用？绑定到新创建的对象。（2） 由call或者apply（或者bind）调用？绑定到指定的对象。（3） 由上下文对象调用？绑定到那个上下文对象。（4） 默认：在严格模式下绑定到 undefined，否则绑定到全局对象。</li>
+<li>有些调用可能再无意中使用默认绑定规则。如果想“更安全”地忽略this绑定，可以使用一个DMZ对象，比如 Φ = Object.create(null),以保护全局对象。</li>
+<li>ES6中的箭头函数并不会使用四条标准的绑定规则，而是根据当前的词法作用域来决定this,具体来说，箭头函数会继承外层函数调用的this绑定（无论this绑定到什么）。这其实和ES6之前代码中的 self = this 机制一样。</li>
+<li>许多人都以为“JavaScript 中万物都是对象”，这是错误的。对象是6个（或者是7个，取决于你的观点）基础类型之一。对象有包括 function 在内的子类型，不同子类型具有不同的行为，比如内部标签   [object Array] 表示这是对象的子类型数组。</li>
+<li>对象就是键/值对的集合。可以通过.propName 或者 [ “propName” ] 语法来获取属性值。访问属性时，引擎实际上会调用内部的默认[[ Get ]] 操作（在设置属性值时是[[ Put ]]），[[ Get ]] 操作会检查对象本身是否包含这个属性，如果没有找到的话还会查找[[ Prototype ]]链。</li>
+<li>属性的特性可以通过属性描述符来控制，比如 writable 和 configurable。此外，可以使用Object.prevebtExtensions(…)、Object.seal(…)和Object.freeze(…)来设置对象（及其属性）的不可变性级别。</li>
+<li>属性不一定包含值–它们可能是具备 getter/setter 的“访问属性符”。此外，属性可以是可枚举或者不可枚举的，这决定了它们是否会出现在 for..in 循环中。</li>
+<li>可以使用ES6的 for..of 语法来遍历数据结构（数组、对象、等等）中的值，for..of 会寻找内置或者自定义的@@iterator对象并调用它的 next() 方法来遍历数据值。</li>
+<li>JavaScript 不会像类那样自动创建对象的副本。混入模式（无论显示还是隐式）可以用来模拟类的复制行为，但是通常会产生丑陋并且脆弱的语法，比如显示伪多态（OtherObj.methodName.call(this,…)），这会让代码更加难懂并且难以维护。此外，显示混入实际上无法完全模拟类的复制行为，因为对象（和函数！函数也是对象）只能复制引用，无法复制被引用的对象或者函数本身。</li>
+<li>如果要访问对象中并不存在的一个属性，[[ Get ]] 操作就会查找对象内部[[ Prototype]] 关联的对象。这个关联关系实际上定义了一条“原型链”，在查找属性时会对它进行遍历。</li>
+<li>所有普通对象都有内置的OBject.prototype，指向原型链的顶端（比如说全局作用域），如果在原型链中找不到指定的属性就会停止。toString()、valueOf() 和其他一些通用的功能都存在于Object.prototype 对象上，因此语言中所有的对象都可以使用它们。</li>
+<li>关联两个对象最常用的方法是使用new关键词进行函数调用，在调用的4个步骤中会创建一个关联其他对象的新对象。使用 new 调用函数时会把新对象的 .prototype 属性关联到“其他对象”。带 new 的函数调用通常被称为“构造函数调用”，尽管它们实际上和传统面向类语言中的类构造函数不一样。</li>
+<li>JavaScript 中的机制与传统面向类语言中的“类初始化”和“继承”相比有一个核心区别，那就是不会进行复制，对象之间是通过内部的[[ Prototype]]链关联的。“委托”是一个比“继承”更合适的术语，因为对象之间的关系不是复制而是委托。</li>
+<li>行为委托认为对象之间是兄弟关系，互相委托，而不是父类和子类的关系。JavaScript 的[[ Prototype ]] 机制本质上就是行为委托。对象关联是一种编码风格，它倡导的是直接创建和关联对象，不把它们抽象成类。对象关联可以用基于  [[ Prototype]] 的行为委托非常自然地实现。</li>
 </ol>
-<h3 id="具体方法："><a href="#具体方法：" class="headerlink" title="具体方法："></a>具体方法：</h3><ol>
-<li>服务端添加允许跨域的代码，比如在filter里添加请求头的相关代码(response.setHeader()方法),常用</li>
-<li>浏览器设置允许跨域，开发时可以，上线了不行</li>
-<li>不用xhr请求，比如jsonp(缺点只有get请求)</li>
-<li>中间服务器Nginx或apache配置代理请求</li>
-<li>springboot 注解@CrossOrigin</li>
+<h1 id="类型和语法"><a href="#类型和语法" class="headerlink" title="类型和语法"></a>类型和语法</h1><ol>
+<li>JavaScript 有7种内置类型：null、 undefined、 boolean、 number、 string、 object和 symbol， 可以使用 typeof 运算符来查看。变量没有类型，但它们持有的值有类型。</li>
+<li>undefined 是值的一种。undeclared 则表示变量还没有被声明过。但是 typeof 对 undefined 和 undeclared 变量都返回 “undefined”。通过 typeof 的安全防范机制（阻止报错）来检查 undeclared 变量,有时是个不错的办法。</li>
+<li>null 类型只有一个值 null,undefined 类型也只有一个值 undefined。所有变量在赋值之前默认值都是undefined。void 运算符返回 undefined。数字类型有几个特殊值，包括 NaN、+Infinity、-Infinity 和 -0。</li>
+<li>简单标量基本类型值（字符串和数字等）通过值复制来赋值/传递，而复合值（对象等）通过引用复制来赋值/传递。JavaScript 中的引用和其他语言中的引用/指针不同，它们不能指向别的变量/引用，只能指向值。</li>
+</ol>
+<h1 id="异步和性能"><a href="#异步和性能" class="headerlink" title="异步和性能"></a>异步和性能</h1><ol>
+<li>JavaScript程序总是至少分为两个快：第一块现在运行；下一块将来运行，以响应某个事件。尽管程序是一块一块执行的，但是所有这些块共享对程序作用域和状态的访问，所以对状态的修改都是在之前累积的修改之上进行的。</li>
+<li>一旦有事情需要运行，事件循环就会运行，知道队列清空。事件循环的每一轮称为一个tick。用户交互、IO和定时器会向事件队列中加入事件。</li>
+<li>任意时刻，一次只能从队列中处理一个事件。执行事件的时候，可能直接或间接地引发一个或多个后续事件。</li>
+<li>并发是指两个或多个事件链随时间发展交替执行，以至于从更高的层次来看，就像是同时在运行。</li>
+<li>通常需要对这些并发执行的“进程”进行某种形式的交互协调，比如需要确保执行顺序或者需要防止竞态出现。这些“进程”也可以通过把自身分割为更小的块，以便其他“进程”插入进来。</li>
 </ol>
 
       
@@ -439,7 +466,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/跨域/" rel="tag"># 跨域</a>
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
           
         </div>
       
@@ -452,8 +479,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/23/blog-7/" rel="next" title="css选择器问题">
-                <i class="fa fa-chevron-left"></i> css选择器问题
+              <a href="/2019/09/01/blog-29/" rel="next" title="Java链表实现队列">
+                <i class="fa fa-chevron-left"></i> Java链表实现队列
               </a>
             
           </div>
@@ -461,10 +488,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/23/blog-6/" rel="prev" title="http需要知道的状态码">
-                http需要知道的状态码 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -644,7 +667,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#跨域产生的原因："><span class="nav-number">1.</span> <span class="nav-text">跨域产生的原因：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决跨域可以从两个方面入手："><span class="nav-number">2.</span> <span class="nav-text">解决跨域可以从两个方面入手：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#具体方法："><span class="nav-number">3.</span> <span class="nav-text">具体方法：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#作用域和闭包"><span class="nav-number">1.</span> <span class="nav-text">作用域和闭包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#this和原型对象"><span class="nav-number">2.</span> <span class="nav-text">this和原型对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类型和语法"><span class="nav-number">3.</span> <span class="nav-text">类型和语法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#异步和性能"><span class="nav-number">4.</span> <span class="nav-text">异步和性能</span></a></li></ol></div>
             
 
           </div>
